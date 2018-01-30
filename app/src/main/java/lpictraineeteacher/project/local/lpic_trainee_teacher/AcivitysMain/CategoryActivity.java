@@ -37,12 +37,18 @@ public class CategoryActivity extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        displayAllRecords();
+    }
+
     private void initEvents() {
         sd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, CategoryBDActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -69,7 +75,7 @@ public class CategoryActivity extends Activity {
 
             Category category = categories.get(i);
 
-            final View view = LayoutInflater.from(this).inflate(R.layout.kategorie_record, null);
+            final View view = LayoutInflater.from(this).inflate(R.layout.category_record, null);
             view.setTag(category.getId());
 
             final Button btnKategorie = view.findViewById(R.id.btnKategorie);

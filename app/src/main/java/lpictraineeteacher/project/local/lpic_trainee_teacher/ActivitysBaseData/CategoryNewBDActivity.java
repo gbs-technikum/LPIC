@@ -61,6 +61,7 @@ public class CategoryNewBDActivity extends Activity  implements ConstantsBD {
             Toast.makeText(getApplicationContext(),  R.string.emptyfield, Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent();
+            intent.putExtra(CATEGORY,etKategorie.getText().toString());
             setResult(RESULT_OK, intent);
             finish();
         }

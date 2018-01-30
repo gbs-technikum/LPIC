@@ -52,7 +52,6 @@ public class SqliteService extends SQLiteOpenHelper {
         return ourInstance;
     }
 
-
     public SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.getWritableDatabase();

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:layout_margin="24dip"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dip"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnExit"
+                android:text="exit"
+                android:layout_width="wrap_content"
+                android:layout_height="90dip"
+                android:layout_weight="1"
+                android:layout_margin="3dip"
+                android:padding="1dip"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/button"
+                android:text="SD"
+                android:layout_width="wrap_content"
+                android:layout_height="90dip"
+                android:layout_weight="1"
+                android:layout_margin="3dip"
+                android:padding="1dip"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/button3"
+                android:text="info"
+                android:layout_width="wrap_content"
+                android:layout_height="90dip"
+                android:layout_weight="1"
+                android:layout_margin="3dip"
+                android:padding="1dip"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/button4"
+                android:text="glossar"
+                android:layout_width="wrap_content"
+                android:layout_height="90dip"
+                android:layout_weight="1"
+                android:layout_margin="3dip"
+                android:padding="1dip"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
