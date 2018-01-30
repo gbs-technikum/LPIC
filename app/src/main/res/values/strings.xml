@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">LPIC-Trainee-Teacher</string>
+
+    <string name="kategorieloeschen">Kategorie löschen?</string>
+    <string name="category">Kategorie</string>
+
+    <string name="rubrikloeschen">Rubrik löschen?</string>
+    <string name="rubric">Rubrik</string>
+
+    <string name="frageloeschen">Frage löschen?</string>
+    <string name="frage">Frage</string>
+    <string name="erklaerung">Erklärung</string>
+
+    <string name="antwortloeschen">Antwort löschen?</string>
+    <string name="answer">Antwort</string>
+
+    <string name="textantwortfrage">Textantwortfrage</string>
+    <string name="checkboxantwortfrage">Auswahlantwortfrage</string>
+
+    <string name="rbRichtig">ist richtig</string>
+    <string name="rbFalsch">ist falsch</string>
+
+    <string name="ok">ok</string>
+    <string name="cancel">abbrechen</string>
+    <string name="back">zurück</string>
+    <string name="addnew">neu</string>
+    <string name="edit">bearbeiten</string>
+    <string name="save">speichern</string>
+    <string name="update">update</string>
+    <string name="insert">insert</string>
+    <string name="delete">delete</string>
+    <string name="emptyfield">leeres Eingabefeld</string>
+
+
+    <string name="DATABASE_NAME">lpicapp.db</string>
+    <integer name="DATABASE_VERSION">11</integer>
+
+    <string name="DML_TYPE">DML_TYPE</string>
+    <integer name="ADD_RECORD">0</integer>
+    <integer name="UPDATE_RECORD">1</integer>
+
+    <string name="UPDATE">Update</string>
+    <string name="INSERT">Insert</string>
+    <string name="DELETE">Delete</string>
+
+</resources>
