@@ -17,12 +17,12 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.C
 
 public class CategoryActivity extends Activity {
 
-    public static final String KATEGORIEID = "KategorieID";
-    public static final String KATEGORIE = "Kategorie";
+    public static final String CATEGORYID = "CATEGORYID";
+    public static final String CATEGORY = "CATEGORY";
 
     private LinearLayout parentLayout;
     private SqliteService sqliteService;
-    private Button sd;
+    private Button btnBD;
     private Button btnExit;
 
     @Override
@@ -34,21 +34,26 @@ public class CategoryActivity extends Activity {
         initComponents();
         initEvents();
         displayAllRecords();
-
     }
 
+    //    @Override
+    //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    //        super.onActivityResult(requestCode, resultCode, data);
+    //        displayAllRecords();
+    //    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onResume() {
+        super.onResume();
         displayAllRecords();
     }
 
     private void initEvents() {
-        sd.setOnClickListener(new View.OnClickListener() {
+        btnBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, CategoryBDActivity.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -61,9 +66,8 @@ public class CategoryActivity extends Activity {
     }
 
     private void initComponents() {
-        parentLayout = findViewById(R.id.parentLayout);
-        sd = new Button(this);
-        sd = findViewById(R.id.button);
+        parentLayout = findViewById(R.id.llParentLayout);
+        btnBD = findViewById(R.id.btnBD);
         btnExit = findViewById(R.id.btnExit);
     }
 
@@ -75,15 +79,16 @@ public class CategoryActivity extends Activity {
 
             Category category = categories.get(i);
 
-            final View view = LayoutInflater.from(this).inflate(R.layout.category_record, null);
+            final View view = LayoutInflater.from(this).inflate(R.layout.select_record, null);
             view.setTag(category.getId());
+            final String cat = category.getCategory();
 
-            final Button btnKategorie = view.findViewById(R.id.btnKategorie);
-            btnKategorie.setText(category.getCategory());
-            btnKategorie.setOnClickListener(new View.OnClickListener() {
+            final Button btnSelect = view.findViewById(R.id.btnSelect);
+            btnSelect.setText(category.getCategory());
+            btnSelect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onShowRubric(view.getTag().toString(), "");
+                    onShowRubric(view.getTag().toString(),cat );
                 }
             });
             parentLayout.addView(view);
@@ -92,13 +97,9 @@ public class CategoryActivity extends Activity {
 
     private void onShowRubric(String categoryID, String categorie) {
         Intent intent = new Intent(this, RubricActivity.class);
-        intent.putExtra(KATEGORIE, categorie);
-        intent.putExtra(KATEGORIEID, categoryID);
+        intent.putExtra(CATEGORY, categorie);
+        intent.putExtra(CATEGORYID, categoryID);
         startActivity(intent);
-    }
-
-    private class MRow {
-        Button btnKategorie;
     }
 
 }

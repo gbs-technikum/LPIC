@@ -56,7 +56,7 @@
                         android:textSize="15dp" />
 
                     <LinearLayout
-                        android:id="@+id/parentLayout"
+                        android:id="@+id/llParentLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">

@@ -54,6 +54,7 @@ public class AnswerNewBDActivity extends Activity implements ConstantsBD {
             showData();
         }
     }
+
     private void readQuestion(String questionID) {
         question = sqliteService.getQuestionRecord(questionID);
     }

@@ -7,12 +7,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/footer"
+        android:layout_above="@+id/svFooter"
         android:layout_margin="8dip"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/parentLayout"
+            android:id="@+id/llParentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="40dip"
@@ -22,7 +22,7 @@
     </ScrollView>
 
     <RelativeLayout
-        android:id="@+id/footer"
+        android:id="@+id/svFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
@@ -45,7 +45,7 @@
                 />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnBD"
                 android:text="SD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnInfo"
                 android:text="info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
                 />
 
             <Button
-                android:id="@+id/button4"
-                android:text="glossar"
+                android:id="@+id/btnGlossary"
+                android:text="glossary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

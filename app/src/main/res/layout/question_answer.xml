@@ -15,9 +15,9 @@
         android:padding="1dip">
 
         <Button
-            android:id="@+id/btnKategorie"
+            android:id="@+id/btnSelect"
             android:layout_width="match_parent"
-            android:layout_height="75dip"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="4dip"
             android:text="Name"

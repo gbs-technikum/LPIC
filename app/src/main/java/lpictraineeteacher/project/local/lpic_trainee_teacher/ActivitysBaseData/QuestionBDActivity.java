@@ -54,7 +54,7 @@ public class QuestionBDActivity extends Activity implements ConstantsBD {
     private void initComponents() {
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
-        parentLayout = findViewById(R.id.parentLayout);
+        parentLayout = findViewById(R.id.llParentLayout);
         tvNoRecordsFound = findViewById(R.id.tvNoRecordsFound);
     }
 

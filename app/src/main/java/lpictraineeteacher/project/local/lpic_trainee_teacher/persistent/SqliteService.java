@@ -42,7 +42,6 @@ public class SqliteService extends SQLiteOpenHelper {
     private static final String COLUMN_ANTWORT = "ANTWORT";
     private static final String COLUMN_RICHTIG = "ISTRICHTIG";
 
-
     private static SqliteService ourInstance;
 
     public static SqliteService getInstance(Context context) {

@@ -7,12 +7,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/footer"
+        android:layout_above="@+id/svFooter"
         android:layout_margin="24dip"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/parentLayout"
+            android:id="@+id/llParentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="40dip"
@@ -22,7 +22,7 @@
     </ScrollView>
 
     <RelativeLayout
-        android:id="@+id/footer"
+        android:id="@+id/svFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
