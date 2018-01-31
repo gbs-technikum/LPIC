@@ -55,7 +55,6 @@ public class SqliteService extends SQLiteOpenHelper {
 
     public SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //chkdb(context);
     }
 
     @Override
