@@ -12,6 +12,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 
 /**
  * Created by mkoenig on 20.01.2018.
+ *
  */
 
 public class RubricNewBDActivity extends Activity implements ConstantsBD {

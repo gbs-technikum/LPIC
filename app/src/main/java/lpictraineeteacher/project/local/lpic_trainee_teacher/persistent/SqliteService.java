@@ -54,7 +54,7 @@ public class SqliteService extends SQLiteOpenHelper {
     public SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.getWritableDatabase();
-        //chkdb(context);
+        chkdb(context);
     }
 
     @Override
@@ -417,24 +417,34 @@ public class SqliteService extends SQLiteOpenHelper {
     // ****************** DB Kopieren ***********************
 
     private void chkdb(Context context) {
+        SQLiteDatabase dbe = null;
         try {
             // CHECK IS EXISTS OR NOT
-            SQLiteDatabase dbe = SQLiteDatabase.openDatabase("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db", null, 0);
-            dbe.close();
-            // COPY IF NOT EXISTS
-            AssetManager am = context.getAssets();
-            OutputStream os = new FileOutputStream("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db");
-            byte[] b = new byte[100];
-            int r;
-            InputStream is = am.open("lpicapp.db");
-            while ((r = is.read(b)) != -1) {
-                os.write(b, 0, r);
-            }
-            is.close();
-            os.close();
+            dbe = SQLiteDatabase.openDatabase("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db", null, 0);
         } catch (Exception e) {
-
         }
+
+        if (dbe == null) {
+            try {
+                // COPY IF NOT EXISTS
+                AssetManager am = context.getAssets();
+                byte[] b = new byte[100];
+                int r;
+                InputStream is = am.open("lpicapp.db");
+                while ((r = is.read(b)) != -1) {
+                    os.write(b, 0, r);
+                }
+                is.close();
+                os.close();
+
+                OutputStream os = new FileOutputStream("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db");
+
+            } catch (Exception e) {
+            }
+        }
+        dbe.close();
+
+
     }
 
 
