@@ -34,7 +34,7 @@ public class QuestionActivity extends Activity implements ConstantsBD {
         sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
-        checkForRequest();
+ //       checkForRequest();
         displayAllRecords();
     }
 
@@ -42,25 +42,25 @@ public class QuestionActivity extends Activity implements ConstantsBD {
 
     }
 
-    private void checkForRequest() {
-        llAnswers.removeAllViews();
-        llAnswers.addView(tvHeadline);
-        tvHeadline.setText(rubric);
-
-        ArrayList<Question> questions = sqliteService.getAllQuestionRecords(rubricid);
-        for (int i = 0; i < questions.size(); i++) {
-            Question question = questions.get(i);
-        }
-
-        tvFrage.setText(question.getFrage());
-        tvExplaination.setText(question.getHinweis());
-
-        final View view = LayoutInflater.from(this).inflate(R.layout.question_answer, null);
-        view.setTag(question.getId());
-
-
-        llAnswers.addView(view);
-    }
+//    private void checkForRequest() {
+//        llAnswers.removeAllViews();
+//        llAnswers.addView(tvHeadline);
+//        tvHeadline.setText(rubric);
+//
+//        ArrayList<Question> questions = sqliteService.getAllQuestionRecords(rubricid);
+//        for (int i = 0; i < questions.size(); i++) {
+//            Question question = questions.get(i);
+//        }
+//
+//        tvFrage.setText(question.getFrage());
+//        tvExplaination.setText(question.getHinweis());
+//
+//        final View view = LayoutInflater.from(this).inflate(R.layout.question_answer, null);
+//        view.setTag(question.getId());
+//
+//
+//        llAnswers.addView(view);
+//    }
 
 
     private void initComponents() {
