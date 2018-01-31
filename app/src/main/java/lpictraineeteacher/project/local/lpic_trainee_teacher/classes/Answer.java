@@ -4,6 +4,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.C
 
 /**
  * Created by mkoenig on 20.01.2018.
+ *
  */
 
 public class Answer {
