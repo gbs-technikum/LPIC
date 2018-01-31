@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -54,7 +55,7 @@ public class SqliteService extends SQLiteOpenHelper {
 
     public SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        chkdb(context);
+        //chkdb(context);
     }
 
     @Override
@@ -416,7 +417,7 @@ public class SqliteService extends SQLiteOpenHelper {
 
     // ****************** DB Kopieren ***********************
 
-    private void chkdb(Context context) {
+    public static void chkdb(Context context) {
 
         String path = "/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db";
         File file = new File(path);
@@ -425,20 +426,27 @@ public class SqliteService extends SQLiteOpenHelper {
             try {
                 // COPY IF NOT EXISTS
                 AssetManager am = context.getAssets();
-                OutputStream os = new FileOutputStream(path);
+                OutputStream outputStream = new FileOutputStream(path);
                 byte[] b = new byte[100];
                 int r;
                 InputStream is = am.open("lpicapp.db");
                 while ((r = is.read(b)) != -1) {
-                    os.write(b, 0, r);
+                    outputStream.write(b, 0, r);
                 }
                 is.close();
-                os.close();
+                outputStream.close();
             } catch (Exception e) {
+                Log.d("error_sqliteservice", e.toString());
             }
         }
-
-
     }
 
+    // ****************** DB Lösachen ***********************
+    public static void delDatabase() {
+        String path = "/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db";
+        File file = new File(path);
+        if(file.exists() ) {
+            file.delete();
+        }
+    }
 }
