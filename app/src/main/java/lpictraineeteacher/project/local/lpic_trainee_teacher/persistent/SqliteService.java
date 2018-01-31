@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -53,7 +54,6 @@ public class SqliteService extends SQLiteOpenHelper {
 
     public SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.getWritableDatabase();
         chkdb(context);
     }
 
@@ -417,17 +417,15 @@ public class SqliteService extends SQLiteOpenHelper {
     // ****************** DB Kopieren ***********************
 
     private void chkdb(Context context) {
-        SQLiteDatabase dbe = null;
-        try {
-            // CHECK IS EXISTS OR NOT
-            dbe = SQLiteDatabase.openDatabase("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db", null, 0);
-        } catch (Exception e) {
-        }
 
-        if (dbe == null) {
+        String path = "/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db";
+        File file = new File(path);
+        // CHECK IS EXISTS OR NOT
+        if(!file.exists() ) {
             try {
                 // COPY IF NOT EXISTS
                 AssetManager am = context.getAssets();
+                OutputStream os = new FileOutputStream(path);
                 byte[] b = new byte[100];
                 int r;
                 InputStream is = am.open("lpicapp.db");
@@ -436,16 +434,11 @@ public class SqliteService extends SQLiteOpenHelper {
                 }
                 is.close();
                 os.close();
-
-                OutputStream os = new FileOutputStream("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db");
-
             } catch (Exception e) {
             }
         }
-        dbe.close();
 
 
     }
-
 
 }

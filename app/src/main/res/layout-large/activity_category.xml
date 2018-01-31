@@ -45,7 +45,7 @@
                 />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnBD"
                 android:text="SD"
                 android:layout_width="wrap_content"
                 android:layout_height="90dip"
@@ -56,7 +56,7 @@
                 />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnInfo"
                 android:text="info"
                 android:layout_width="wrap_content"
                 android:layout_height="90dip"
@@ -67,7 +67,7 @@
                 />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnGlossary"
                 android:text="glossar"
                 android:layout_width="wrap_content"
                 android:layout_height="90dip"

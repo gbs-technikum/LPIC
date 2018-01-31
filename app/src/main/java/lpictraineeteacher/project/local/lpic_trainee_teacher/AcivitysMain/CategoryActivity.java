@@ -20,7 +20,7 @@ public class CategoryActivity extends Activity {
     public static final String CATEGORYID = "CATEGORYID";
     public static final String CATEGORY = "CATEGORY";
 
-    private LinearLayout parentLayout;
+    private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private Button btnBD;
     private Button btnExit;
@@ -66,13 +66,13 @@ public class CategoryActivity extends Activity {
     }
 
     private void initComponents() {
-        parentLayout = findViewById(R.id.llParentLayout);
+        llParentLayout = findViewById(R.id.llParentLayout);
         btnBD = findViewById(R.id.btnBD);
         btnExit = findViewById(R.id.btnExit);
     }
 
     private void displayAllRecords() {
-        parentLayout.removeAllViews();
+        llParentLayout.removeAllViews();
         ArrayList<Category> categories = sqliteService.getAllCategoryRecords();
 
         for (int i = 0; i < categories.size(); i++) {
@@ -91,7 +91,7 @@ public class CategoryActivity extends Activity {
                     onShowRubric(view.getTag().toString(),cat );
                 }
             });
-            parentLayout.addView(view);
+            llParentLayout.addView(view);
         }
     }
 
