@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="12dip">
 
             <TextView
@@ -25,8 +25,7 @@
                 android:paddingLeft="30dip"
                 android:paddingRight="30dip"
                 android:text="xxxxxx"
-                android:textAlignment="center"
-                android:textSize="18dip"
+                android:textSize="22dip"
                 android:textStyle="bold" />
 
             <TextView
@@ -37,21 +36,21 @@
                 android:paddingLeft="30dip"
                 android:paddingRight="30dip"
                 android:text="xxxxxx"
-                android:textSize="18dip"
+                android:textSize="22dip"
                 android:textStyle="bold" />
-
 
             <LinearLayout
                 android:id="@+id/llAnswers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
                 android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:paddingTop="40dip">
-
+                android:paddingRight="30dip">
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/tvExplaination"
                 android:layout_width="match_parent"
@@ -59,9 +58,20 @@
                 android:layout_margin="8dip"
                 android:paddingLeft="30dip"
                 android:paddingRight="30dip"
-                android:textSize="15sp"
-                android:text="" />
+                android:text=""
+                android:textSize="22dip" />
+
+            <Button
+                android:id="@+id/btnCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dip"
+                android:layout_marginRight="30dip"
+                android:layout_marginTop="3dip"
+                android:layout_marginBottom="3dip"
+                android:text="Button" />
         </LinearLayout>
+
     </ScrollView>
 
     <RelativeLayout
@@ -98,7 +108,7 @@
                 android:visibility="invisible" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
@@ -108,13 +118,13 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnGlossary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
-                android:text="glossar"
+                android:text="glossary"
                 android:textStyle="bold" />
 
         </LinearLayout>

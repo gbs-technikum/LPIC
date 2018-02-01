@@ -19,7 +19,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class RubricActivity extends Activity implements ConstantsBD{
 
     private Button btnBack;
-    private LinearLayout parentLayout;
+    private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private TextView tvHeadline;
     private String categoryid;
@@ -40,6 +40,7 @@ public class RubricActivity extends Activity implements ConstantsBD{
         categoryid = getIntent().getExtras().getString(CATEGORYID);
         category = getIntent().getExtras().getString(CATEGORY );
     }
+
 
     //    @Override
     //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -64,14 +65,14 @@ public class RubricActivity extends Activity implements ConstantsBD{
     }
 
     private void initComponents() {
-        parentLayout = findViewById(R.id.llParentLayout);
+        llParentLayout = findViewById(R.id.llParentLayout);
         tvHeadline = findViewById(R.id.tvHeadline);
         btnBack = findViewById(R.id.btnBack);
     }
 
     private void displayAllRecords() {
-        parentLayout.removeAllViews();
-        parentLayout.addView(tvHeadline);
+        llParentLayout.removeAllViews();
+        llParentLayout.addView(tvHeadline);
         tvHeadline.setText(category);
 
         ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(categoryid);
@@ -91,12 +92,12 @@ public class RubricActivity extends Activity implements ConstantsBD{
                     onShowQuestion(view.getTag().toString(), frubric);
                 }
             });
-            parentLayout.addView(view);
+            llParentLayout.addView(view);
         }
     }
 
     private void onShowQuestion(String rubrikid, String rubrik) {
-        Intent intent = new Intent(this, RubricActivity.class);
+        Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra(RUBRIC, rubrik);
         intent.putExtra(RUBRICID, rubrikid);
         startActivity(intent);
