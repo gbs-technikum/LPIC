@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.ConstantsBD;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class RubricActivity extends Activity implements ConstantsBD{
+public class RubricActivity extends Activity implements Constants {
 
     private Button btnBack;
     private LinearLayout llParentLayout;
@@ -38,9 +38,8 @@ public class RubricActivity extends Activity implements ConstantsBD{
 
     private void checkForRequest() {
         categoryid = getIntent().getExtras().getString(CATEGORYID);
-        category = getIntent().getExtras().getString(CATEGORY );
+        category = getIntent().getExtras().getString(CATEGORY);
     }
-
 
     //    @Override
     //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -96,10 +95,12 @@ public class RubricActivity extends Activity implements ConstantsBD{
         }
     }
 
-    private void onShowQuestion(String rubrikid, String rubrik) {
+    private void onShowQuestion(String rubricid, String rubric) {
         Intent intent = new Intent(this, QuestionActivity.class);
-        intent.putExtra(RUBRIC, rubrik);
-        intent.putExtra(RUBRICID, rubrikid);
+        intent.putExtra(RUBRIC, rubric);
+        intent.putExtra(RUBRICID, rubricid);
+        intent.putExtra(CATEGORYID, categoryid);
+        intent.putExtra(LISTTYPE, LISTRUBRIC);
         startActivity(intent);
     }
 }

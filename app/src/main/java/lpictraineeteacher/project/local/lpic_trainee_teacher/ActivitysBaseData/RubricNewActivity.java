@@ -9,13 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 
 /**
  * Created by mkoenig on 20.01.2018.
  *
  */
 
-public class RubricNewBDActivity extends Activity implements ConstantsBD {
+public class RubricNewActivity extends Activity implements Constants {
 
     private EditText etDaten;
     private Button btnBack;

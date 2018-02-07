@@ -29,6 +29,9 @@
     <string name="update">update</string>
     <string name="insert">insert</string>
     <string name="delete">delete</string>
+    <string name="previous">prev</string>
+    <string name="check">check</string>
+    <string name="next">next</string>
     <string name="emptyfield">leeres Eingabefeld</string>
 
 

@@ -13,10 +13,11 @@ import android.widget.Toast;
 import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class QuestionNewBDActivity extends Activity implements ConstantsBD {
+public class QuestionNewActivity extends Activity implements Constants {
 
     private EditText etFrage;
     private EditText etErklaerung;

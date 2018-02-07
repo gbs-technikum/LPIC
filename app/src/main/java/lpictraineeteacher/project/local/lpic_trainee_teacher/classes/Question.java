@@ -1,5 +1,7 @@
 package lpictraineeteacher.project.local.lpic_trainee_teacher.classes;
 
+import java.util.ArrayList;
+
 /**
  * Created by mkoenig on 20.01.2018.
  */
@@ -10,58 +12,25 @@ public class Question {
     private String frage;
     private String art;
     private String hinweis;
+    private ArrayList<Answer> answers;
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id='" + id + '\'' +
-                ", rid='" + rid + '\'' +
-                ", frage='" + frage + '\'' +
-                ", art='" + art + '\'' +
-                ", hinweis='" + hinweis + '\'' +
-                '}';
+    public Question() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Question question = (Question) o;
-
-        if (!rid.equals(question.rid)) return false;
-        if (!frage.equals(question.frage)) return false;
-        if (!art.equals(question.art)) return false;
-        return hinweis != null ? hinweis.equals(question.hinweis) : question.hinweis == null;
+    public ArrayList<Answer> getAnswers() {
+        return answers;
     }
 
-    @Override
-    public int hashCode() {
-        int result = rid.hashCode();
-        result = 31 * result + frage.hashCode();
-        result = 31 * result + art.hashCode();
-        result = 31 * result + (hinweis != null ? hinweis.hashCode() : 0);
-        return result;
+    public void setAnswers(ArrayList<Answer> answers) {
+        this.answers = answers;
     }
 
     public String getHinweis() {
-
         return hinweis;
     }
 
     public void setHinweis(String hinweis) {
         this.hinweis = hinweis;
-    }
-
-    public Question() {
-    }
-
-    public Question(String id, String rid, String frage, String art) {
-        this.id = id;
-        this.rid = rid;
-        this.frage = frage;
-
-        this.art = art;
     }
 
     public String getId() {

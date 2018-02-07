@@ -21,14 +21,13 @@
         <activity android:name=".AcivitysMain.CategoryActivity" />
         <activity android:name=".AcivitysMain.RubricActivity" />
         <activity android:name=".AcivitysMain.QuestionActivity" />
-        <activity android:name=".ActivitysBaseData.CategoryBDActivity" />
-        <activity android:name=".ActivitysBaseData.RubricBDActivity" />
-        <activity android:name=".ActivitysBaseData.QuestionBDActivity" />
-        <activity android:name=".ActivitysBaseData.AnswerBDActivity" />
-        <activity android:name=".ActivitysBaseData.QuestionNewBDActivity" />
-        <activity android:name=".ActivitysBaseData.AnswerNewBDActivity" />
-        <activity android:name=".ActivitysBaseData.CategoryNewBDActivity" />
-        <activity android:name=".ActivitysBaseData.RubricNewBDActivity" />
+        <activity android:name=".ActivitysBaseData.CategoryActivity" />
+        <activity android:name=".ActivitysBaseData.RubricActivity" />
+        <activity android:name=".ActivitysBaseData.QuestionActivity" />
+        <activity android:name=".ActivitysBaseData.AnswerActivity" />
+        <activity android:name=".ActivitysBaseData.QuestionNewActivity" />
+        <activity android:name=".ActivitysBaseData.AnswerNewActivity" />
+        <activity android:name=".ActivitysBaseData.CategoryNewActivity" />
+        <activity android:name=".ActivitysBaseData.RubricNewActivity" />
     </application>
-
 </manifest>

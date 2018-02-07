@@ -9,8 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 
-public class CategoryNewBDActivity extends Activity  implements ConstantsBD {
+public class CategoryNewActivity extends Activity  implements Constants {
 
     private EditText etKategorie;
     private Button btnBack;
@@ -29,7 +30,7 @@ public class CategoryNewBDActivity extends Activity  implements ConstantsBD {
         String request = getIntent().getExtras().get(DML_TYPE).toString();
         if (request.equals(UPDATE)) {
             btnDML.setText(R.string.update);
-            etKategorie.setText(getIntent().getExtras().get(CategoryBDActivity.CATEGORY).toString());
+            etKategorie.setText(getIntent().getExtras().get(CategoryActivity.CATEGORY).toString());
         } else {
             btnDML.setText(R.string.insert);
         }

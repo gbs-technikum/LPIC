@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
@@ -25,7 +26,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
  * Created by mkoenig on 20.01.2018.
  */
 
-public class RubricBDActivity extends Activity implements ConstantsBD {
+public class RubricActivity extends Activity implements Constants {
 
     private String kategorieid;
     private String kategorie;
@@ -45,8 +46,8 @@ public class RubricBDActivity extends Activity implements ConstantsBD {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdrubric);
 
-        kategorieid = getIntent().getExtras().getString(CategoryBDActivity.CATEGORYID);
-        kategorie = getIntent().getExtras().getString(CategoryBDActivity.CATEGORY);
+        kategorieid = getIntent().getExtras().getString(CategoryActivity.CATEGORYID);
+        kategorie = getIntent().getExtras().getString(CategoryActivity.CATEGORY);
 
         sqliteService = SqliteService.getInstance(this);
         initComponents();
@@ -97,13 +98,13 @@ public class RubricBDActivity extends Activity implements ConstantsBD {
     }
 
     private void onAddRecord() {
-        Intent intent = new Intent(this, RubricNewBDActivity.class);
+        Intent intent = new Intent(this, RubricNewActivity.class);
         intent.putExtra(DML_TYPE, INSERT);
         startActivityForResult(intent, DML_ADD_RECORD);
     }
 
     private void onUpdateRecord(String rubricid, String rubrik) {
-        Intent intent = new Intent(this, RubricNewBDActivity.class);
+        Intent intent = new Intent(this, RubricNewActivity.class);
         intent.putExtra(RUBRICID, rubricid);
         intent.putExtra(RUBRIC, rubrik);
         intent.putExtra(DML_TYPE, UPDATE);
@@ -111,7 +112,7 @@ public class RubricBDActivity extends Activity implements ConstantsBD {
     }
 
     private void onEditNewQuestion(String rubrikID, String rubrik) {
-        Intent intent = new Intent(this, QuestionBDActivity.class);
+        Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra(RUBRICID, rubrikID);
         intent.putExtra(RUBRIC, rubrik);
         startActivityForResult(intent, DML_ADD_RECORD);
@@ -156,13 +157,13 @@ public class RubricBDActivity extends Activity implements ConstantsBD {
                 mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(RubricBDActivity.this);
+                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(RubricActivity.this);
                         deleteDialogOk.setTitle(R.string.rubrikloeschen);
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         if (!sqliteService.deleteRubricRecord(view.getTag().toString())) {
-                                            Toast.makeText(RubricBDActivity.this, "Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(RubricActivity.this, "Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.", Toast.LENGTH_LONG).show();
                                         }
                                         displayAllRecords();
                                     }

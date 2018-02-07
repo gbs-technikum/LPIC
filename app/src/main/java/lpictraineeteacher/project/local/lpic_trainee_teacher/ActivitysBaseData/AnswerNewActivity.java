@@ -15,10 +15,11 @@ import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class AnswerNewBDActivity extends Activity implements ConstantsBD {
+public class AnswerNewActivity extends Activity implements Constants {
 
     private Answer answer;
     private Question question;

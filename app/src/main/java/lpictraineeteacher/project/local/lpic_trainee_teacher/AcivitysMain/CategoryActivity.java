@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.CategoryBDActivity;
 
 public class CategoryActivity extends Activity {
 
@@ -52,7 +51,7 @@ public class CategoryActivity extends Activity {
         btnBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryActivity.this, CategoryBDActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.CategoryActivity.class);
                 startActivityForResult(intent, 1);
             }
         });

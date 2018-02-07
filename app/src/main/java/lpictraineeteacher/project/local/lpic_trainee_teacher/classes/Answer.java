@@ -1,10 +1,9 @@
 package lpictraineeteacher.project.local.lpic_trainee_teacher.classes;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData.ConstantsBD;
+import static lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants.ISFALSE;
 
 /**
  * Created by mkoenig on 20.01.2018.
- *
  */
 
 public class Answer {
@@ -13,56 +12,32 @@ public class Answer {
     private String fid;
     private String answer;
     private String truefalse;
-    private String explain;
-
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "id='" + id + '\'' +
-                ", fid='" + fid + '\'' +
-                ", answer='" + answer + '\'' +
-                ", truefalse='" + truefalse + '\'' +
-                ", explain='" + explain + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Answer answer1 = (Answer) o;
-
-        if (!fid.equals(answer1.fid)) return false;
-        if (!answer.equals(answer1.answer)) return false;
-        if (!truefalse.equals(answer1.truefalse)) return false;
-        return explain.equals(answer1.explain);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = fid.hashCode();
-        result = 31 * result + answer.hashCode();
-        result = 31 * result + truefalse.hashCode();
-        result = 31 * result + explain.hashCode();
-        return result;
-    }
-
-    public String getExplain() {
-
-        return explain;
-    }
-
-    public void setExplain(String explain) {
-        this.explain = explain;
-    }
+    private String explanation;
+    private String response;
 
     public Answer() {
-        this.id ="";
-        this.fid ="";
-        this.answer ="";
-        this.truefalse= ConstantsBD.ISTRUE;
-        this.explain ="";
+        this.id = "";
+        this.fid = "";
+        this.answer = "";
+        this.truefalse = Constants.ISTRUE;
+        this.explanation = "";
+        this.response=ISFALSE;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
     }
 
     public String getId() {
