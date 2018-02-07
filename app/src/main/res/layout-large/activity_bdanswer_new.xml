@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutAddUpdate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvFrage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:maxLines="5"
+        android:singleLine="false" />
+
+    <View
+        android:id="@+id/hr"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp" />
+
+    <EditText
+        android:id="@+id/etAntwort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/answer"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <RadioGroup
+        android:id="@+id/rgRichtigFalsch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbRichtig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rbRichtig" />
+
+        <RadioButton
+            android:id="@+id/rbFalsch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbFalsch" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/llbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="90dip"
+            android:layout_marginRight="3dip"
+            android:layout_weight="0.1"
+            android:padding="1dip"
+            android:text="@string/back"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDML"
+            android:text="@string/save"
+            android:layout_width="wrap_content"
+            android:layout_height="90dip"
+            android:layout_marginLeft="3dip"
+            android:layout_weight="1"
+            android:padding="1dip"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
