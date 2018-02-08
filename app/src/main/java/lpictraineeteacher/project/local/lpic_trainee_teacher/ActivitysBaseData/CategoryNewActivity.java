@@ -28,7 +28,6 @@ public class CategoryNewActivity extends Activity implements Constants {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdcategory_new);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         checkForRequest();
@@ -61,6 +60,7 @@ public class CategoryNewActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         etKategorie = findViewById(R.id.etKategorie);
         btnDML = findViewById(R.id.btnDML);
         btnBack = findViewById(R.id.btnBack);

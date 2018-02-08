@@ -36,7 +36,6 @@ public class QuestionNewActivity extends Activity implements Constants {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdquestion_new);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         checkForRequest();
@@ -89,6 +88,7 @@ public class QuestionNewActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         etFrage = findViewById(R.id.etFrage);
         etErklaerung = findViewById(R.id.etErklaerung);
         tvArt = findViewById(R.id.tvArt);

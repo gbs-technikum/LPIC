@@ -30,29 +30,24 @@ public class QuestionActivity extends Activity implements Constants {
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
 
-    private ArrayList<HashMap<String, String>> tableData = new ArrayList<HashMap<String, String>>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdquestion);
-
         rubrikid = getIntent().getExtras().getString(RUBRICID);
         rubrik = getIntent().getExtras().getString(RUBRICID);
-
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
-        displayAllRecords();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
+    protected void onStart() {
+        super.onStart();
         displayAllRecords();
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
@@ -78,7 +73,7 @@ public class QuestionActivity extends Activity implements Constants {
         Intent intent = new Intent(this, QuestionNewActivity.class);
         intent.putExtra(DML_TYPE, INSERT);
         intent.putExtra(RUBRICID, rubrikid);
-        startActivityForResult(intent, DML_ADD_RECORD);
+        startActivity(intent);
     }
 
     private void onUpdateRecord(String questID) {
@@ -100,34 +95,28 @@ public class QuestionActivity extends Activity implements Constants {
 
         if (questions.size() > 0) {
             tvNoRecordsFound.setVisibility(View.GONE);
-            Question question;
             for (int i = 0; i < questions.size(); i++) {
+                final Question question = questions.get(i);
+                View view = LayoutInflater.from(this).inflate(R.layout.bd_question_record, null);
+                TextView tvFrage = view.findViewById(R.id.tvQuestion);
+                tvFrage.setText(question.getFrage());
+                ImageButton iBtnDelete = view.findViewById(R.id.iBtnDelete);
+                ImageButton iBtnEdit = view.findViewById(R.id.iBtnEdit);
+                ImageButton iBtnAnswer = view.findViewById(R.id.iBtnQuestion);
 
-                question = questions.get(i);
-
-                final MRow mRow = new MRow();
-                final View view = LayoutInflater.from(this).inflate(R.layout.bd_question_record, null);
-                view.setTag(question.getId());
-
-                mRow.tvFrage = view.findViewById(R.id.tvQuestion);
-                mRow.tvFrage.setText(question.getFrage());
-                mRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
-                mRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                mRow.iBtnAnswer = view.findViewById(R.id.iBtnQuestion);
-
-                mRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
+                iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onUpdateRecord(view.getTag().toString());
+                        onUpdateRecord(question.getId());
                     }
                 });
-                mRow.iBtnAnswer.setOnClickListener(new View.OnClickListener() {
+                iBtnAnswer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onEditNewAnswer(view.getTag().toString());
+                        onEditNewAnswer(question.getId());
                     }
                 });
-                mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
+                iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(QuestionActivity.this);
@@ -135,8 +124,8 @@ public class QuestionActivity extends Activity implements Constants {
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (!sqliteService.deleteQuestionRecord(view.getTag().toString())) {
-                                            Toast.makeText(QuestionActivity.this, "Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.", Toast.LENGTH_LONG).show();
+                                        if (!sqliteService.deleteQuestionRecord(question.getId())) {
+                                            Toast.makeText(QuestionActivity.this, R.string.questiontoast, Toast.LENGTH_LONG).show();
                                         }
                                         displayAllRecords();
                                     }
@@ -156,12 +145,5 @@ public class QuestionActivity extends Activity implements Constants {
         } else {
             tvNoRecordsFound.setVisibility(View.VISIBLE);
         }
-    }
-
-    private class MRow {
-        TextView tvFrage;
-        ImageButton iBtnDelete;
-        ImageButton iBtnEdit;
-        ImageButton iBtnAnswer;
     }
 }

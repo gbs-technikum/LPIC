@@ -38,22 +38,19 @@ public class AnswerActivity extends Activity implements Constants {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdanswer);
         questionid = getIntent().getExtras().getString(QUESTIONID);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         displayAllRecords();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (resultCode == RESULT_OK) {
-            displayAllRecords();
-        }
+    protected void onStart() {
+        super.onStart();
+        displayAllRecords();
     }
 
-
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
@@ -84,8 +81,8 @@ public class AnswerActivity extends Activity implements Constants {
 
     private void onUpdateRecord(String answID) {
         Intent intent = new Intent(this, AnswerNewActivity.class);
-        intent.putExtra(ANSWERID, answID);
         intent.putExtra(DML_TYPE, UPDATE);
+        intent.putExtra(ANSWERID, answID);
         startActivityForResult(intent, DML_UPDATE_RECORD);
     }
 
@@ -99,26 +96,23 @@ public class AnswerActivity extends Activity implements Constants {
                 btnAddNewRecord.setVisibility(View.INVISIBLE);
             }
             tvNoRecordsFound.setVisibility(View.GONE);
-            Answer answer;
             for (int i = 0; i < answers.size(); i++) {
-                answer = answers.get(i);
-                final MRow mRow = new MRow();
-                final View view = LayoutInflater.from(this).inflate(R.layout.bd_answer_record, null);
-                view.setTag(answer.getId());
-                mRow.tvAntwort = view.findViewById(R.id.tvAnswer);
-                mRow.tvAntwort.setText(answer.getAnswer());
-                mRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
-                mRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                mRow.tvRichtigFalsch = view.findViewById(R.id.tvRichtigFalsch);
-                mRow.tvRichtigFalsch.setText(answer.getTruefalse());
-                mRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
+                final Answer answer = answers.get(i);
+                View view = LayoutInflater.from(this).inflate(R.layout.bd_answer_record, null);
+                TextView tvAntwort = view.findViewById(R.id.tvAnswer);
+                tvAntwort.setText(answer.getAnswer());
+                ImageButton iBtnDelete = view.findViewById(R.id.iBtnDelete);
+                ImageButton iBtnEdit = view.findViewById(R.id.iBtnEdit);
+                TextView tvRichtigFalsch = view.findViewById(R.id.tvRichtigFalsch);
+                tvRichtigFalsch.setText(answer.getTruefalse());
+                iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onUpdateRecord(view.getTag().toString());
+                        onUpdateRecord(answer.getId());
                     }
                 });
 
-                mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
+                iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(AnswerActivity.this);
@@ -126,7 +120,7 @@ public class AnswerActivity extends Activity implements Constants {
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        sqliteService.deleteAnswerRecord(view.getTag().toString());
+                                        sqliteService.deleteAnswerRecord(answer.getId());
                                         btnAddNewRecord.setVisibility(View.VISIBLE);
                                         displayAllRecords();
                                     }
@@ -146,13 +140,6 @@ public class AnswerActivity extends Activity implements Constants {
         } else {
             tvNoRecordsFound.setVisibility(View.VISIBLE);
         }
-    }
-
-    private class MRow {
-        TextView tvAntwort;
-        TextView tvRichtigFalsch;
-        ImageButton iBtnDelete;
-        ImageButton iBtnEdit;
     }
 }
 

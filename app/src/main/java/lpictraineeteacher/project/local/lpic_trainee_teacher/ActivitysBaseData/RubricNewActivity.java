@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 /**
  * Created by mkoenig on 20.01.2018.
- *
  */
 
 public class RubricNewActivity extends Activity implements Constants {
@@ -21,6 +25,10 @@ public class RubricNewActivity extends Activity implements Constants {
     private EditText etDaten;
     private Button btnBack;
     private Button btnDML;
+    private String rubricID;
+    private String kategorieID;
+    String requestCode;
+    private SqliteService sqliteService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +40,12 @@ public class RubricNewActivity extends Activity implements Constants {
     }
 
     private void checkForRequest() {
-        String request = getIntent().getExtras().get(DML_TYPE).toString();
-        if (request.equals(UPDATE)) {
+        requestCode = getIntent().getStringExtra(DML_TYPE);
+        kategorieID = getIntent().getStringExtra(CATEGORYID);
+        if (requestCode.equals(UPDATE)) {
             btnDML.setText(R.string.update);
-            etDaten.setText(getIntent().getExtras().get(RUBRIC).toString());
+            etDaten.setText(getIntent().getStringExtra(RUBRIC));
+            rubricID = getIntent().getStringExtra(RUBRICID);
         } else {
             btnDML.setText(R.string.insert);
         }
@@ -57,6 +67,7 @@ public class RubricNewActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         etDaten = findViewById(R.id.etDaten);
         btnDML = findViewById(R.id.btnDML);
         btnBack = findViewById(R.id.btnBack);
@@ -66,11 +77,18 @@ public class RubricNewActivity extends Activity implements Constants {
         if (etDaten.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.emptyfield, Toast.LENGTH_LONG).show();
         } else {
-            Intent intent = new Intent();
-            intent.putExtra(RUBRIC, etDaten.getText().toString());
-            setResult(RESULT_OK, intent);
+            Rubric rubric = new Rubric();
+            rubric.setKategorieID(kategorieID);
+            rubric.setRubrik(etDaten.getText().toString());
+            if (requestCode.equals(INSERT)) {
+                rubric.setId(UUID.randomUUID().toString());
+                sqliteService.insertRubricRecord(rubric);
+            } else {
+                rubric.setId(rubricID);
+                sqliteService.updateRubricRecord(rubric);
+            }
+            setResult(RESULT_OK);
             finish();
         }
     }
-
 }
