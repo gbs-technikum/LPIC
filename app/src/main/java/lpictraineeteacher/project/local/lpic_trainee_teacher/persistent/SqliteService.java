@@ -1,20 +1,11 @@
 package lpictraineeteacher.project.local.lpic_trainee_teacher.persistent;
 
-import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
@@ -53,7 +44,7 @@ public class SqliteService extends SQLiteOpenHelper {
         return ourInstance;
     }
 
-    public SqliteService(Context context) {
+    private SqliteService(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -222,6 +213,21 @@ public class SqliteService extends SQLiteOpenHelper {
     }
 
 
+    public int getCountAnswer(String qid) {
+        SQLiteDatabase database;
+        int anzahl = 0;
+        database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM ANTWORTEN where fid = '" + qid + "'", null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToNext();
+            anzahl = cursor.getInt(0);
+        }
+        cursor.close();
+        database.close();
+        return anzahl;
+    }
+
     // *********** Rubric section ****************
 
     public void insertRubricRecord(Rubric rubric) {
@@ -297,6 +303,36 @@ public class SqliteService extends SQLiteOpenHelper {
     }
 
 
+    public int getCountRubrik(String kid) {
+        SQLiteDatabase database;
+        int anzahl = 0;
+        database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM RUBRIKEN where kid = '" + kid + "'", null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToNext();
+            anzahl = cursor.getInt(0);
+        }
+        cursor.close();
+        database.close();
+        return anzahl;
+    }
+
+    public int getCountQuestion(String rid) {
+        SQLiteDatabase database;
+        int anzahl = 0;
+        database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM FRAGEN where rid = '" + rid + "'", null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToNext();
+            anzahl = cursor.getInt(0);
+        }
+        cursor.close();
+        database.close();
+        return anzahl;
+    }
+
     // *********** Category section ****************
 
     public void insertCategoryRecord(Category category) {
@@ -365,53 +401,6 @@ public class SqliteService extends SQLiteOpenHelper {
             return true;
         }
         return false;
-    }
-
-    // **************** ALlgemein *******************
-
-    public int getCountAnswer(String qid) {
-        SQLiteDatabase database;
-        int anzahl = 0;
-        database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM ANTWORTEN where fid = '" + qid + "'", null);
-
-        if (cursor.getCount() > 0) {
-            cursor.moveToNext();
-            anzahl = cursor.getInt(0);
-        }
-        cursor.close();
-        database.close();
-        return anzahl;
-    }
-
-    public int getCountQuestion(String rid) {
-        SQLiteDatabase database;
-        int anzahl = 0;
-        database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM FRAGEN where rid = '" + rid + "'", null);
-
-        if (cursor.getCount() > 0) {
-            cursor.moveToNext();
-            anzahl = cursor.getInt(0);
-        }
-        cursor.close();
-        database.close();
-        return anzahl;
-    }
-
-    public int getCountRubrik(String kid) {
-        SQLiteDatabase database;
-        int anzahl = 0;
-        database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT count(*) as anzahl FROM RUBRIKEN where kid = '" + kid + "'", null);
-
-        if (cursor.getCount() > 0) {
-            cursor.moveToNext();
-            anzahl = cursor.getInt(0);
-        }
-        cursor.close();
-        database.close();
-        return anzahl;
     }
 
 }

@@ -1,4 +1,4 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,10 +13,11 @@ import android.widget.Toast;
 import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class QuestionNewBDActivity extends Activity implements ConstantsBD {
+public class QuestionNewActivity extends Activity implements Constants {
 
     private EditText etFrage;
     private EditText etErklaerung;
@@ -35,7 +36,6 @@ public class QuestionNewBDActivity extends Activity implements ConstantsBD {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdquestion_new);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         checkForRequest();
@@ -88,6 +88,7 @@ public class QuestionNewBDActivity extends Activity implements ConstantsBD {
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         etFrage = findViewById(R.id.etFrage);
         etErklaerung = findViewById(R.id.etErklaerung);
         tvArt = findViewById(R.id.tvArt);

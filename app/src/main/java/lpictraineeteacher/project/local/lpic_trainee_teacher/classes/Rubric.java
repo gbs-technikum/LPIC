@@ -23,36 +23,9 @@ public class Rubric {
         this.rubrik = rubrik;
     }
 
-    @Override
-    public String toString() {
-        return "Rubric{" +
-                "id=" + id +
-                ", kategorieID=" + kategorieID +
-                ", rubrik='" + rubrik + '\'' +
-                '}';
-    }
-
     public String getKategorieID() {
 
         return kategorieID;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rubric rubric1 = (Rubric) o;
-
-        if (!kategorieID.equals(rubric1.kategorieID)) return false;
-        return rubrik.equals(rubric1.rubrik);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = kategorieID.hashCode();
-        result = 31 * result + rubrik.hashCode();
-        return result;
     }
 
     public void setKategorieID(String kategorieID) {

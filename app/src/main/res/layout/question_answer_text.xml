@@ -8,19 +8,26 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/llRecord"
+        android:id="@+id/linearLayoutRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
-        android:orientation="horizontal"
         android:padding="1dip">
 
-        <CheckBox
-            android:id="@+id/ckAnswer"
+        <EditText
+            android:id="@+id/etAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dip"
-            android:text="Antwort Antwort Antwort" />
+            android:hint="answer"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvRightAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="answer"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

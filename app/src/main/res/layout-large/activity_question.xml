@@ -17,36 +17,42 @@
             android:orientation="vertical"
             android:padding="12dip">
 
-            <TextView
-                android:id="@+id/tvHeadline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dip"
-                android:hint="tvHeadline"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:textSize="16dip"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dip"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:textSize="16dip"
-                android:textStyle="bold" />
-
             <LinearLayout
-                android:id="@+id/llAnswers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip"
-                android:orientation="vertical"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip">
+                android:minHeight="330dip"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvHeadline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dip"
+                    android:hint="tvHeadline"
+                    android:paddingLeft="30dip"
+                    android:paddingRight="30dip"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dip"
+                    android:paddingLeft="30dip"
+                    android:paddingRight="30dip"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/llAnswers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip"
+                    android:orientation="vertical"
+                    android:paddingLeft="30dip"
+                    android:paddingRight="30dip"></LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -58,7 +64,7 @@
                 <Button
                     android:id="@+id/btnPrev"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dip"
                     android:layout_marginBottom="3dip"
                     android:layout_marginTop="3dip"
                     android:layout_weight="1"
@@ -67,7 +73,7 @@
                 <Button
                     android:id="@+id/btnCheck"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dip"
                     android:layout_marginBottom="3dip"
                     android:layout_marginTop="3dip"
                     android:layout_weight="1"
@@ -76,7 +82,7 @@
                 <Button
                     android:id="@+id/btnNext"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dip"
                     android:layout_marginBottom="3dip"
                     android:layout_marginTop="3dip"
                     android:layout_weight="1"
@@ -86,13 +92,12 @@
             <TextView
                 android:id="@+id/tvExplaination"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dip"
                 android:layout_margin="8dip"
                 android:paddingLeft="30dip"
                 android:paddingRight="30dip"
                 android:text=""
-                android:textSize="16dip"
-                />
+                android:textSize="24sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -112,7 +117,7 @@
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="90dip"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
@@ -122,7 +127,7 @@
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="90dip"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
@@ -133,7 +138,7 @@
             <Button
                 android:id="@+id/btnInfo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="90dip"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
@@ -143,7 +148,7 @@
             <Button
                 android:id="@+id/btnGlossary"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="90dip"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"

@@ -1,7 +1,6 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +14,11 @@ import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class AnswerNewBDActivity extends Activity implements ConstantsBD {
+public class AnswerNewActivity extends Activity implements Constants {
 
     private Answer answer;
     private Question question;
@@ -29,22 +29,47 @@ public class AnswerNewBDActivity extends Activity implements ConstantsBD {
     private RadioButton rbFalsch;
     private Button btnDML;
     private Button btnBack;
-    private String request;
+    private String requestCode;
     private SqliteService sqliteService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdanswer_new);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         checkForRequest();
     }
 
+    private void initEvents() {
+        btnDML.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonClick();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
+        etAntwort = findViewById(R.id.etAntwort);
+        tvFrage = findViewById(R.id.tvFrage);
+        btnDML = findViewById(R.id.btnDML);
+        btnBack = findViewById(R.id.btnBack);
+        rgRichtigFalsch = findViewById(R.id.rgRichtigFalsch);
+        rbFalsch = findViewById(R.id.rbFalsch);
+        rbRichtig = findViewById(R.id.rbRichtig);
+    }
+
     private void checkForRequest() {
-        request = getIntent().getStringExtra(DML_TYPE);
-        if (request.equals(UPDATE)) {
+        requestCode = getIntent().getStringExtra(DML_TYPE);
+        if (requestCode.equals(UPDATE)) {
             readAnswer(getIntent().getStringExtra(ANSWERID));
             readQuestion(answer.getFid());
             showData();
@@ -71,7 +96,7 @@ public class AnswerNewBDActivity extends Activity implements ConstantsBD {
         }
         answer.setTruefalse(isToF);
         answer.setAnswer(etAntwort.getText().toString());
-        if (request.equals(INSERT)) {
+        if (requestCode.equals(INSERT)) {
             answer.setId(UUID.randomUUID().toString());
             answer.setFid(question.getId());
             sqliteService.insertAnswerRecord(answer);
@@ -85,7 +110,7 @@ public class AnswerNewBDActivity extends Activity implements ConstantsBD {
         tvFrage.setText(question.getFrage());
         etAntwort.setText(answer.getAnswer());
         if (question.getArt().equals(TYPETEXT)) {
-            rgRichtigFalsch.setVisibility(View.INVISIBLE);
+            rgRichtigFalsch.setVisibility(View.GONE);
             isToF = ISTRUE;
         }
         if (isToF.equals(ISTRUE)) {
@@ -95,38 +120,11 @@ public class AnswerNewBDActivity extends Activity implements ConstantsBD {
         }
     }
 
-    private void initEvents() {
-        btnDML.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButtonClick();
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    private void initComponents() {
-        etAntwort = findViewById(R.id.etAntwort);
-        tvFrage = findViewById(R.id.tvFrage);
-        btnDML = findViewById(R.id.btnDML);
-        btnBack = findViewById(R.id.btnBack);
-        rgRichtigFalsch = findViewById(R.id.rgRichtigFalsch);
-        rbFalsch = findViewById(R.id.rbFalsch);
-        rbRichtig = findViewById(R.id.rbRichtig);
-    }
-
     private void onButtonClick() {
         if (etAntwort.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.emptyfield, Toast.LENGTH_LONG).show();
         } else {
             writeData();
-            Intent intent = new Intent();
-            setResult(RESULT_OK, intent);
             finish();
         }
     }

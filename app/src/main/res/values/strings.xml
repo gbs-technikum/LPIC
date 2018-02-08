@@ -3,13 +3,16 @@
 
     <string name="kategorieloeschen">Kategorie löschen?</string>
     <string name="category">Kategorie</string>
+    <string name="categorytoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Rubriken löschen.</string>
 
     <string name="rubrikloeschen">Rubrik löschen?</string>
     <string name="rubric">Rubrik</string>
+    <string name="rubrictoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
 
     <string name="frageloeschen">Frage löschen?</string>
     <string name="frage">Frage</string>
     <string name="erklaerung">Erklärung</string>
+    <string name="questiontoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
 
     <string name="antwortloeschen">Antwort löschen?</string>
     <string name="answer">Antwort</string>
@@ -29,6 +32,9 @@
     <string name="update">update</string>
     <string name="insert">insert</string>
     <string name="delete">delete</string>
+    <string name="previous">prev</string>
+    <string name="check">check</string>
+    <string name="next">next</string>
     <string name="emptyfield">leeres Eingabefeld</string>
 
 

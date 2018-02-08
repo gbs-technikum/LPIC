@@ -1,21 +1,17 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.AcivitysMain;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.SQLClientInfoException;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 public class SplashScreen extends Activity {
 
@@ -50,7 +46,7 @@ public class SplashScreen extends Activity {
         if (!file.exists()) {
             file.mkdirs();
         }
-        if (new File(destinationFile).exists()) {
+        if (!new File(destinationFile).exists()) {
             try {
                 CopyFromAssetsToStorage(Context, "lpicapp.db", destinationFile);
             } catch (IOException e) {

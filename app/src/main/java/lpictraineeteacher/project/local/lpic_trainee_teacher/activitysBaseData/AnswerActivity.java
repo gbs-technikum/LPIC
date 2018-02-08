@@ -1,4 +1,4 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,47 +11,46 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class QuestionBDActivity extends Activity implements ConstantsBD {
-    private String rubrikid;
-    private String rubrik;
+public class AnswerActivity extends Activity implements Constants {
+
+    private String questionid;
+
     private Button btnAddNewRecord;
     private Button btnBack;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
-
     private ArrayList<HashMap<String, String>> tableData = new ArrayList<HashMap<String, String>>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bdquestion);
-
-        rubrikid = getIntent().getExtras().getString(RUBRICID);
-        rubrik = getIntent().getExtras().getString(RUBRICID);
-
-        sqliteService = SqliteService.getInstance(this);
+        setContentView(R.layout.activity_bdanswer);
+        questionid = getIntent().getExtras().getString(QUESTIONID);
         initComponents();
         initEvents();
         displayAllRecords();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
+    protected void onStart() {
+        super.onStart();
         displayAllRecords();
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
@@ -74,69 +73,55 @@ public class QuestionBDActivity extends Activity implements ConstantsBD {
     }
 
     private void onAddRecord() {
-        Intent intent = new Intent(this, QuestionNewBDActivity.class);
+        Intent intent = new Intent(this, AnswerNewActivity.class);
         intent.putExtra(DML_TYPE, INSERT);
-        intent.putExtra(RUBRICID, rubrikid);
+        intent.putExtra(QUESTIONID, questionid);
         startActivityForResult(intent, DML_ADD_RECORD);
     }
 
-    private void onUpdateRecord(String questID) {
-        Intent intent = new Intent(this, QuestionNewBDActivity.class);
+    private void onUpdateRecord(String answID) {
+        Intent intent = new Intent(this, AnswerNewActivity.class);
         intent.putExtra(DML_TYPE, UPDATE);
-        intent.putExtra(QUESTIONID, questID);
+        intent.putExtra(ANSWERID, answID);
         startActivityForResult(intent, DML_UPDATE_RECORD);
-    }
-
-    private void onEditNewAnswer(String questID) {
-        Intent intent = new Intent(this, AnswerBDActivity.class);
-        intent.putExtra(QUESTIONID, questID);
-        startActivityForResult(intent, DML_ADD_RECORD);
     }
 
     private void displayAllRecords() {
         parentLayout.removeAllViews();
-        ArrayList<Question> questions = sqliteService.getAllQuestionRecords(rubrikid);
+        Question question = sqliteService.getQuestionRecord(questionid);
+        ArrayList<Answer> answers = sqliteService.getAllAnswerRecords(questionid);
 
-        if (questions.size() > 0) {
+        if (answers.size() > 0) {
+            if (question.getArt().equals(TYPETEXT)) {
+                btnAddNewRecord.setVisibility(View.INVISIBLE);
+            }
             tvNoRecordsFound.setVisibility(View.GONE);
-            Question question;
-            for (int i = 0; i < questions.size(); i++) {
-
-                question = questions.get(i);
-
-                final MRow mRow = new MRow();
-                final View view = LayoutInflater.from(this).inflate(R.layout.bd_question_record, null);
-                view.setTag(question.getId());
-
-                mRow.tvFrage = view.findViewById(R.id.tvQuestion);
-                mRow.tvFrage.setText(question.getFrage());
-                mRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
-                mRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                mRow.iBtnAnswer = view.findViewById(R.id.iBtnQuestion);
-
-                mRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
+            for (int i = 0; i < answers.size(); i++) {
+                final Answer answer = answers.get(i);
+                View view = LayoutInflater.from(this).inflate(R.layout.bd_answer_record, null);
+                TextView tvAntwort = view.findViewById(R.id.tvAnswer);
+                tvAntwort.setText(answer.getAnswer());
+                ImageButton iBtnDelete = view.findViewById(R.id.iBtnDelete);
+                ImageButton iBtnEdit = view.findViewById(R.id.iBtnEdit);
+                TextView tvRichtigFalsch = view.findViewById(R.id.tvRichtigFalsch);
+                tvRichtigFalsch.setText(answer.getTruefalse());
+                iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onUpdateRecord(view.getTag().toString());
+                        onUpdateRecord(answer.getId());
                     }
                 });
-                mRow.iBtnAnswer.setOnClickListener(new View.OnClickListener() {
+
+                iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onEditNewAnswer(view.getTag().toString());
-                    }
-                });
-                mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(QuestionBDActivity.this);
-                        deleteDialogOk.setTitle(R.string.frageloeschen);
+                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(AnswerActivity.this);
+                        deleteDialogOk.setTitle(R.string.antwortloeschen);
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (!sqliteService.deleteQuestionRecord(view.getTag().toString())) {
-                                            Toast.makeText(QuestionBDActivity.this, "Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.", Toast.LENGTH_LONG).show();
-                                        }
+                                        sqliteService.deleteAnswerRecord(answer.getId());
+                                        btnAddNewRecord.setVisibility(View.VISIBLE);
                                         displayAllRecords();
                                     }
                                 }
@@ -156,11 +141,6 @@ public class QuestionBDActivity extends Activity implements ConstantsBD {
             tvNoRecordsFound.setVisibility(View.VISIBLE);
         }
     }
-
-    private class MRow {
-        TextView tvFrage;
-        ImageButton iBtnDelete;
-        ImageButton iBtnEdit;
-        ImageButton iBtnAnswer;
-    }
 }
+
+

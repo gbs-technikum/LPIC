@@ -8,8 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity">
-
+    tools:context="lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.RubricActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
         <ScrollView
             android:id="@+id/scrollViewDisplay"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <LinearLayout
@@ -40,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingBottom="20dip"
-                        android:text="@string/answer"
+                        android:text="@string/frage"
                         android:textSize="25dp"
                         android:textStyle="bold" />
 
@@ -75,30 +74,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="12dip"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnBack"
-            android:text="@string/back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="90dip"
             android:layout_marginRight="3dip"
             android:layout_weight="0.1"
-            android:padding="1dip"
+            android:text="@string/back"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAddNewRecord"
             android:text="@string/addnew"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="90dip"
             android:layout_marginLeft="3dip"
             android:layout_weight="1"
-            android:padding="1dip"
             android:textStyle="bold" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </RelativeLayout>
