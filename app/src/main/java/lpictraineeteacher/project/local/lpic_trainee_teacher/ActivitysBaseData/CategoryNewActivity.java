@@ -8,29 +8,38 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import java.util.UUID;
 
-public class CategoryNewActivity extends Activity  implements Constants {
+import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
+
+public class CategoryNewActivity extends Activity implements Constants {
 
     private EditText etKategorie;
     private Button btnBack;
     private Button btnDML;
+    private String categoryID;
+    String requestCode;
+    private SqliteService sqliteService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdcategory_new);
+        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         checkForRequest();
     }
 
     private void checkForRequest() {
-        String request = getIntent().getExtras().get(DML_TYPE).toString();
-        if (request.equals(UPDATE)) {
+        requestCode = getIntent().getStringExtra(DML_TYPE);
+        if (requestCode.equals(UPDATE)) {
             btnDML.setText(R.string.update);
-            etKategorie.setText(getIntent().getExtras().get(CategoryActivity.CATEGORY).toString());
+            categoryID = getIntent().getStringExtra(CATEGORYID);
+            etKategorie.setText(getIntent().getStringExtra(CATEGORY));
         } else {
             btnDML.setText(R.string.insert);
         }
@@ -59,11 +68,18 @@ public class CategoryNewActivity extends Activity  implements Constants {
 
     private void onBtnDMLClick() {
         if (etKategorie.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(),  R.string.emptyfield, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.emptyfield, Toast.LENGTH_LONG).show();
         } else {
-            Intent intent = new Intent();
-            intent.putExtra(CATEGORY,etKategorie.getText().toString());
-            setResult(RESULT_OK, intent);
+            Category category = new Category();
+            category.setCategory(etKategorie.getText().toString());
+            if (requestCode.equals(INSERT)) {
+                category.setId(UUID.randomUUID().toString());
+                sqliteService.insertCategoryRecord(category);
+            } else {
+                category.setId(categoryID);
+                sqliteService.updateCategoryRecord(category);
+            }
+            setResult(RESULT_OK);
             finish();
         }
     }

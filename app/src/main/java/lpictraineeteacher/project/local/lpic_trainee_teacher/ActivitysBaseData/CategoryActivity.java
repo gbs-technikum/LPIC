@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
@@ -29,38 +28,24 @@ public class CategoryActivity extends Activity implements Constants {
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
-    private String kategoryID;
-    private ArrayList<HashMap<String, String>> tableData = new ArrayList<HashMap<String, String>>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdcategory);
-        sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
-        displayAllRecords();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (resultCode == RESULT_OK) {
-            String kategorie = intent.getStringExtra(CATEGORY);
-            Category category = new Category();
-            category.setCategory(kategorie);
-            if (requestCode == DML_ADD_RECORD) {
-                category.setId(UUID.randomUUID().toString());
-                sqliteService.insertCategoryRecord(category);
-            } else if (requestCode == DML_UPDATE_RECORD) {
-                category.setId(kategoryID);
-                sqliteService.updateCategoryRecord(category);
-            }
-            displayAllRecords();
-        }
+    protected void onStart() {
+        super.onStart();
+        displayAllRecords();
     }
 
     private void initComponents() {
+        sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
@@ -85,57 +70,52 @@ public class CategoryActivity extends Activity implements Constants {
     private void onAddRecord() {
         Intent intent = new Intent(this, CategoryNewActivity.class);
         intent.putExtra(DML_TYPE, INSERT);
-        startActivityForResult(intent, DML_ADD_RECORD);
+        startActivity(intent);
     }
 
-    private void onUpdateRecord(String kategoryID, String kategorie) {
+    private void onUpdateRecord(String categoryID, String category) {
         Intent intent = new Intent(this, CategoryNewActivity.class);
-        intent.putExtra(CATEGORYID, kategoryID);
-        intent.putExtra(CATEGORY, kategorie);
+        intent.putExtra(CATEGORYID, categoryID);
+        intent.putExtra(CATEGORY, category);
         intent.putExtra(DML_TYPE, UPDATE);
-        startActivityForResult(intent, DML_UPDATE_RECORD);
+        startActivity(intent);
     }
 
-    private void onEditNewRubric(String kategoryID, String kategorie) {
+    private void onEditNewRubric(String categoryID, String category) {
         Intent intent = new Intent(this, RubricActivity.class);
-        intent.putExtra(CATEGORY, kategorie);
-        intent.putExtra(CATEGORYID, kategoryID);
-        startActivityForResult(intent, DML_ADD_RECORD);
+        intent.putExtra(CATEGORY, category);
+        intent.putExtra(CATEGORYID, categoryID);
+        startActivity(intent);
     }
 
     private void displayAllRecords() {
         parentLayout.removeAllViews();
-        //final ArrayList<Category> categories = sqliteService.getAllAnswerRecords();
         ArrayList<Category> categories = sqliteService.getAllCategoryRecords();
         if (categories.size() > 0) {
             tvNoRecordsFound.setVisibility(View.GONE);
-            Category category;
             for (int i = 0; i < categories.size(); i++) {
-                category = categories.get(i);
-                final MRow mRow = new MRow();
-                final View view = LayoutInflater.from(this).inflate(R.layout.bd_category_record, null);
-                view.setTag(category.getId());
-                mRow.tvKategorie = view.findViewById(R.id.tvKategorie);
-                mRow.tvKategorie.setText(category.getCategory());
-                mRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
-                mRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                mRow.iBtnRubric = view.findViewById(R.id.iBtnRubric);
+                final Category category = categories.get(i);
+                View view = LayoutInflater.from(this).inflate(R.layout.bd_category_record, null);
+                TextView tvKategorie = view.findViewById(R.id.tvKategorie);
+                tvKategorie.setText(category.getCategory());
+                ImageButton iBtnDelete = view.findViewById(R.id.iBtnDelete);
+                ImageButton iBtnEdit = view.findViewById(R.id.iBtnEdit);
+                ImageButton iBtnRubric = view.findViewById(R.id.iBtnRubric);
 
-                mRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
+                iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        kategoryID = view.getTag().toString();
-                        onUpdateRecord( view.getTag().toString(), mRow.tvKategorie.getText().toString());
+                        onUpdateRecord(category.getId(), category.getCategory());
                     }
                 });
-                mRow.iBtnRubric.setOnClickListener(new View.OnClickListener() {
+                iBtnRubric.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onEditNewRubric( view.getTag().toString(), mRow.tvKategorie.getText().toString());
+                        onEditNewRubric(category.getId(), category.getCategory());
                     }
                 });
 
-                mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
+                iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(CategoryActivity.this);
@@ -143,8 +123,8 @@ public class CategoryActivity extends Activity implements Constants {
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (!sqliteService.deleteCategoryRecord(view.getTag().toString())) {
-                                            Toast.makeText( CategoryActivity.this, "Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Rubriken löschen.",Toast.LENGTH_LONG).show();
+                                        if (!sqliteService.deleteCategoryRecord(category.getId().toString())) {
+                                            Toast.makeText(CategoryActivity.this, R.string.categorytoast, Toast.LENGTH_LONG).show();
                                         }
                                         displayAllRecords();
                                     }
@@ -163,12 +143,5 @@ public class CategoryActivity extends Activity implements Constants {
         } else {
             tvNoRecordsFound.setVisibility(View.VISIBLE);
         }
-    }
-
-    private class MRow {
-        TextView tvKategorie;
-        ImageButton iBtnDelete;
-        ImageButton iBtnEdit;
-        ImageButton iBtnRubric;
     }
 }

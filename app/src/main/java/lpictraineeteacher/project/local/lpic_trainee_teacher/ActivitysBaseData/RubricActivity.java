@@ -129,32 +129,31 @@ public class RubricActivity extends Activity implements Constants {
             Rubric rubric;
             for (int i = 0; i < rubrics.size(); i++) {
                 rubric = rubrics.get(i);
-                final MRow mRow = new MRow();
+                final DataRow dataRow = new DataRow();
                 final View view = LayoutInflater.from(this).inflate(R.layout.bd_rubric_record, null);
-                view.setTag(rubric.getId());
-                mRow.tvRubrik = view.findViewById(R.id.tvRubric);
-                mRow.tvRubrik.setText(rubric.getRubrik());
-                mRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
-                mRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                mRow.iBtnQuestion = view.findViewById(R.id.iBtnQuestion);
+                dataRow.rubricID = rubric.getId();
+                dataRow.tvRubrik = view.findViewById(R.id.tvRubric);
+                dataRow.tvRubrik.setText(rubric.getRubrik());
+                dataRow.iBtnDelete = view.findViewById(R.id.iBtnDelete);
+                dataRow.iBtnEdit = view.findViewById(R.id.iBtnEdit);
+                dataRow.iBtnQuestion = view.findViewById(R.id.iBtnQuestion);
 
-                mRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
+                dataRow.iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        rubrikID = view.getTag().toString();
-                        onUpdateRecord(view.getTag().toString(), mRow.tvRubrik.getText().toString());
+                        onUpdateRecord(dataRow.rubricID, dataRow.tvRubrik.getText().toString());
                     }
                 });
 
-                mRow.iBtnQuestion.setOnClickListener(new View.OnClickListener() {
+                dataRow.iBtnQuestion.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onEditNewQuestion(view.getTag().toString(), mRow.tvRubrik.getText().toString());
+                        onEditNewQuestion(dataRow.rubricID, dataRow.tvRubrik.getText().toString());
                     }
                 });
 
 
-                mRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
+                dataRow.iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(RubricActivity.this);
@@ -186,10 +185,11 @@ public class RubricActivity extends Activity implements Constants {
         }
     }
 
-    private class MRow {
-        TextView tvRubrik;
-        ImageButton iBtnDelete;
-        ImageButton iBtnEdit;
-        ImageButton iBtnQuestion;
+    private class DataRow {
+        private String rubricID;
+        private TextView tvRubrik;
+        private ImageButton iBtnDelete;
+        private ImageButton iBtnEdit;
+        private ImageButton iBtnQuestion;
     }
 }

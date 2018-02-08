@@ -3,6 +3,7 @@
 
     <string name="kategorieloeschen">Kategorie löschen?</string>
     <string name="category">Kategorie</string>
+    <string name="categorytoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Rubriken löschen.</string>
 
     <string name="rubrikloeschen">Rubrik löschen?</string>
     <string name="rubric">Rubrik</string>
