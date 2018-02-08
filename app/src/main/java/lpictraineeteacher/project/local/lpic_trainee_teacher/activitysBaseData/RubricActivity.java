@@ -1,4 +1,4 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,26 +16,35 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class QuestionActivity extends Activity implements Constants {
-    private String rubrikid;
-    private String rubrik;
+/**
+ * Created by mkoenig on 20.01.2018.
+ */
+
+public class RubricActivity extends Activity implements Constants {
+
+    private String kategorieid;
+    private String kategorie;
     private Button btnAddNewRecord;
     private Button btnBack;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
 
+    private String rubrikID;
+    private ArrayList<HashMap<String, String>> tableData = new ArrayList<HashMap<String, String>>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bdquestion);
-        rubrikid = getIntent().getExtras().getString(RUBRICID);
-        rubrik = getIntent().getExtras().getString(RUBRICID);
+        setContentView(R.layout.activity_bdrubric);
+        kategorieid = getIntent().getStringExtra(CATEGORYID);
+        kategorie = getIntent().getStringExtra(CATEGORY);
         initComponents();
         initEvents();
     }
@@ -70,62 +79,64 @@ public class QuestionActivity extends Activity implements Constants {
     }
 
     private void onAddRecord() {
-        Intent intent = new Intent(this, QuestionNewActivity.class);
+        Intent intent = new Intent(this, RubricNewActivity.class);
+        intent.putExtra(CATEGORYID, kategorieid);
         intent.putExtra(DML_TYPE, INSERT);
-        intent.putExtra(RUBRICID, rubrikid);
         startActivity(intent);
     }
 
-    private void onUpdateRecord(String questID) {
-        Intent intent = new Intent(this, QuestionNewActivity.class);
+    private void onUpdateRecord(String rubricid, String rubrik) {
+        Intent intent = new Intent(this, RubricNewActivity.class);
+        intent.putExtra(CATEGORYID, kategorieid);
+        intent.putExtra(RUBRICID, rubricid);
+        intent.putExtra(RUBRIC, rubrik);
         intent.putExtra(DML_TYPE, UPDATE);
-        intent.putExtra(QUESTIONID, questID);
-        startActivityForResult(intent, DML_UPDATE_RECORD);
+        startActivity(intent);
     }
 
-    private void onEditNewAnswer(String questID) {
-        Intent intent = new Intent(this, AnswerActivity.class);
-        intent.putExtra(QUESTIONID, questID);
-        startActivityForResult(intent, DML_ADD_RECORD);
+    private void onEditNewQuestion(String rubrikID, String rubrik) {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra(RUBRICID, rubrikID);
+        intent.putExtra(RUBRIC, rubrik);
+        startActivity(intent);
     }
 
     private void displayAllRecords() {
         parentLayout.removeAllViews();
-        ArrayList<Question> questions = sqliteService.getAllQuestionRecords(rubrikid);
-
-        if (questions.size() > 0) {
+        ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(kategorieid);
+        if (rubrics.size() > 0) {
             tvNoRecordsFound.setVisibility(View.GONE);
-            for (int i = 0; i < questions.size(); i++) {
-                final Question question = questions.get(i);
-                View view = LayoutInflater.from(this).inflate(R.layout.bd_question_record, null);
-                TextView tvFrage = view.findViewById(R.id.tvQuestion);
-                tvFrage.setText(question.getFrage());
+            for (int i = 0; i < rubrics.size(); i++) {
+                final Rubric rubric = rubrics.get(i);
+                View view = LayoutInflater.from(this).inflate(R.layout.bd_rubric_record, null);
+                String rubricID = rubric.getId();
+                TextView tvRubrik = view.findViewById(R.id.tvRubric);
+                tvRubrik.setText(rubric.getRubrik());
                 ImageButton iBtnDelete = view.findViewById(R.id.iBtnDelete);
                 ImageButton iBtnEdit = view.findViewById(R.id.iBtnEdit);
-                ImageButton iBtnAnswer = view.findViewById(R.id.iBtnQuestion);
-
+                ImageButton iBtnQuestion = view.findViewById(R.id.iBtnQuestion);
                 iBtnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onUpdateRecord(question.getId());
+                        onUpdateRecord(rubric.getId(), rubric.getRubrik());
                     }
                 });
-                iBtnAnswer.setOnClickListener(new View.OnClickListener() {
+                iBtnQuestion.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onEditNewAnswer(question.getId());
+                        onEditNewQuestion(rubric.getId(), rubric.getRubrik());
                     }
                 });
                 iBtnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(QuestionActivity.this);
-                        deleteDialogOk.setTitle(R.string.frageloeschen);
+                        AlertDialog.Builder deleteDialogOk = new AlertDialog.Builder(RubricActivity.this);
+                        deleteDialogOk.setTitle(R.string.rubrikloeschen);
                         deleteDialogOk.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (!sqliteService.deleteQuestionRecord(question.getId())) {
-                                            Toast.makeText(QuestionActivity.this, R.string.questiontoast, Toast.LENGTH_LONG).show();
+                                        if (!sqliteService.deleteRubricRecord(rubric.getId())) {
+                                            Toast.makeText(RubricActivity.this, R.string.rubrictoast, Toast.LENGTH_LONG).show();
                                         }
                                         displayAllRecords();
                                     }
@@ -140,6 +151,7 @@ public class QuestionActivity extends Activity implements Constants {
                         deleteDialogOk.show();
                     }
                 });
+
                 parentLayout.addView(view);
             }
         } else {

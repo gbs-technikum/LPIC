@@ -1,11 +1,10 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.AcivitysMain;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;

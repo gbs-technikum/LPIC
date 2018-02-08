@@ -1,4 +1,4 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.AcivitysMain;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,38 +7,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class RubricActivity extends Activity implements Constants {
+public class CategoryActivity extends Activity {
 
-    private Button btnBack;
+    public static final String CATEGORYID = "CATEGORYID";
+    public static final String CATEGORY = "CATEGORY";
+
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
-    private TextView tvHeadline;
-    private String categoryid;
-    private String category;
+    private Button btnBD;
+    private Button btnExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rubrik);
+        setContentView(R.layout.activity_category);
+
         sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
-        checkForRequest();
         displayAllRecords();
-    }
-
-    private void checkForRequest() {
-        categoryid = getIntent().getExtras().getString(CATEGORYID);
-        category = getIntent().getExtras().getString(CATEGORY);
     }
 
     //    @Override
@@ -54,8 +48,15 @@ public class RubricActivity extends Activity implements Constants {
     }
 
     private void initEvents() {
+        btnBD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -65,42 +66,39 @@ public class RubricActivity extends Activity implements Constants {
 
     private void initComponents() {
         llParentLayout = findViewById(R.id.llParentLayout);
-        tvHeadline = findViewById(R.id.tvHeadline);
-        btnBack = findViewById(R.id.btnBack);
+        btnBD = findViewById(R.id.btnBD);
+        btnExit = findViewById(R.id.btnExit);
     }
 
     private void displayAllRecords() {
         llParentLayout.removeAllViews();
-        llParentLayout.addView(tvHeadline);
-        tvHeadline.setText(category);
+        ArrayList<Category> categories = sqliteService.getAllCategoryRecords();
 
-        ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(categoryid);
+        for (int i = 0; i < categories.size(); i++) {
 
-        for (int i = 0; i < rubrics.size(); i++) {
-
-            Rubric rubric = rubrics.get(i);
+            Category category = categories.get(i);
 
             final View view = LayoutInflater.from(this).inflate(R.layout.select_record, null);
-            view.setTag(rubric.getId());
+            view.setTag(category.getId());
+            final String cat = category.getCategory();
+
             final Button btnSelect = view.findViewById(R.id.btnSelect);
-            btnSelect.setText(rubric.getRubrik());
-            final String frubric = rubric.getRubrik();
+            btnSelect.setText(category.getCategory());
             btnSelect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onShowQuestion(view.getTag().toString(), frubric);
+                    onShowRubric(view.getTag().toString(),cat );
                 }
             });
             llParentLayout.addView(view);
         }
     }
 
-    private void onShowQuestion(String rubricid, String rubric) {
-        Intent intent = new Intent(this, QuestionActivity.class);
-        intent.putExtra(RUBRIC, rubric);
-        intent.putExtra(RUBRICID, rubricid);
-        intent.putExtra(CATEGORYID, categoryid);
-        intent.putExtra(LISTTYPE, LISTRUBRIC);
+    private void onShowRubric(String categoryID, String categorie) {
+        Intent intent = new Intent(this, RubricActivity.class);
+        intent.putExtra(CATEGORY, categorie);
+        intent.putExtra(CATEGORYID, categoryID);
         startActivity(intent);
     }
+
 }

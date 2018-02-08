@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material">
         <activity
-            android:name=".AcivitysMain.SplashScreen"
+            android:name=".acivitysMain.SplashScreen"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AcivitysMain.CategoryActivity" />
-        <activity android:name=".AcivitysMain.RubricActivity" />
-        <activity android:name=".AcivitysMain.QuestionActivity" />
-        <activity android:name=".ActivitysBaseData.CategoryActivity" />
-        <activity android:name=".ActivitysBaseData.RubricActivity" />
-        <activity android:name=".ActivitysBaseData.QuestionActivity" />
-        <activity android:name=".ActivitysBaseData.AnswerActivity" />
-        <activity android:name=".ActivitysBaseData.QuestionNewActivity" />
-        <activity android:name=".ActivitysBaseData.AnswerNewActivity" />
-        <activity android:name=".ActivitysBaseData.CategoryNewActivity" />
-        <activity android:name=".ActivitysBaseData.RubricNewActivity" />
+        <activity android:name=".acivitysMain.CategoryActivity" />
+        <activity android:name=".acivitysMain.RubricActivity" />
+        <activity android:name=".acivitysMain.QuestionActivity" />
+        <activity android:name=".activitysBaseData.CategoryActivity" />
+        <activity android:name=".activitysBaseData.RubricActivity" />
+        <activity android:name=".activitysBaseData.QuestionActivity" />
+        <activity android:name=".activitysBaseData.AnswerActivity" />
+        <activity android:name=".activitysBaseData.QuestionNewActivity" />
+        <activity android:name=".activitysBaseData.AnswerNewActivity" />
+        <activity android:name=".activitysBaseData.CategoryNewActivity" />
+        <activity android:name=".activitysBaseData.RubricNewActivity" />
     </application>
 </manifest>

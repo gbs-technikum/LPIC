@@ -1,7 +1,6 @@
-package lpictraineeteacher.project.local.lpic_trainee_teacher.ActivitysBaseData;
+package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,23 +10,28 @@ import android.widget.Toast;
 import java.util.UUID;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
-public class CategoryNewActivity extends Activity implements Constants {
+/**
+ * Created by mkoenig on 20.01.2018.
+ */
 
-    private EditText etKategorie;
+public class RubricNewActivity extends Activity implements Constants {
+
+    private EditText etDaten;
     private Button btnBack;
     private Button btnDML;
-    private String categoryID;
+    private String rubricID;
+    private String kategorieID;
     String requestCode;
     private SqliteService sqliteService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bdcategory_new);
+        setContentView(R.layout.activity_bdrubric_new);
         initComponents();
         initEvents();
         checkForRequest();
@@ -35,10 +39,11 @@ public class CategoryNewActivity extends Activity implements Constants {
 
     private void checkForRequest() {
         requestCode = getIntent().getStringExtra(DML_TYPE);
+        kategorieID = getIntent().getStringExtra(CATEGORYID);
         if (requestCode.equals(UPDATE)) {
             btnDML.setText(R.string.update);
-            categoryID = getIntent().getStringExtra(CATEGORYID);
-            etKategorie.setText(getIntent().getStringExtra(CATEGORY));
+            etDaten.setText(getIntent().getStringExtra(RUBRIC));
+            rubricID = getIntent().getStringExtra(RUBRICID);
         } else {
             btnDML.setText(R.string.insert);
         }
@@ -61,23 +66,24 @@ public class CategoryNewActivity extends Activity implements Constants {
 
     private void initComponents() {
         sqliteService = SqliteService.getInstance(this);
-        etKategorie = findViewById(R.id.etKategorie);
+        etDaten = findViewById(R.id.etDaten);
         btnDML = findViewById(R.id.btnDML);
         btnBack = findViewById(R.id.btnBack);
     }
 
     private void onBtnDMLClick() {
-        if (etKategorie.getText().toString().equals("")) {
+        if (etDaten.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), R.string.emptyfield, Toast.LENGTH_LONG).show();
         } else {
-            Category category = new Category();
-            category.setCategory(etKategorie.getText().toString());
+            Rubric rubric = new Rubric();
+            rubric.setKategorieID(kategorieID);
+            rubric.setRubrik(etDaten.getText().toString());
             if (requestCode.equals(INSERT)) {
-                category.setId(UUID.randomUUID().toString());
-                sqliteService.insertCategoryRecord(category);
+                rubric.setId(UUID.randomUUID().toString());
+                sqliteService.insertRubricRecord(rubric);
             } else {
-                category.setId(categoryID);
-                sqliteService.updateCategoryRecord(category);
+                rubric.setId(rubricID);
+                sqliteService.updateRubricRecord(rubric);
             }
             setResult(RESULT_OK);
             finish();
