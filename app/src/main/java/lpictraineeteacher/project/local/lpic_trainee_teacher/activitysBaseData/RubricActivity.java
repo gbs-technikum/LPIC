@@ -31,6 +31,7 @@ public class RubricActivity extends Activity implements Constants {
     private String kategorie;
     private Button btnAddNewRecord;
     private Button btnBack;
+
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
@@ -77,6 +78,8 @@ public class RubricActivity extends Activity implements Constants {
             }
         });
     }
+
+
 
     private void onAddRecord() {
         Intent intent = new Intent(this, RubricNewActivity.class);

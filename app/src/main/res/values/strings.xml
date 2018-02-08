@@ -8,6 +8,7 @@
     <string name="rubrikloeschen">Rubrik löschen?</string>
     <string name="rubric">Rubrik</string>
     <string name="rubrictoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
+    <string name="starttest">Test starten</string>
 
     <string name="frageloeschen">Frage löschen?</string>
     <string name="frage">Frage</string>

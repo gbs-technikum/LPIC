@@ -35,12 +35,6 @@ public class CategoryActivity extends Activity {
         displayAllRecords();
     }
 
-    //    @Override
-    //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //        super.onActivityResult(requestCode, resultCode, data);
-    //        displayAllRecords();
-    //    }
-
     @Override
     protected void onResume() {
         super.onResume();

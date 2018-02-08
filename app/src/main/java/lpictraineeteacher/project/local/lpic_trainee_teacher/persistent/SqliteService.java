@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.ArrayList;
+
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
@@ -335,6 +337,7 @@ public class SqliteService extends SQLiteOpenHelper {
 
     // *********** Category section ****************
 
+
     public void insertCategoryRecord(Category category) {
         SQLiteDatabase database;
         database = this.getWritableDatabase();
@@ -343,6 +346,30 @@ public class SqliteService extends SQLiteOpenHelper {
         contentValues.put(COLUMN_KATEGORIE, category.getCategory());
         database.insert(TABLE_CATEGORY_NAME, null, contentValues);
         database.close();
+    }
+
+    public ArrayList<Question> getAllCategoryQuestionRecords(String categoryID) {
+        SQLiteDatabase database;
+        database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select id, rid, frage, art, hinweis from fragen where rid in(select id from rubriken where kid = '" + categoryID + "')", null);
+
+        ArrayList<Question> questions = new ArrayList<>();
+
+        if (cursor.getCount() > 0) {
+
+            while (cursor.moveToNext()) {
+                Question question = new Question();
+                question.setId(cursor.getString(0));
+                question.setRid(cursor.getString(1));
+                question.setFrage(cursor.getString(2));
+                question.setArt(cursor.getString(3));
+                question.setHinweis(cursor.getString(4));
+                questions.add(question);
+            }
+        }
+        cursor.close();
+        database.close();
+        return questions;
     }
 
     public ArrayList<Category> getAllCategoryRecords() {

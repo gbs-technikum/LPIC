@@ -19,6 +19,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class RubricActivity extends Activity implements Constants {
 
     private Button btnBack;
+    private Button btnTest;
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private TextView tvHeadline;
@@ -41,12 +42,6 @@ public class RubricActivity extends Activity implements Constants {
         category = getIntent().getExtras().getString(CATEGORY);
     }
 
-    //    @Override
-    //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //        super.onActivityResult(requestCode, resultCode, data);
-    //        displayAllRecords();
-    //    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -54,11 +49,16 @@ public class RubricActivity extends Activity implements Constants {
     }
 
     private void initEvents() {
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onShowTest();
             }
         });
     }
@@ -67,6 +67,23 @@ public class RubricActivity extends Activity implements Constants {
         llParentLayout = findViewById(R.id.llParentLayout);
         tvHeadline = findViewById(R.id.tvHeadline);
         btnBack = findViewById(R.id.btnBack);
+        btnTest = findViewById(R.id.btnTest);
+    }
+
+    private void onShowTest() {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra(CATEGORYID, categoryid);
+        intent.putExtra(LISTTYPE, LISTCATEGORY);
+        startActivity(intent);
+    }
+
+    private void onShowQuestion(String rubricid, String rubric) {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        intent.putExtra(RUBRIC, rubric);
+        intent.putExtra(RUBRICID, rubricid);
+        intent.putExtra(CATEGORYID, categoryid);
+        intent.putExtra(LISTTYPE, LISTRUBRIC);
+        startActivity(intent);
     }
 
     private void displayAllRecords() {
@@ -93,14 +110,5 @@ public class RubricActivity extends Activity implements Constants {
             });
             llParentLayout.addView(view);
         }
-    }
-
-    private void onShowQuestion(String rubricid, String rubric) {
-        Intent intent = new Intent(this, QuestionActivity.class);
-        intent.putExtra(RUBRIC, rubric);
-        intent.putExtra(RUBRICID, rubricid);
-        intent.putExtra(CATEGORYID, categoryid);
-        intent.putExtra(LISTTYPE, LISTRUBRIC);
-        startActivity(intent);
     }
 }

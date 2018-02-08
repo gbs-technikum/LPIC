@@ -11,7 +11,7 @@ public interface Constants {
 
     public static final String LISTTYPE = "LISTTYPE";
     public static final String LISTRUBRIC = "LISTRUBRIC";
-    public static final String LISTTEXT = "LISTTEXT";
+    public static final String LISTCATEGORY = "LISTCATEGORY";
 
     public static final String DML_TYPE = "DML_TYPE";
     public static final String UPDATE = "UPDATE";

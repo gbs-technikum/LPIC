@@ -60,15 +60,14 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btnBD"
+                android:id="@+id/btnTest"
                 android:layout_width="wrap_content"
                 android:layout_height="90dip"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
-                android:text="SD"
-                android:textStyle="bold"
-                android:visibility="invisible" />
+                android:text="@string/starttest"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnInfo"

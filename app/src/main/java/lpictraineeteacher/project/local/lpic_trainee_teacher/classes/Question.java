@@ -2,6 +2,8 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.classes;
 
 import java.util.ArrayList;
 
+import static lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants.ISFALSE;
+
 /**
  * Created by mkoenig on 20.01.2018.
  */
@@ -14,8 +16,21 @@ public class Question {
     private String hinweis;
     private ArrayList<Answer> answers;
 
+    private String Verified;
+
     public Question() {
+        setVerified(ISFALSE);
     }
+
+    public String getVerified() {
+        return Verified;
+    }
+
+    public void setVerified(String verified) {
+        Verified = verified;
+    }
+
+
 
     public ArrayList<Answer> getAnswers() {
         return answers;

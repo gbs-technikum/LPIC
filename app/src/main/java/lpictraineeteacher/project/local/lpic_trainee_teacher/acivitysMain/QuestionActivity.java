@@ -14,10 +14,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 public class QuestionActivity extends Activity implements Constants {
@@ -55,12 +57,11 @@ public class QuestionActivity extends Activity implements Constants {
         if (listtype.equals(LISTRUBRIC)) {
             rubricid = getIntent().getExtras().getString(RUBRICID);
             tvHeadline.setText(getIntent().getExtras().getString(RUBRIC));
-        } else {
+        } else if (listtype.equals(LISTCATEGORY)){
             categoryid = getIntent().getExtras().getString(CATEGORYID);
-            tvHeadline.setText("");
+            tvHeadline.setVisibility(View.GONE);
         }
     }
-
 
     private void initComponents() {
         sqliteService = SqliteService.getInstance(this);
@@ -104,8 +105,8 @@ public class QuestionActivity extends Activity implements Constants {
     private void createQuestionList() {
         if (listtype.equals(LISTRUBRIC)) {
             questions = sqliteService.getAllQuestionRecords(rubricid);
-        } else {
-            //ToDo TestList
+        } else if (listtype.equals(LISTCATEGORY)) {
+            questions = sqliteService.getAllCategoryQuestionRecords(categoryid);
         }
         index = -1;
         if (questions.size() > 0) {
@@ -130,7 +131,6 @@ public class QuestionActivity extends Activity implements Constants {
             index--;
             displayQuestion(index);
         }
-        tastaturAusblenden();
     }
 
     private void checkQuestion() {
@@ -147,22 +147,27 @@ public class QuestionActivity extends Activity implements Constants {
                 } else {
                     etAnswer.setTextColor(Color.GREEN);
                 }
+                etAnswer.setEnabled(false);
+                answers.get(0).setResponse(etAnswer.getText().toString());
             }
         } else if (question.getArt().equals(TYPECHECK)) {
-            for (Answer answer : question.getAnswers()) {
-                if (!answer.getTruefalse().equals(answer.getResponse())) {
-
+            for (int i = 0; i < answers.size(); i++) {
+                CheckBox cb = findViewById(i);
+                if (!answers.get(i).getTruefalse().equals(answers.get(i).getResponse())) {
+                    cb.setTextColor(Color.RED);
+                } else if (answers.get(i).getTruefalse().equals(ISTRUE)) {
+                    cb.setTextColor(Color.GREEN);
                 }
-            }
-            for (int i = 0; i < llAnswers.getChildCount(); i++) {
-                View v = llAnswers.getChildAt(i);
-                if (v instanceof CheckBox) {
-                    ((CheckBox) v).setTextColor(Color.RED);
-                }
+                cb.setEnabled(false);
             }
         }
+        question.setVerified(ISTRUE);
+        btnCheck.setEnabled(false);
         tastaturAusblenden();
     }
+
+
+
 
 
     private void tastaturAusblenden() {
@@ -174,14 +179,13 @@ public class QuestionActivity extends Activity implements Constants {
     }
 
     private void displayQuestion(int index) {
-
         tvExplaination.setVisibility(View.GONE);
         llAnswers.removeAllViews();
+        btnCheck.setEnabled(true);
         if (questions.size() > 0) {
             question = questions.get(index);
             tvQuestion.setText(question.getFrage());
             tvExplaination.setText(question.getHinweis());
-
             answers = question.getAnswers();
             if (answers.size() > 0) {
                 if (question.getArt().equals(TYPECHECK)) {
@@ -190,6 +194,18 @@ public class QuestionActivity extends Activity implements Constants {
                         final CheckBox ckAnswer = new CheckBox(llAnswers.getContext());
                         ckAnswer.setId(x);
                         ckAnswer.setText(answer.getAnswer());
+                        if (question.getVerified().equals(ISTRUE)) {
+                            if (answer.getResponse().equals(ISTRUE)) {
+                                ckAnswer.setChecked(true);
+                            }
+                            if (answer.getTruefalse().equals(answer.getResponse())) {
+                                ckAnswer.setTextColor(Color.GREEN);
+                            } else {
+                                ckAnswer.setTextColor(Color.RED);
+                            }
+                            ckAnswer.setEnabled(false);
+                            btnCheck.setEnabled(false);
+                        }
                         ckAnswer.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -205,14 +221,29 @@ public class QuestionActivity extends Activity implements Constants {
                 } else {
                     for (int x = 0; x < answers.size(); x++) {
                         Answer answer = answers.get(x);
-                        final EditText etAnswer;
-                        final TextView tvRightAnswer;
-                        final View view = LayoutInflater.from(this).inflate(R.layout.question_answer_text, null);
+                        EditText etAnswer;
+                        TextView tvRightAnswer;
+                        View view = LayoutInflater.from(this).inflate(R.layout.question_answer_text, null);
                         etAnswer = view.findViewById(R.id.etAnswer);
                         tvRightAnswer = view.findViewById(R.id.tvRightAnswer);
-                        tvRightAnswer.setVisibility(View.GONE);
                         tvRightAnswer.setText(answer.getAnswer());
-                        etAnswer.setText("");
+                        if (question.getVerified().equals(ISTRUE)) {
+                            etAnswer.setText(answer.getResponse());
+
+
+                            if (!etAnswer.getText().toString().equals(tvRightAnswer.getText().toString())) {
+                                etAnswer.setTextColor(Color.RED);
+                                tvRightAnswer.setVisibility(View.VISIBLE);
+                            } else {
+                                etAnswer.setTextColor(Color.GREEN);
+                            }
+                            etAnswer.setEnabled(false);
+                            btnCheck.setEnabled(false);
+
+                        } else {
+                            etAnswer.setText("");
+                            tvRightAnswer.setVisibility(View.GONE);
+                        }
                         llAnswers.addView(view);
                     }
                 }
@@ -220,4 +251,5 @@ public class QuestionActivity extends Activity implements Constants {
         }
     }
 }
+
 
