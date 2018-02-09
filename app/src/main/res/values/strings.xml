@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LPIC-Trainee-Teacher</string>
+    <string name="activitytestheadline">Test- Simulation</string>
+    <string name="activityrubricheadline">Rubriken</string>
 
     <string name="kategorieloeschen">Kategorie löschen?</string>
     <string name="category">Kategorie</string>
@@ -14,6 +16,7 @@
     <string name="frage">Frage</string>
     <string name="erklaerung">Erklärung</string>
     <string name="questiontoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
+    <string name="art">Art</string>
 
     <string name="antwortloeschen">Antwort löschen?</string>
     <string name="answer">Antwort</string>

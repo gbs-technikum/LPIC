@@ -13,28 +13,16 @@
         android:layout_margin="8dip"
         android:fillViewport="true">
 
-
         <LinearLayout
             android:id="@+id/llParentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="40dip"
             android:paddingLeft="30dip"
-            android:paddingRight="30dip"
-            >
-
-            <TextView
-                android:id="@+id/tvHeadline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dip"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:text="xxxxxx"
-                android:textAlignment="center"
-                android:textSize="18dip"
-                android:textStyle="bold" />
+            android:paddingRight="30dip">
         </LinearLayout>
+
     </ScrollView>
 
     <RelativeLayout
@@ -54,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
                 android:padding="1dip"
                 android:text="@string/back"
                 android:textStyle="bold" />
@@ -74,19 +62,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
                 android:padding="1dip"
                 android:text="info"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnGlossary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dip"
-                android:layout_weight="1"
-                android:padding="1dip"
-                android:text="glossary"
                 android:textStyle="bold" />
 
         </LinearLayout>

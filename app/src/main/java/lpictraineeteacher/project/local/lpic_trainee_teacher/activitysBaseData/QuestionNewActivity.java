@@ -46,11 +46,11 @@ public class QuestionNewActivity extends Activity implements Constants {
         if (request.equals(UPDATE)) {
             questionID = getIntent().getStringExtra(QUESTIONID);
             btnDML.setText(R.string.update);
-            rgArt.setVisibility(View.INVISIBLE);
+            rgArt.setVisibility(View.GONE);
             readQuestion(questionID);
 
         } else {
-            tvArt.setVisibility(View.VISIBLE);
+            tvArt.setVisibility(View.GONE);
             btnDML.setText(R.string.insert);
             rubricID = getIntent().getStringExtra(RUBRICID);
             questionID = UUID.randomUUID().toString();

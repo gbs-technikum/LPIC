@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,9 @@ public class RubricActivity extends Activity implements Constants {
 
     private Button btnBack;
     private Button btnTest;
+    private Button btnInfo;
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
-    private TextView tvHeadline;
     private String categoryid;
     private String category;
 
@@ -61,13 +62,21 @@ public class RubricActivity extends Activity implements Constants {
                 onShowTest();
             }
         });
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
     }
 
     private void initComponents() {
+        this.setTitle(R.string.activityrubricheadline);
         llParentLayout = findViewById(R.id.llParentLayout);
-        tvHeadline = findViewById(R.id.tvHeadline);
         btnBack = findViewById(R.id.btnBack);
         btnTest = findViewById(R.id.btnTest);
+        btnInfo = findViewById(R.id.btnInfo);
     }
 
     private void onShowTest() {
@@ -88,9 +97,7 @@ public class RubricActivity extends Activity implements Constants {
 
     private void displayAllRecords() {
         llParentLayout.removeAllViews();
-        llParentLayout.addView(tvHeadline);
-        tvHeadline.setText(category);
-
+        this.setTitle(category);
         ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(categoryid);
 
         for (int i = 0; i < rubrics.size(); i++) {

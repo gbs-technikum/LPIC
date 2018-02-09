@@ -21,6 +21,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frage" />
+
                 <EditText
                     android:id="@+id/etFrage"
                     android:layout_width="match_parent"
@@ -28,6 +33,12 @@
                     android:hint="@string/frage"
                     android:inputType="textMultiLine"
                     android:scrollbars="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:text="@string/erklaerung" />
 
                 <EditText
                     android:id="@+id/etErklaerung"
@@ -37,10 +48,24 @@
                     android:inputType="textMultiLine"
                     android:scrollbars="vertical" />
 
-                <TextView
-                    android:id="@+id/tvArt"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/art"
+                        android:layout_marginTop="10dip" />
+
+                    <TextView
+                        android:id="@+id/tvArt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/rgArt"

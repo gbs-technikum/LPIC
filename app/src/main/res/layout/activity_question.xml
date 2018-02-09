@@ -17,38 +17,6 @@
             android:orientation="vertical"
             android:padding="12dip">
 
-            <TextView
-                android:id="@+id/tvHeadline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dip"
-                android:hint="tvHeadline"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:textSize="16dip"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dip"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
-                android:textSize="16dip"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/llAnswers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip"
-                android:orientation="vertical"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip">
-            </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/llNav"
                 android:layout_width="match_parent"
@@ -84,6 +52,33 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tvQuestionNr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dip"
+                android:paddingRight="30dip" />
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dip"
+                android:paddingLeft="30dip"
+                android:paddingRight="30dip"
+                android:textSize="16dip"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/llAnswers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:orientation="vertical"
+                android:paddingLeft="30dip"
+                android:paddingRight="30dip"></LinearLayout>
+
+
+            <TextView
                 android:id="@+id/tvExplaination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,10 +86,10 @@
                 android:paddingLeft="30dip"
                 android:paddingRight="30dip"
                 android:text=""
-                android:textSize="16dip"
-                />
+                android:textSize="16dip" />
 
         </LinearLayout>
+
     </ScrollView>
 
     <RelativeLayout
@@ -114,30 +109,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
                 android:padding="1dip"
                 android:text="@string/back"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
-                android:text="SD"
-                android:textStyle="bold"
-                android:visibility="invisible" />
-
-            <Button
-                android:id="@+id/btnInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dip"
-                android:layout_weight="1"
-                android:padding="1dip"
-                android:text="info"
+                android:text="result"
                 android:textStyle="bold" />
 
             <Button
@@ -145,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
                 android:padding="1dip"
                 android:text="glossary"
                 android:textStyle="bold" />
