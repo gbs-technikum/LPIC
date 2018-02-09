@@ -3,6 +3,8 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class QuestionActivity extends Activity implements Constants {
     private Button btnCheck;
     private Button btnResult;
     private Button btnGlossary;
+    private ProgressBar progressBar;
     private SqliteService sqliteService;
     private LinearLayout llAnswers;
     private TextView tvExplaination;
@@ -43,6 +47,7 @@ public class QuestionActivity extends Activity implements Constants {
     private ArrayList<Answer> answers;
     private int index;
     private String listtype;
+
 
 
     @Override
@@ -80,6 +85,7 @@ public class QuestionActivity extends Activity implements Constants {
         btnCheck = findViewById(R.id.btnCheck);
         btnResult = findViewById(R.id.btnResult);
         btnGlossary = findViewById(R.id.btnGlossary);
+        progressBar = findViewById(R.id.progressBar);
     }
 
     private void initEvents() {
@@ -139,6 +145,7 @@ public class QuestionActivity extends Activity implements Constants {
             allQuestions = null;
         }
         index = -1;
+        progressBar.setMax(questions.size());
         if (questions.size() > 0) {
             index = 0;
             for (int i = 0; i < questions.size(); i++) {
@@ -164,34 +171,36 @@ public class QuestionActivity extends Activity implements Constants {
     }
 
     private void checkQuestion() {
-        // Erklärung anzeigen
-        tvExplaination.setVisibility(View.VISIBLE);
-        // Textantwortfrage
-        if (question.getArt().equals(TYPETEXT)) {
-            // tvRightAnswer ist nur vorhanden bei question.art == TYPETEXT
-            TextView tvRightAnswer = findViewById(R.id.tvRightAnswer);
-            if (tvRightAnswer != null) {
-                EditText etAnswer = findViewById(R.id.etAnswer);
-                if (!etAnswer.getText().toString().equals(tvRightAnswer.getText().toString())) {
-                    etAnswer.setTextColor(Color.RED);
-                    tvRightAnswer.setVisibility(View.VISIBLE);
-                } else {
-                    etAnswer.setTextColor(Color.GREEN);
+        if (questions.size() > 0) {
+            // Erklärung anzeigen
+            tvExplaination.setVisibility(View.VISIBLE);
+            // Textantwortfrage
+            if (question.getArt().equals(TYPETEXT)) {
+                // tvRightAnswer ist nur vorhanden bei question.art == TYPETEXT
+                TextView tvRightAnswer = findViewById(R.id.tvRightAnswer);
+                if (tvRightAnswer != null) {
+                    EditText etAnswer = findViewById(R.id.etAnswer);
+                    if (!etAnswer.getText().toString().equals(tvRightAnswer.getText().toString())) {
+                        etAnswer.setTextColor(Color.RED);
+                        tvRightAnswer.setVisibility(View.VISIBLE);
+                    } else {
+                        etAnswer.setTextColor(Color.GREEN);
+                    }
+                    etAnswer.setEnabled(false);
+                    answers.get(0).setResponse(etAnswer.getText().toString());
                 }
-                etAnswer.setEnabled(false);
-                answers.get(0).setResponse(etAnswer.getText().toString());
+                // Checkboxfrage
+            } else if (question.getArt().equals(TYPECHECK)) {
+                for (int i = 0; i < answers.size(); i++) {
+                    CheckBox cb = findViewById(i);
+                    cb.setTextColor(checkboxColor(answers.get(i), cb.getCurrentTextColor()));
+                    cb.setEnabled(false);
+                }
             }
-            // Checkboxfrage
-        } else if (question.getArt().equals(TYPECHECK)) {
-            for (int i = 0; i < answers.size(); i++) {
-                CheckBox cb = findViewById(i);
-                cb.setTextColor(checkboxColor(answers.get(i), cb.getCurrentTextColor()));
-                cb.setEnabled(false);
-            }
+            question.setVerified(ISTRUE);
+            btnCheck.setEnabled(false);
+            tastaturAusblenden();
         }
-        question.setVerified(ISTRUE);
-        btnCheck.setEnabled(false);
-        tastaturAusblenden();
     }
 
 
@@ -207,6 +216,7 @@ public class QuestionActivity extends Activity implements Constants {
         tvExplaination.setVisibility(View.GONE);
         llAnswers.removeAllViews();
         btnCheck.setEnabled(true);
+        progressBar.setProgress(index+1);
         if (questions.size() > 0) {
             question = questions.get(index);
             tvQuestionNr.setText("Frage " + String.valueOf(index + 1) + " von " + String.valueOf(questions.size()));
@@ -221,13 +231,13 @@ public class QuestionActivity extends Activity implements Constants {
                         final CheckBox ckAnswer = new CheckBox(llAnswers.getContext());
                         ckAnswer.setId(x);
                         ckAnswer.setText(answer.getAnswer());
-
                         if (answer.getResponse().equals(ISTRUE)) {
                             ckAnswer.setChecked(true);
+                        } else {
+                            answer.setResponse(ISFALSE);
                         }
                         if (question.getVerified().equals(ISTRUE)) {
                             ckAnswer.setTextColor(checkboxColor(answer, ckAnswer.getCurrentTextColor()));
-
                             ckAnswer.setEnabled(false);
                             btnCheck.setEnabled(false);
                         }
@@ -247,16 +257,23 @@ public class QuestionActivity extends Activity implements Constants {
                     // Textantwortfrage
                 } else {
                     for (int x = 0; x < answers.size(); x++) {
-                        Answer answer = answers.get(x);
-                        EditText etAnswer;
-                        TextView tvRightAnswer;
+                        final Answer answer = answers.get(x);
                         View view = LayoutInflater.from(this).inflate(R.layout.question_answer_text, null);
-                        etAnswer = view.findViewById(R.id.etAnswer);
-                        tvRightAnswer = view.findViewById(R.id.tvRightAnswer);
-                        tvRightAnswer.setText(answer.getAnswer());
-                        if (question.getVerified().equals(ISTRUE)) {
-                            etAnswer.setText(answer.getResponse());
+                        final EditText etAnswer = view.findViewById(R.id.etAnswer);
+                        etAnswer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                            @Override
+                            public void onFocusChange(View v, boolean hasFocus) {
+                                if (hasFocus) {
 
+                                } else {
+                                    answer.setResponse(etAnswer.getText().toString());
+                                }
+                            }
+                        });
+                        TextView tvRightAnswer = view.findViewById(R.id.tvRightAnswer);
+                        tvRightAnswer.setText(answer.getAnswer());
+                        etAnswer.setText(answer.getResponse());
+                        if (question.getVerified().equals(ISTRUE)) {
                             if (!etAnswer.getText().toString().equals(tvRightAnswer.getText().toString())) {
                                 etAnswer.setTextColor(Color.RED);
                                 tvRightAnswer.setVisibility(View.VISIBLE);
@@ -267,7 +284,6 @@ public class QuestionActivity extends Activity implements Constants {
                             btnCheck.setEnabled(false);
 
                         } else {
-                            etAnswer.setText("");
                             tvRightAnswer.setVisibility(View.GONE);
                         }
                         llAnswers.addView(view);

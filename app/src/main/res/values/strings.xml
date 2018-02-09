@@ -4,22 +4,22 @@
     <string name="activityrubricheadline">Rubriken</string>
 
     <string name="kategorieloeschen">Kategorie löschen?</string>
-    <string name="category">Kategorie</string>
+    <string name="category">Kategorien</string>
     <string name="categorytoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Rubriken löschen.</string>
 
     <string name="rubrikloeschen">Rubrik löschen?</string>
-    <string name="rubric">Rubrik</string>
+    <string name="rubric">Rubriken</string>
     <string name="rubrictoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
     <string name="starttest">Test starten</string>
 
     <string name="frageloeschen">Frage löschen?</string>
-    <string name="frage">Frage</string>
+    <string name="frage">Fragen</string>
     <string name="erklaerung">Erklärung</string>
     <string name="questiontoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Fragen löschen.</string>
     <string name="art">Art</string>
 
     <string name="antwortloeschen">Antwort löschen?</string>
-    <string name="answer">Antwort</string>
+    <string name="answer">Antworten</string>
 
     <string name="textantwortfrage">Textantwortfrage</string>
     <string name="checkboxantwortfrage">Auswahlantwortfrage</string>

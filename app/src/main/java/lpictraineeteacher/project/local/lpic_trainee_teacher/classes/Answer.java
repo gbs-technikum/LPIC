@@ -21,7 +21,7 @@ public class Answer {
         this.answer = "";
         this.truefalse = Constants.ISTRUE;
         this.explanation = "";
-        this.response=ISFALSE;
+        this.response="";
     }
 
     public String getResponse() {

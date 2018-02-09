@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +78,7 @@ public class RubricActivity extends Activity implements Constants {
         btnBack = findViewById(R.id.btnBack);
         btnTest = findViewById(R.id.btnTest);
         btnInfo = findViewById(R.id.btnInfo);
+
     }
 
     private void onShowTest() {
@@ -97,7 +99,7 @@ public class RubricActivity extends Activity implements Constants {
 
     private void displayAllRecords() {
         llParentLayout.removeAllViews();
-        this.setTitle(category);
+        this.setTitle(R.string.activitytestheadline);
         ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(categoryid);
 
         for (int i = 0; i < rubrics.size(); i++) {

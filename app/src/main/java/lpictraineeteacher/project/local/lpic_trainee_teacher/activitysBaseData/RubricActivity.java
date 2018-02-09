@@ -57,6 +57,7 @@ public class RubricActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        this.setTitle(getString(R.string.rubric) + " - " + kategorie);
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
@@ -78,7 +79,6 @@ public class RubricActivity extends Activity implements Constants {
             }
         });
     }
-
 
 
     private void onAddRecord() {

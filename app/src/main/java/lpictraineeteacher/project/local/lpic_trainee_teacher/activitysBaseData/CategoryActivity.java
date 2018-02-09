@@ -44,6 +44,7 @@ public class CategoryActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        this.setTitle(R.string.category);
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);

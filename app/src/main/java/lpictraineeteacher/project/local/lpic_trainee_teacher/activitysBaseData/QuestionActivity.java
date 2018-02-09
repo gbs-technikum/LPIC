@@ -34,7 +34,7 @@ public class QuestionActivity extends Activity implements Constants {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdquestion);
         rubrikid = getIntent().getExtras().getString(RUBRICID);
-        rubrik = getIntent().getExtras().getString(RUBRICID);
+        rubrik = getIntent().getExtras().getString(RUBRIC);
         initComponents();
         initEvents();
     }
@@ -46,6 +46,7 @@ public class QuestionActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        this.setTitle(getString(R.string.frage) + " - " + rubrik);
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);

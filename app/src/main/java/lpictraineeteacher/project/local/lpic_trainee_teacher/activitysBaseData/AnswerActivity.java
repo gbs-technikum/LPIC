@@ -30,6 +30,7 @@ public class AnswerActivity extends Activity implements Constants {
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
+    private TextView tvQuestion;
     private ArrayList<HashMap<String, String>> tableData = new ArrayList<HashMap<String, String>>();
 
 
@@ -50,11 +51,13 @@ public class AnswerActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
+        this.setTitle( getString(R.string.answer));
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
         btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
         tvNoRecordsFound = findViewById(R.id.tvNoRecordsFound);
+        tvQuestion = findViewById(R.id.tvQuestion);
     }
 
     private void initEvents() {
@@ -90,7 +93,6 @@ public class AnswerActivity extends Activity implements Constants {
         parentLayout.removeAllViews();
         Question question = sqliteService.getQuestionRecord(questionid);
         ArrayList<Answer> answers = sqliteService.getAllAnswerRecords(questionid);
-
         if (answers.size() > 0) {
             if (question.getArt().equals(TYPETEXT)) {
                 btnAddNewRecord.setVisibility(View.INVISIBLE);

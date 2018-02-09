@@ -46,7 +46,7 @@ public class SplashScreen extends Activity {
         if (!file.exists()) {
             file.mkdirs();
         }
-        if (new File(destinationFile).exists()) {
+        if (!new File(destinationFile).exists()) {
             try {
                 CopyFromAssetsToStorage(Context, "lpicapp.db", destinationFile);
             } catch (IOException e) {

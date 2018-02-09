@@ -34,16 +34,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvHeadline"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingBottom="20dip"
-                        android:text="@string/frage"
-                        android:textSize="25dp"
-                        android:textStyle="bold" />
-
-                    <TextView
                         android:id="@+id/tvNoRecordsFound"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -67,6 +57,7 @@
             </LinearLayout>
 
         </ScrollView>
+
     </LinearLayout>
 
     <LinearLayout
