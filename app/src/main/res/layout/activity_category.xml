@@ -33,48 +33,56 @@
             android:padding="12dip"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnExit"
-                android:text="exit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:contentDescription="@string/btnExit"
+                android:src="@drawable/exit"
+                android:background="@android:color/transparent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:textStyle="bold"
+                android:scaleType="fitCenter"
                 />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnBD"
-                android:text="SD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:contentDescription="@string/btnBD"
+                android:src="@drawable/sd"
+                android:background="@android:color/transparent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:textStyle="bold"
+                android:scaleType="fitCenter"
                 />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnInfo"
-                android:text="info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:contentDescription="@string/btnInfo"
+                android:src="@drawable/info"
+                android:background="@android:color/transparent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:textStyle="bold"
+                android:scaleType="fitCenter"
                 />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnGlossary"
-                android:text="glossary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:contentDescription="@string/btnGlossary"
+                android:src="@drawable/glossary"
+                android:background="@android:color/transparent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:textStyle="bold"
+                android:scaleType="fitCenter"
                 />
 
         </LinearLayout>

@@ -23,21 +23,32 @@
 
         <Button
             android:id="@+id/btnBack"
+            android:text="@string/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:layout_marginEnd="3dip"
+            android:layout_weight="0.1"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="left|center_vertical"
+            android:paddingStart="90dp"
+            android:textColor="@color/color_white"/>
+
+        <Button
+            android:id="@+id/btnDML"
+            android:background="@drawable/update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="3dip"
             android:layout_weight="0.1"
-            android:text="@string/back"
-            android:textStyle="bold" />
+            android:text="@string/UPDATE"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:textColor="@color/color_white"/>
 
-        <Button
-            android:id="@+id/btnDML"
-            android:text="@string/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dip"
-            android:layout_weight="1"
-            android:textStyle="bold" />
 
     </LinearLayout>
 

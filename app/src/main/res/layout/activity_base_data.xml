@@ -84,20 +84,29 @@
             android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/back"
             android:layout_marginRight="3dip"
             android:layout_weight="0.1"
-            android:padding="1dip"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="90dp"
+            android:textColor="@color/color_white"/>
+            />
 
         <Button
             android:id="@+id/btnAddNewRecord"
             android:text="@string/addnew"
+            android:background="@drawable/btnnew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dip"
             android:layout_weight="1"
-            android:padding="1dip"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="90dp"
+            android:textColor="@color/color_white"/>
     </LinearLayout>
 
 

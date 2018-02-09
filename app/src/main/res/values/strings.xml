@@ -53,4 +53,14 @@
     <string name="INSERT">Insert</string>
     <string name="DELETE">Delete</string>
 
+    <!-- contentDescription -->
+    <string name="btnExit">exit</string>
+    <string name="btnBD">bd</string>
+    <string name="btnInfo">info</string>
+    <string name="btnGlossary">glossary</string>
+    <string name="btnDelete">delete</string>
+    <string name="btnEdit">edit</string>
+    <string name="btnChoose">choose</string>
+
+
 </resources>

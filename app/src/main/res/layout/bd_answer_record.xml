@@ -14,14 +14,17 @@
         android:gravity="center"
         android:padding="1dip">
 
-
         <ImageButton
             android:id="@+id/iBtnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:contentDescription="@string/btnDelete"
+            android:src="@drawable/delete"
+            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:layout_margin="3dip"
-            android:contentDescription="@string/delete"
-            android:src="@android:drawable/ic_menu_delete" />
+            android:padding="1dip"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/tvAnswer"
@@ -52,11 +55,15 @@
 
         <ImageButton
             android:id="@+id/iBtnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:contentDescription="@string/btnEdit"
+            android:src="@drawable/edit"
+            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:layout_margin="3dip"
-            android:contentDescription="@string/edit"
-            android:src="@android:drawable/ic_menu_edit" />
+            android:padding="1dip"
+            android:scaleType="fitCenter" />
 
 
     </LinearLayout>
