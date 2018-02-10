@@ -33,9 +33,9 @@ public class RubricActivity extends Activity implements Constants {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rubrik);
         sqliteService = SqliteService.getInstance(this);
+        checkForRequest();
         initComponents();
         initEvents();
-        checkForRequest();
         displayAllRecords();
     }
 
@@ -73,7 +73,7 @@ public class RubricActivity extends Activity implements Constants {
     }
 
     private void initComponents() {
-        this.setTitle(R.string.activityrubricheadline);
+        this.setTitle(getString(R.string.activityrubricheadline) + " - " + category);
         llParentLayout = findViewById(R.id.llParentLayout);
         btnBack = findViewById(R.id.btnBack);
         btnTest = findViewById(R.id.btnTest);
@@ -99,7 +99,6 @@ public class RubricActivity extends Activity implements Constants {
 
     private void displayAllRecords() {
         llParentLayout.removeAllViews();
-        this.setTitle(R.string.activitytestheadline);
         ArrayList<Rubric> rubrics = sqliteService.getAllRubricRecords(categoryid);
 
         for (int i = 0; i < rubrics.size(); i++) {

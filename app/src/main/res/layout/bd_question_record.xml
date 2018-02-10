@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical">
@@ -17,24 +17,25 @@
 
         <ImageButton
             android:id="@+id/iBtnDelete"
-            android:contentDescription="@string/btnDelete"
-            android:src="@drawable/delete"
-            android:background="@android:color/transparent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_margin="3dip"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btnDelete"
             android:padding="1dip"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/delete" />
 
         <TextView
             android:id="@+id/tvQuestion"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:text="Name"
             android:textAlignment="textStart"
             android:textSize="15sp"
@@ -42,27 +43,27 @@
 
         <ImageButton
             android:id="@+id/iBtnEdit"
-            android:contentDescription="@string/btnEdit"
-            android:src="@drawable/edit"
-            android:background="@android:color/transparent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_margin="3dip"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btnEdit"
             android:padding="1dip"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/edit" />
 
         <ImageButton
             android:id="@+id/iBtnQuestion"
-            android:contentDescription="@string/btnChoose"
-            android:src="@drawable/choose"
-            android:background="@android:color/transparent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_margin="3dip"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btnChoose"
             android:padding="1dip"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/choose" />
 
     </LinearLayout>
 

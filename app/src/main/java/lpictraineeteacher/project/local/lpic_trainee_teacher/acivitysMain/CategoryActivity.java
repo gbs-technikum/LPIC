@@ -48,8 +48,8 @@ public class CategoryActivity extends Activity {
         btnBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity.class);
-                startActivityForResult(intent, 1);
+                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity.class );
+                startActivity(intent);
             }
         });
 
@@ -88,16 +88,15 @@ public class CategoryActivity extends Activity {
         ArrayList<Category> categories = sqliteService.getAllCategoryRecords();
 
         for (int i = 0; i < categories.size(); i++) {
-            Category category = categories.get(i);
-            final View view = LayoutInflater.from(this).inflate(R.layout.select_record, null);
+            final Category category = categories.get(i);
+            View view = LayoutInflater.from(this).inflate(R.layout.select_record, null);
             view.setTag(category.getId());
-            final String cat = category.getCategory();
-            final Button btnSelect = view.findViewById(R.id.btnSelect);
+            Button btnSelect = view.findViewById(R.id.btnSelect);
             btnSelect.setText(category.getCategory());
             btnSelect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onShowRubric(view.getTag().toString(), cat);
+                    onShowRubric(category.getId(), category.getCategory());
                 }
             });
             llParentLayout.addView(view);

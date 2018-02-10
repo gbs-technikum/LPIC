@@ -239,6 +239,7 @@ public class QuestionActivity extends Activity implements Constants {
                         if (question.getVerified().equals(ISTRUE)) {
                             ckAnswer.setTextColor(checkboxColor(answer, ckAnswer.getCurrentTextColor()));
                             ckAnswer.setEnabled(false);
+                            tvExplaination.setVisibility(View.VISIBLE);
                             btnCheck.setEnabled(false);
                         }
 
@@ -282,7 +283,7 @@ public class QuestionActivity extends Activity implements Constants {
                             }
                             etAnswer.setEnabled(false);
                             btnCheck.setEnabled(false);
-
+                            tvExplaination.setVisibility(View.VISIBLE);
                         } else {
                             tvRightAnswer.setVisibility(View.GONE);
                         }
