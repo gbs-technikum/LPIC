@@ -10,4 +10,8 @@
     <color name="color_grey">#E6E6E6</color>
     <color name="color_black">#000000</color>
     <color name="color_darkgrey">#A5A5A5</color>
+    <color name="color_moos_green">#018239</color>
+    <color name="color_wine_red">#9b0110</color>
+    <color name="color_lightgrey">#f2f2f2</color>
+    <color name="transparent_grey">#99E6E6E6</color>
 </resources>

@@ -11,11 +11,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -33,7 +37,7 @@ public class QuestionActivity extends Activity implements Constants {
     private Button btnNext;
     private Button btnCheck;
     private Button btnResult;
-    private Button btnGlossary;
+    private ImageButton btnGlossary;
     private ProgressBar progressBar;
     private SqliteService sqliteService;
     private LinearLayout llAnswers;
@@ -47,7 +51,6 @@ public class QuestionActivity extends Activity implements Constants {
     private ArrayList<Answer> answers;
     private int index;
     private String listtype;
-
 
 
     @Override

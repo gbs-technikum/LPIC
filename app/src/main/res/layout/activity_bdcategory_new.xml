@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <EditText
         android:id="@+id/etKategorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Kategorie" />
+        android:hint="@string/category" />
 
     <LinearLayout
         android:id="@+id/llbottom"
@@ -21,33 +22,46 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
         <Button
             android:id="@+id/btnBack"
-            android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/back"
-            android:layout_marginEnd="3dip"
-            android:layout_weight="0.1"
+            android:layout_marginStart="3dip"
+            android:drawableStart="@drawable/back"
+            android:gravity="start|center_vertical"
+            android:text="@string/back"
+            android:textColor="@color/color_black"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:gravity="left|center_vertical"
-            android:paddingStart="90dp"
-            android:textColor="@color/color_white"/>
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnDML"
-            android:background="@drawable/update"
+            android:drawableStart="@drawable/update"
+            android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="3dip"
-            android:layout_weight="0.1"
+            android:layout_marginEnd="3dip"
             android:text="@string/UPDATE"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="100dp"
-            android:textColor="@color/color_white"/>
+            android:textSize="16sp"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/color_black"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
 
     </LinearLayout>

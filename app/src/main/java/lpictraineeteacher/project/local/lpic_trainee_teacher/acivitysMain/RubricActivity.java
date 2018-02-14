@@ -2,16 +2,19 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
@@ -22,7 +25,7 @@ public class RubricActivity extends Activity implements Constants {
 
     private Button btnBack;
     private Button btnTest;
-    private Button btnInfo;
+    private ImageButton btnInfo;
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private String categoryid;
@@ -78,7 +81,6 @@ public class RubricActivity extends Activity implements Constants {
         btnBack = findViewById(R.id.btnBack);
         btnTest = findViewById(R.id.btnTest);
         btnInfo = findViewById(R.id.btnInfo);
-
     }
 
     private void onShowTest() {

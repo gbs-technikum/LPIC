@@ -41,7 +41,7 @@
                         android:gravity="center"
                         android:paddingBottom="20dip"
                         android:text="@string/category"
-                        android:textSize="25dp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -49,11 +49,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
                         android:gravity="center"
-                        android:text="No Records Found"
-                        android:textSize="15dp" />
+                        android:text="@string/norecords"
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:id="@+id/llParentLayout"
@@ -81,32 +81,37 @@
 
         <Button
             android:id="@+id/btnBack"
-            android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/back"
-            android:layout_marginRight="3dip"
+            android:layout_marginEnd="3dip"
             android:layout_weight="0.1"
+            android:drawableStart="@drawable/back"
+            android:gravity="start|center_vertical"
+            android:text="@string/back"
+            android:textColor="@color/color_black"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="90dp"
-            android:textColor="@color/color_white"/>
+            android:background="@null"
+            android:drawablePadding="10dp"
+            style="?android:attr/buttonBarButtonStyle"
             />
 
         <Button
             android:id="@+id/btnAddNewRecord"
             android:text="@string/addnew"
-            android:background="@drawable/btnnew"
+            android:background="@null"
+            android:drawableStart="@drawable/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dip"
+            android:layout_marginStart="3dip"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="90dp"
-            android:textColor="@color/color_white"/>
+            android:textSize="16sp"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/color_black"
+            android:drawablePadding="10dp"
+            style="?android:attr/buttonBarButtonStyle"
+            />
     </LinearLayout>
 
 

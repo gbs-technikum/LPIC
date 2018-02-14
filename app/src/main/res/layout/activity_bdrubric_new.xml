@@ -10,7 +10,7 @@
         android:id="@+id/etDaten"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="...." />
+        android:hint="@string/rubric" />
 
     <LinearLayout
         android:id="@+id/llbottom"
@@ -21,33 +21,45 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="3dip"
-            android:layout_weight="0.1"
-            android:background="@drawable/back"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="90dp"
+            android:layout_marginStart="3dip"
+            android:drawableStart="@drawable/back"
+            android:gravity="start|center_vertical"
             android:text="@string/back"
-            android:textColor="@color/color_white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textColor="@color/color_black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnDML"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="3dip"
-            android:layout_weight="1"
-            android:background="@drawable/update"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="100dp"
+            android:drawableStart="@drawable/update"
+            android:layout_marginEnd="3dip"
+            android:background="@null"
+            android:gravity="start|center_vertical"
             android:text="@string/save"
-            android:textColor="@color/color_white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textColor="@color/color_black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
 
     </LinearLayout>

@@ -77,13 +77,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="@string/checkboxantwortfrage" />
+                        android:text="@string/checkboxantwortfrage"
+                        android:buttonTint="@color/color_blue"/>
 
                     <RadioButton
                         android:id="@+id/rbTextoption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/textantwortfrage" />
+                        android:text="@string/textantwortfrage"
+                        android:buttonTint="@color/color_blue"/>
 
                 </RadioGroup>
 
@@ -98,23 +100,46 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
                 <Button
                     android:id="@+id/btnBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="3dip"
-                    android:layout_weight="0.1"
+                    android:layout_marginStart="3dip"
+                    android:drawableStart="@drawable/back"
+                    android:gravity="start|center_vertical"
                     android:text="@string/back"
-                    android:textStyle="bold" />
+                    android:textColor="@color/color_black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="10dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnDML"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dip"
-                    android:layout_weight="1"
+                    android:layout_marginEnd="3dip"
+                    android:drawableStart="@drawable/update"
+                    android:background="@null"
+                    android:gravity="start|center_vertical"
                     android:text="@string/save"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_black"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="10dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    />
 
             </LinearLayout>
         </LinearLayout>
