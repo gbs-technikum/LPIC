@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_bd_kategory"
+    android:background="@drawable/background_bd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,7 +22,8 @@
             android:id="@+id/scrollViewDisplay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,11 +40,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="15dp"
                         android:gravity="center"
-                        android:text="No Records Found"
-                        android:textSize="15dp" />
+                        android:text="@string/norecords"
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:id="@+id/llParentLayout"
@@ -69,34 +70,44 @@
         android:layout_marginTop="12dip"
         android:orientation="horizontal">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
         <Button
             android:id="@+id/btnBack"
-            android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/back"
-            android:layout_marginRight="3dip"
-            android:layout_weight="0.1"
+            android:layout_marginStart="3dip"
+            android:drawableStart="@drawable/back"
+            android:gravity="start|center_vertical"
+            android:text="@string/back"
+            android:textColor="@color/color_black"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="90dp"
-            android:textColor="@color/color_white"/>
+            android:background="@null"
+            android:drawablePadding="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
+    </LinearLayout>
 
 
         <Button
             android:id="@+id/btnAddNewRecord"
             android:text="@string/addnew"
-            android:background="@drawable/btnnew"
+            android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dip"
-            android:layout_weight="1"
+            android:layout_marginEnd="3dip"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="90dp"
-            android:textColor="@color/color_white"/>
+            android:textSize="16sp"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/color_black"
+            android:drawableStart="@drawable/add"
+            android:drawablePadding="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
     </LinearLayout>
 

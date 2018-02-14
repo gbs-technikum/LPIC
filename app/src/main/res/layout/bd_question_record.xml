@@ -5,14 +5,18 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayoutRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="1dip">
+        android:padding="1dip"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="2dp"
+        >
 
 
         <ImageButton
@@ -32,13 +36,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="Name"
+            android:text="@string/name"
             android:textAlignment="textStart"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:ellipsize="end"/>
 
         <ImageButton
             android:id="@+id/iBtnEdit"

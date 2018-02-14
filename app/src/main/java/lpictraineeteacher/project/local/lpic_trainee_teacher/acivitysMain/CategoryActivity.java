@@ -2,6 +2,7 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
@@ -27,6 +29,8 @@ public class CategoryActivity extends Activity {
     private ImageButton btnExit;
     private ImageButton btnInfo;
     private ImageButton btnGlossary;
+    private ImageButton btnGerman;
+    private ImageButton btnEnglish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class CategoryActivity extends Activity {
                 toast.show();
             }
         });
+
         btnGlossary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +78,25 @@ public class CategoryActivity extends Activity {
                 toast.show();
             }
         });
+
+        btnEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLanguageToEnglish();
+                Toast toast = Toast.makeText(getApplicationContext(), "Locale is set to English", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
+        btnGerman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLanguageToGerman();
+                Toast toast = Toast.makeText(getApplicationContext(), "Sprache wurde auf Deutsch umgestellt", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
     }
 
     private void initComponents() {
@@ -81,6 +105,8 @@ public class CategoryActivity extends Activity {
         btnExit = findViewById(R.id.btnExit);
         btnInfo = findViewById(R.id.btnInfo);
         btnGlossary = findViewById(R.id.btnGlossary);
+        btnGerman = findViewById(R.id.btnLanguageGerman);
+        btnEnglish = findViewById(R.id.btnLanguageEnglish);
     }
 
     private void displayAllRecords() {
@@ -109,6 +135,24 @@ public class CategoryActivity extends Activity {
         intent.putExtra(CATEGORY, categorie);
         intent.putExtra(CATEGORYID, categoryID);
         startActivity(intent);
+    }
+
+    private void changeLanguageToEnglish() {
+        String languageToLoad  = "en";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+    }
+
+    private void changeLanguageToGerman() {
+        String languageToLoad  = "de";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
 }

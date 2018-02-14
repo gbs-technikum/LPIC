@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">LPIC Trainee-Teacher</string>
+    <string name="name">Name</string>
+    <string name="placeholder">...</string>
+    <string name="activitytestheadline">Test-Simulation</string>
+    <string name="activityrubricheadline">Rubric</string>
+
+    <string name="kategorieloeschen">Delete Category?</string>
+    <string name="category">Category</string>
+    <string name="categorytoast">The record could not delete. Please, delete first the corresponding Rubric.</string>
+    <string name="norecords">No Records found</string>
+
+    <string name="rubrikloeschen">Delete Rubric?</string>
+    <string name="rubric">Rubric</string>
+    <string name="rubrictoast">The record could not delete. Please, delete first the corresponding Answers.</string>
+    <string name="starttest">Start Test</string>
+
+    <string name="frageloeschen">Delete Question?</string>
+    <string name="frage">Question</string>
+    <string name="erklaerung">Explanation</string>
+    <string name="questiontoast">The record could not delete. Please, delete first the corresponding Question.</string>
+    <string name="art">Species</string>
+
+    <string name="antwortloeschen">Delete Answer?</string>
+    <string name="answer">Answer</string>
+
+    <string name="textantwortfrage">Text based Answer</string>
+    <string name="checkboxantwortfrage">Selection Answer</string>
+    <string name="result">Result</string>
+
+    <string name="rbRichtig">is right</string>
+    <string name="rbFalsch">is wrong</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">cancel</string>
+    <string name="back">back</string>
+    <string name="addnew">add new</string>
+    <string name="edit">edit</string>
+    <string name="save">save</string>
+    <string name="update">update</string>
+    <string name="insert">insert</string>
+    <string name="delete">delete</string>
+    <string name="previous">previous</string>
+    <string name="check">check</string>
+    <string name="next">next</string>
+    <string name="emptyfield">empty Field</string>
+
+    <string name="DATABASE_NAME">lpicapp.db</string>
+    <integer name="DATABASE_VERSION">11</integer>
+
+    <string name="DML_TYPE">DML_TYPE</string>
+    <integer name="ADD_RECORD">0</integer>
+    <integer name="UPDATE_RECORD">1</integer>
+
+    <string name="UPDATE">Update</string>
+    <string name="INSERT">Insert</string>
+    <string name="DELETE">Delete</string>
+
+    <!-- contentDescription -->
+    <string name="btnExit">exit</string>
+    <string name="btnBD">bd</string>
+    <string name="btnInfo">info</string>
+    <string name="btnGlossary">glossary</string>
+    <string name="btnDelete">delete</string>
+    <string name="btnEdit">edit</string>
+    <string name="btnChoose">choose</string>
+    <string name="btnGerman">german</string>
+    <string name="btnEnglish">english</string>
+
+
+</resources>
