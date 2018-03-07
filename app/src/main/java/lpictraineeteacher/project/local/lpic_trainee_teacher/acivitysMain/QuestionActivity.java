@@ -32,7 +32,6 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 public class QuestionActivity extends Activity implements Constants {
-    private Button btnBack;
     private Button btnPrev;
     private Button btnNext;
     private Button btnCheck;
@@ -82,7 +81,6 @@ public class QuestionActivity extends Activity implements Constants {
         tvQuestionNr = findViewById(R.id.tvQuestionNr);
         tvExplaination = findViewById(R.id.tvExplaination);
         llAnswers = findViewById(R.id.llAnswers);
-        btnBack = findViewById(R.id.btnBack);
         btnPrev = findViewById(R.id.btnPrev);
         btnNext = findViewById(R.id.btnNext);
         btnCheck = findViewById(R.id.btnCheck);
@@ -96,12 +94,6 @@ public class QuestionActivity extends Activity implements Constants {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
                 toast.show();
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
         btnCheck.setOnClickListener(new View.OnClickListener() {

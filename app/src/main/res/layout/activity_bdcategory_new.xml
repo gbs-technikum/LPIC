@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/etKategorie"
@@ -23,21 +22,21 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="3dip"
             android:layout_weight="0.1"
-            android:text="@string/back"
+            android:text="@string/cancel"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnDML"
-            android:text="@string/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dip"
             android:layout_weight="1"
+            android:text="@string/save"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -30,7 +30,6 @@ public class RubricActivity extends Activity implements Constants {
     private String kategorieid;
     private String kategorie;
     private Button btnAddNewRecord;
-    private Button btnBack;
 
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
@@ -60,7 +59,6 @@ public class RubricActivity extends Activity implements Constants {
         this.setTitle(getString(R.string.rubric) + " - " + kategorie);
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
-        btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
         tvNoRecordsFound = findViewById(R.id.tvNoRecordsFound);
     }
@@ -70,12 +68,6 @@ public class RubricActivity extends Activity implements Constants {
             @Override
             public void onClick(View v) {
                 onAddRecord();
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

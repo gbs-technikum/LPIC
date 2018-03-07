@@ -70,15 +70,6 @@
         android:orientation="horizontal"
         >
 
-        <Button
-            android:id="@+id/btnBack"
-            android:text="@string/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="3dip"
-            android:layout_weight="0.1"
-            android:padding="1dip"
-            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAddNewRecord"

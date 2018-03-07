@@ -26,7 +26,6 @@ public class AnswerActivity extends Activity implements Constants {
     private String questionid;
 
     private Button btnAddNewRecord;
-    private Button btnBack;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
@@ -54,7 +53,6 @@ public class AnswerActivity extends Activity implements Constants {
         this.setTitle( getString(R.string.answer));
         sqliteService = SqliteService.getInstance(this);
         btnAddNewRecord = findViewById(R.id.btnAddNewRecord);
-        btnBack = findViewById(R.id.btnBack);
         parentLayout = findViewById(R.id.llParentLayout);
         tvNoRecordsFound = findViewById(R.id.tvNoRecordsFound);
         tvQuestion = findViewById(R.id.tvQuestion);
@@ -65,12 +63,6 @@ public class AnswerActivity extends Activity implements Constants {
             @Override
             public void onClick(View v) {
                 onAddRecord();
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

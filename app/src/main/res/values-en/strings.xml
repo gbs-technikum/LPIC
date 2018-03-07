@@ -33,7 +33,6 @@
 
     <string name="ok">OK</string>
     <string name="cancel">cancel</string>
-    <string name="back">back</string>
     <string name="addnew">add new</string>
     <string name="edit">edit</string>
     <string name="save">save</string>
@@ -57,7 +56,6 @@
     <string name="DELETE">Delete</string>
 
     <!-- contentDescription -->
-    <string name="btnExit">exit</string>
     <string name="btnBD">bd</string>
     <string name="btnInfo">info</string>
     <string name="btnGlossary">glossary</string>

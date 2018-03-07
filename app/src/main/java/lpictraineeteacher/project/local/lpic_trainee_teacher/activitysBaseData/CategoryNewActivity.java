@@ -2,6 +2,7 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class CategoryNewActivity extends Activity implements Constants {
 
     private EditText etKategorie;
-    private Button btnBack;
+    private Button btnCancel;
     private Button btnDML;
     private String categoryID;
     String requestCode;
@@ -50,7 +51,15 @@ public class CategoryNewActivity extends Activity implements Constants {
                 onBtnDMLClick();
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -62,7 +71,7 @@ public class CategoryNewActivity extends Activity implements Constants {
         sqliteService = SqliteService.getInstance(this);
         etKategorie = findViewById(R.id.etKategorie);
         btnDML = findViewById(R.id.btnDML);
-        btnBack = findViewById(R.id.btnBack);
+        btnCancel = findViewById(R.id.btnCancel);
     }
 
     private void onBtnDMLClick() {

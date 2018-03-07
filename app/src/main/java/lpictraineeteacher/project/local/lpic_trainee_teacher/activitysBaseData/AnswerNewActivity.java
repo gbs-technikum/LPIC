@@ -28,7 +28,7 @@ public class AnswerNewActivity extends Activity implements Constants {
     private RadioButton rbRichtig;
     private RadioButton rbFalsch;
     private Button btnDML;
-    private Button btnBack;
+    private Button btnCancel;
     private String requestCode;
     private SqliteService sqliteService;
 
@@ -48,7 +48,7 @@ public class AnswerNewActivity extends Activity implements Constants {
                 onButtonClick();
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -61,7 +61,7 @@ public class AnswerNewActivity extends Activity implements Constants {
         etAntwort = findViewById(R.id.etAntwort);
         tvFrage = findViewById(R.id.tvFrage);
         btnDML = findViewById(R.id.btnDML);
-        btnBack = findViewById(R.id.btnBack);
+        btnCancel = findViewById(R.id.btnCancel);
         rgRichtigFalsch = findViewById(R.id.rgRichtigFalsch);
         rbFalsch = findViewById(R.id.rbFalsch);
         rbRichtig = findViewById(R.id.rbRichtig);

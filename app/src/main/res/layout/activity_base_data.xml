@@ -80,13 +80,13 @@
         >
 
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dip"
             android:layout_weight="0.1"
             android:gravity="start|center_vertical"
-            android:text="@string/back"
+            android:text="@string/cancel"
             android:textColor="@color/color_black"
             android:textSize="16sp"
             android:textStyle="bold"

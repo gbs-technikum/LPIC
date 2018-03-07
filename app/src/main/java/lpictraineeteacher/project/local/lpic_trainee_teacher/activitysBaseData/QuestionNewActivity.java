@@ -23,7 +23,7 @@ public class QuestionNewActivity extends Activity implements Constants {
     private EditText etErklaerung;
     private TextView tvArt;
     private Button btnDML;
-    private Button btnBack;
+    private Button btnCancel;
     private RadioGroup rgArt;
     private RadioButton rbCheckoption;
     private RadioButton rbTextoption;
@@ -79,7 +79,7 @@ public class QuestionNewActivity extends Activity implements Constants {
                 onBtnDMLClick();
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -93,7 +93,7 @@ public class QuestionNewActivity extends Activity implements Constants {
         etErklaerung = findViewById(R.id.etErklaerung);
         tvArt = findViewById(R.id.tvArt);
         btnDML = findViewById(R.id.btnDML);
-        btnBack = findViewById(R.id.btnBack);
+        btnCancel = findViewById(R.id.btnCancel);
         rgArt = findViewById(R.id.rgArt);
         rbCheckoption = findViewById(R.id.rbCheckoption);
         rbTextoption = findViewById(R.id.rbTextoption);

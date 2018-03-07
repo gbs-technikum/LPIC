@@ -21,7 +21,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class RubricNewActivity extends Activity implements Constants {
 
     private EditText etDaten;
-    private Button btnBack;
+    private Button btnCancel;
     private Button btnDML;
     private String rubricID;
     private String kategorieID;
@@ -56,7 +56,7 @@ public class RubricNewActivity extends Activity implements Constants {
                 onBtnDMLClick();
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -68,7 +68,7 @@ public class RubricNewActivity extends Activity implements Constants {
         sqliteService = SqliteService.getInstance(this);
         etDaten = findViewById(R.id.etDaten);
         btnDML = findViewById(R.id.btnDML);
-        btnBack = findViewById(R.id.btnBack);
+        btnCancel = findViewById(R.id.btnCancel);
     }
 
     private void onBtnDMLClick() {

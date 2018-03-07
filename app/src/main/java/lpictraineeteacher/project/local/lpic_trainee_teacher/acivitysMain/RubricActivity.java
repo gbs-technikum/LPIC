@@ -23,7 +23,6 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 
 public class RubricActivity extends Activity implements Constants {
 
-    private Button btnBack;
     private Button btnTest;
     private Button btnInfo;
     private LinearLayout llParentLayout;
@@ -54,12 +53,6 @@ public class RubricActivity extends Activity implements Constants {
     }
 
     private void initEvents() {
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +71,6 @@ public class RubricActivity extends Activity implements Constants {
     private void initComponents() {
         this.setTitle(getString(R.string.activityrubricheadline) + " - " + category);
         llParentLayout = findViewById(R.id.llParentLayout);
-        btnBack = findViewById(R.id.btnBack);
         btnTest = findViewById(R.id.btnTest);
         btnInfo = findViewById(R.id.btnInfo);
     }
