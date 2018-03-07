@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain.InfoActivity">
 
+    <WebView
+        android:id="@+id/infoWebView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
+        android:layout_margin="50dp" />
+
 </android.support.constraint.ConstraintLayout>
