@@ -64,6 +64,7 @@
     <string name="btnGlossary">glossary</string>
     <string name="btnDelete">löschen</string>
     <string name="btnEdit">bearbeiten</string>
+    <string name="btnResult">Ergebnis</string>
     <string name="btnChoose">auswählen</string>
     <string name="btnGerman">deutsch</string>
     <string name="btnEnglish">englisch</string>

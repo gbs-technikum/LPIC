@@ -63,6 +63,7 @@
     <string name="btnGlossary">glossary</string>
     <string name="btnDelete">delete</string>
     <string name="btnEdit">edit</string>
+    <string name="btnResult">score</string>
     <string name="btnChoose">choose</string>
     <string name="btnGerman">german</string>
     <string name="btnEnglish">english</string>

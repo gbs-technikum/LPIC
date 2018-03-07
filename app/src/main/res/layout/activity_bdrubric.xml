@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_bd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -67,48 +66,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
-        android:layout_marginTop="12dip"
-        android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/btnBack"
+            android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dip"
-            android:drawableStart="@drawable/back"
-            android:gravity="start|center_vertical"
-            android:text="@string/back"
-            android:textColor="@color/color_black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@null"
-            android:drawablePadding="10dp"
-            style="?android:attr/borderlessButtonStyle"
-            />
-    </LinearLayout>
-
+            android:layout_marginRight="3dip"
+            android:layout_weight="0.1"
+            android:padding="1dip"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAddNewRecord"
             android:text="@string/addnew"
-            android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="3dip"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:gravity="start|center_vertical"
-            android:textColor="@color/color_black"
-            android:drawableStart="@drawable/add"
-            android:drawablePadding="10dp"
-            style="?android:attr/borderlessButtonStyle"
-            />
-
+            android:layout_marginLeft="3dip"
+            android:layout_weight="1"
+            android:padding="1dip"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

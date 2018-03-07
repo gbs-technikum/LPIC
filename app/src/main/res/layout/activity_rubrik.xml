@@ -41,49 +41,31 @@
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dip"
-                android:layout_weight="0.1"
-                android:drawableStart="@drawable/back"
-                android:gravity="start|center_vertical"
+                android:layout_margin="3dip"
+                android:layout_weight="1"
+                android:padding="1dip"
                 android:text="@string/back"
-                android:textColor="@color/color_black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:background="@null"
-                android:drawablePadding="10dp"
-                style="?android:attr/borderlessButtonStyle"
-                />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dip"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/starttest"
-                android:gravity="start|center_vertical"
-                android:text="@string/starttest"
-                android:textColor="@color/color_black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:background="@null"
-                android:drawablePadding="10dp"
-                style="?android:attr/borderlessButtonStyle"
-                />
-
-            <ImageButton
-                android:id="@+id/btnInfo"
-                android:contentDescription="@string/btnInfo"
-                android:src="@drawable/info"
-                android:background="@android:color/transparent"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_weight="0.1"
                 android:layout_margin="3dip"
+                android:layout_weight="1"
                 android:padding="1dip"
-                android:scaleType="fitCenter"
-                />
+                android:text="@string/starttest"
+                android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/btnInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:layout_weight="1"
+                android:padding="1dip"
+                android:text="info"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

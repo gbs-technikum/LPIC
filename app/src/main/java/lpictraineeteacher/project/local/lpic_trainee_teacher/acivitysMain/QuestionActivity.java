@@ -87,19 +87,11 @@ public class QuestionActivity extends Activity implements Constants {
         btnNext = findViewById(R.id.btnNext);
         btnCheck = findViewById(R.id.btnCheck);
         btnResult = findViewById(R.id.btnResult);
-        btnGlossary = findViewById(R.id.btnGlossary);
         progressBar = findViewById(R.id.progressBar);
     }
 
     private void initEvents() {
         btnResult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-        btnGlossary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);

@@ -25,10 +25,10 @@ public class CategoryActivity extends Activity {
 
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
-    private ImageButton btnBD;
-    private ImageButton btnExit;
-    private ImageButton btnInfo;
-    private ImageButton btnGlossary;
+    private Button btnBD;
+    private Button btnExit;
+    private Button btnInfo;
+    private Button btnGlossary;
     private ImageButton btnGerman;
     private ImageButton btnEnglish;
 
@@ -52,24 +52,11 @@ public class CategoryActivity extends Activity {
         btnBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity.class );
+                Intent intent = new Intent(CategoryActivity.this, lpictraineeteacher.project.local.lpic_trainee_teacher.activitysBaseData.CategoryActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
 
         btnGlossary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +89,6 @@ public class CategoryActivity extends Activity {
     private void initComponents() {
         llParentLayout = findViewById(R.id.llParentLayout);
         btnBD = findViewById(R.id.btnBD);
-        btnExit = findViewById(R.id.btnExit);
         btnInfo = findViewById(R.id.btnInfo);
         btnGlossary = findViewById(R.id.btnGlossary);
         btnGerman = findViewById(R.id.btnLanguageGerman);
@@ -137,7 +123,7 @@ public class CategoryActivity extends Activity {
     }
 
     private void changeLanguageToEnglish() {
-        String languageToLoad  = "en";
+        String languageToLoad = "en";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -146,7 +132,7 @@ public class CategoryActivity extends Activity {
     }
 
     private void changeLanguageToGerman() {
-        String languageToLoad  = "de";
+        String languageToLoad = "de";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();

@@ -10,8 +10,8 @@
         android:layout_height="25dp"
         android:layout_alignEnd="@+id/scrollView2"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/btnGerman"
         android:padding="1dip"
@@ -23,8 +23,8 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignEnd="@+id/scrollView2"
-        android:layout_marginTop="8dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/btnEnglish"
         android:padding="1dip"
@@ -36,10 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/svFooter"
-        android:layout_marginTop="35dp"
         android:layout_marginBottom="8dip"
         android:layout_marginLeft="8dip"
         android:layout_marginRight="8dip"
+        android:layout_marginTop="35dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -61,59 +61,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dip"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="12dip">
 
-            <ImageButton
-                android:id="@+id/btnExit"
-                android:contentDescription="@string/btnExit"
-                android:src="@drawable/exit"
-                android:background="@android:color/transparent"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:layout_margin="3dip"
-                android:padding="1dip"
-                android:scaleType="fitCenter"
-                />
-
-            <ImageButton
+            <Button
                 android:id="@+id/btnBD"
-                android:contentDescription="@string/btnBD"
-                android:src="@drawable/sd"
-                android:background="@android:color/transparent"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:text="SD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:scaleType="fitCenter"
+                android:textStyle="bold"
                 />
 
-            <ImageButton
+            <Button
                 android:id="@+id/btnInfo"
-                android:contentDescription="@string/btnInfo"
-                android:src="@drawable/info"
-                android:background="@android:color/transparent"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:text="info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:scaleType="fitCenter"
+                android:textStyle="bold"
                 />
 
-            <ImageButton
+            <Button
                 android:id="@+id/btnGlossary"
-                android:contentDescription="@string/btnGlossary"
-                android:src="@drawable/glossary"
-                android:background="@android:color/transparent"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:text="glossary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="3dip"
                 android:padding="1dip"
-                android:scaleType="fitCenter"
+                android:textStyle="bold"
                 />
 
         </LinearLayout>

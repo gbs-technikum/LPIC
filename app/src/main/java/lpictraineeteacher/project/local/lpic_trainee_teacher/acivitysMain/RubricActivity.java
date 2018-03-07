@@ -25,7 +25,7 @@ public class RubricActivity extends Activity implements Constants {
 
     private Button btnBack;
     private Button btnTest;
-    private ImageButton btnInfo;
+    private Button btnInfo;
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private String categoryid;
