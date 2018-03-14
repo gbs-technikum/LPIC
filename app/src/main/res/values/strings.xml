@@ -16,7 +16,7 @@
     <string name="starttest">Test starten</string>
 
     <string name="frageloeschen">Frage löschen?</string>
-    <string name="frage">Fragen</string>
+    <string name="frage">Frage</string>
     <string name="erklaerung">Erklärung</string>
     <string name="questiontoast">Der Datensatz kann nicht gelöscht werden, bitte erst die korrespondierenden Antworten löschen.</string>
     <string name="art">Art</string>

@@ -32,15 +32,18 @@ public class CategoryActivity extends Activity {
     private ImageButton btnGerman;
     private ImageButton btnEnglish;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
         sqliteService = SqliteService.getInstance(this);
         initComponents();
         initEvents();
         displayAllRecords();
     }
+
 
     @Override
     protected void onResume() {
