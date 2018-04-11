@@ -123,8 +123,13 @@ public class QuestionActivity extends Activity implements Constants {
 
             ArrayList<Question> allQuestions = sqliteService.getAllCategoryQuestionRecords(categoryid);
             questions = new ArrayList<>();
+            int allQuestionsSize = allQuestions.size();
+            int questionsSize = 20;
+            if (allQuestionsSize < questionsSize) {
+                questionsSize = allQuestionsSize;
+            }
             Random random = new Random();
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < questionsSize; i++) {
                 int n = random.nextInt(allQuestions.size());
                 questions.add(allQuestions.get(n));
                 allQuestions.remove(n);
