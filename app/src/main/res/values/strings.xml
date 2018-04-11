@@ -57,8 +57,8 @@
     <string name="DELETE">Löschen</string>
 
     <!-- contentDescription -->
-    <string name="btnBD">bd</string>
-    <string name="btnInfo">info</string>
+    <string name="btnBD">sd</string>
+    <string name="btnInfo">hilfe</string>
     <string name="btnGlossary">glossary</string>
     <string name="btnDelete">löschen</string>
     <string name="btnEdit">bearbeiten</string>

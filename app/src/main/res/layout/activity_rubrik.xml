@@ -54,7 +54,7 @@
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
-                android:text="info"
+                android:text="@string/btnInfo"
                 android:textStyle="bold" />
 
         </LinearLayout>

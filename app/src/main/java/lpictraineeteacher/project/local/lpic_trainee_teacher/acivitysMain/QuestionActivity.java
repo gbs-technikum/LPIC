@@ -1,6 +1,7 @@
 package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -36,6 +37,7 @@ public class QuestionActivity extends Activity implements Constants {
     private Button btnNext;
     private Button btnCheck;
     private Button btnResult;
+    private Button btnInfo;
     private ImageButton btnGlossary;
     private ProgressBar progressBar;
     private SqliteService sqliteService;
@@ -85,6 +87,7 @@ public class QuestionActivity extends Activity implements Constants {
         btnNext = findViewById(R.id.btnNext);
         btnCheck = findViewById(R.id.btnCheck);
         btnResult = findViewById(R.id.btnResult);
+        btnInfo = findViewById(R.id.btnInfo);
         progressBar = findViewById(R.id.progressBar);
     }
 
@@ -114,6 +117,14 @@ public class QuestionActivity extends Activity implements Constants {
                 prevQuestion();
             }
         });
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestionActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void createQuestionList() {

@@ -62,10 +62,10 @@ public class RubricActivity extends Activity implements Constants {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent intent = new Intent(RubricActivity.this, InfoActivity.class);
+                startActivity(intent);
             }
-        });
+        });;
     }
 
     private void initComponents() {

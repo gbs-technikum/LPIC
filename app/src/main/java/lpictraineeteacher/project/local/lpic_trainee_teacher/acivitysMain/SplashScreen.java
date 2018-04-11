@@ -3,40 +3,70 @@ package lpictraineeteacher.project.local.lpic_trainee_teacher.acivitysMain;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Locale;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 
+
 public class SplashScreen extends Activity {
+
+    private Button btnGerman;
+    private Button btnEnglish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        copyDB();
+        initComponents();
+        initEvents();
+    }
 
-        Thread splashscreen = new Thread() {
+    private void initComponents() {
+        btnEnglish = findViewById(R.id.btnEnglish);
+        btnGerman = findViewById(R.id.btnGerman);
+    }
+
+    private void initEvents() {
+        btnEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                try {
-                    copyDB();
-                    sleep(2000);
-                    Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
-                    startActivity(intent);
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } // END Try-Catch-Block
-            } // END public void run()
-        }; // END NEW THREAD
-        splashscreen.start();
+            public void onClick(View v) {
+                setLanguage("en");
+            }
+        });
 
+        btnGerman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLanguage("de");
+            }
+        });
+    }
 
+    private void setLanguage(String language) {
+        String languageToLoad = "en";
+        if (language.equals("de")) {
+            languageToLoad = "de";
+        }
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+        Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void copyDB() {
@@ -55,7 +85,7 @@ public class SplashScreen extends Activity {
         }
     }
 
-//java.io.FileNotFoundException
+    //java.io.FileNotFoundException
     private void CopyFromAssetsToStorage(Context Context, String SourceFile, String DestinationFile) throws IOException {
         InputStream IS = Context.getAssets().open(SourceFile);
         OutputStream OS = new FileOutputStream(DestinationFile);
