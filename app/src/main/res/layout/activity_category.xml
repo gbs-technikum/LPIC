@@ -35,41 +35,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:orientation="horizontal"
             android:padding="12dip">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnBD"
-                android:text="@string/btnBD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="3dip"
-                android:padding="1dip"
-                android:textStyle="bold"
-                />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_folder_open_black_24dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnInfo"
-                android:text="@string/btnInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="3dip"
-                android:padding="1dip"
-                android:textStyle="bold"
-                />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_info_outline_black_24dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnGlossary"
-                android:text="@string/btnGlossary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="3dip"
-                android:padding="1dip"
-                android:textStyle="bold"
-                />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_view_headline_black_24dp" />
 
         </LinearLayout>
 

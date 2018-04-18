@@ -27,10 +27,9 @@ public class CategoryActivity extends Activity {
 
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
-    private Button btnBD;
-    private Button btnExit;
-    private Button btnInfo;
-    private Button btnGlossary;
+    private ImageButton btnBD;
+    private ImageButton btnInfo;
+    private ImageButton btnGlossary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
