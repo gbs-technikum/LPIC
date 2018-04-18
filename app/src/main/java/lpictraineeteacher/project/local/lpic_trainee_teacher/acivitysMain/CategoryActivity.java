@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Glossary;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 public class CategoryActivity extends Activity {
@@ -60,8 +61,8 @@ public class CategoryActivity extends Activity {
         btnGlossary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent intent = new Intent(CategoryActivity.this, GlossaryActivity.class);
+                startActivity(intent);
             }
         });
 

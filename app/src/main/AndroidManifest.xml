@@ -29,7 +29,8 @@
         <activity android:name=".activitysBaseData.AnswerNewActivity" />
         <activity android:name=".activitysBaseData.CategoryNewActivity" />
         <activity android:name=".activitysBaseData.RubricNewActivity" />
-        <activity android:name=".acivitysMain.InfoActivity"></activity>
+        <activity android:name=".acivitysMain.InfoActivity" />
+        <activity android:name=".acivitysMain.GlossaryActivity"></activity>
     </application>
 
 </manifest>

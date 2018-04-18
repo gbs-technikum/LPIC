@@ -12,6 +12,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
+import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Glossary;
 
 /**
  * Created by mkoenig on 28.01.2018.
@@ -36,6 +37,9 @@ public class SqliteService extends SQLiteOpenHelper {
     private static final String COLUMN_QID = "FID";
     private static final String COLUMN_ANTWORT = "ANTWORT";
     private static final String COLUMN_RICHTIG = "ISTRICHTIG";
+    private static final String TABLE_GLOSSARY_NAME = "GLOSSARY";
+    private static final String COLUMN_WORD = "WORT";
+    private static final String COLUMN_EXPLAINATION = "BESCHREIBUNG";
 
     private static SqliteService ourInstance;
 
@@ -428,6 +432,30 @@ public class SqliteService extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    // *********** Glossary section ****************
+
+    public ArrayList<Glossary> getAllGlossaryRecords() {
+        SQLiteDatabase database;
+        database = this.getReadableDatabase();
+        Cursor cursor = database.query(TABLE_GLOSSARY_NAME, null, null, null, null, null, COLUMN_WORD);
+
+        ArrayList<Glossary> glossaries = new ArrayList<>();
+        Glossary glossary;
+        if (cursor.getCount() > 0) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                cursor.moveToNext();
+                glossary = new Glossary();
+                glossary.setWord(cursor.getString(2));
+                glossary.setExplaination(cursor.getString(3));
+                glossaries.add(glossary);
+            }
+        }
+        cursor.close();
+        database.close();
+
+        return glossaries;
     }
 
 }
