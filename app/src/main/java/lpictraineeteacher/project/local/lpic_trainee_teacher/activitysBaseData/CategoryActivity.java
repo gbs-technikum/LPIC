@@ -22,7 +22,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 
 public class CategoryActivity extends Activity implements Constants {
 
-    private Button btnAddNewRecord;
+    private ImageButton btnAddNewRecord;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;

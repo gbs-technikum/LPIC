@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -21,8 +22,8 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class RubricNewActivity extends Activity implements Constants {
 
     private EditText etDaten;
-    private Button btnCancel;
-    private Button btnDML;
+    private ImageButton btnCancel;
+    private ImageButton btnDML;
     private String rubricID;
     private String kategorieID;
     String requestCode;
@@ -40,13 +41,8 @@ public class RubricNewActivity extends Activity implements Constants {
     private void checkForRequest() {
         requestCode = getIntent().getStringExtra(DML_TYPE);
         kategorieID = getIntent().getStringExtra(CATEGORYID);
-        if (requestCode.equals(UPDATE)) {
-            btnDML.setText(R.string.update);
-            etDaten.setText(getIntent().getStringExtra(RUBRIC));
-            rubricID = getIntent().getStringExtra(RUBRICID);
-        } else {
-            btnDML.setText(R.string.insert);
-        }
+        etDaten.setText(getIntent().getStringExtra(RUBRIC));
+        rubricID = getIntent().getStringExtra(RUBRICID);
     }
 
     private void initEvents() {

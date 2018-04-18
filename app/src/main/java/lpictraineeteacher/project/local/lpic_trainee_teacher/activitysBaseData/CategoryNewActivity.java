@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -18,8 +19,8 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class CategoryNewActivity extends Activity implements Constants {
 
     private EditText etKategorie;
-    private Button btnCancel;
-    private Button btnDML;
+    private ImageButton btnCancel;
+    private ImageButton btnDML;
     private String categoryID;
     String requestCode;
     private SqliteService sqliteService;
@@ -35,13 +36,8 @@ public class CategoryNewActivity extends Activity implements Constants {
 
     private void checkForRequest() {
         requestCode = getIntent().getStringExtra(DML_TYPE);
-        if (requestCode.equals(UPDATE)) {
-            btnDML.setText(R.string.update);
-            categoryID = getIntent().getStringExtra(CATEGORYID);
-            etKategorie.setText(getIntent().getStringExtra(CATEGORY));
-        } else {
-            btnDML.setText(R.string.insert);
-        }
+        categoryID = getIntent().getStringExtra(CATEGORYID);
+        etKategorie.setText(getIntent().getStringExtra(CATEGORY));
     }
 
     private void initEvents() {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,8 +28,8 @@ public class AnswerNewActivity extends Activity implements Constants {
     private RadioGroup rgRichtigFalsch;
     private RadioButton rbRichtig;
     private RadioButton rbFalsch;
-    private Button btnDML;
-    private Button btnCancel;
+    private ImageButton btnDML;
+    private ImageButton btnCancel;
     private String requestCode;
     private SqliteService sqliteService;
 

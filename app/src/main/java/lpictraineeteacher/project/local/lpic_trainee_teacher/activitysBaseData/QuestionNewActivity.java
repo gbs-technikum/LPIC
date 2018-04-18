@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,8 +23,8 @@ public class QuestionNewActivity extends Activity implements Constants {
     private EditText etFrage;
     private EditText etErklaerung;
     private TextView tvArt;
-    private Button btnDML;
-    private Button btnCancel;
+    private ImageButton btnDML;
+    private ImageButton btnCancel;
     private RadioGroup rgArt;
     private RadioButton rbCheckoption;
     private RadioButton rbTextoption;
@@ -45,13 +46,11 @@ public class QuestionNewActivity extends Activity implements Constants {
         request = getIntent().getStringExtra(DML_TYPE);
         if (request.equals(UPDATE)) {
             questionID = getIntent().getStringExtra(QUESTIONID);
-            btnDML.setText(R.string.update);
             rgArt.setVisibility(View.GONE);
             readQuestion(questionID);
 
         } else {
             tvArt.setVisibility(View.GONE);
-            btnDML.setText(R.string.insert);
             rubricID = getIntent().getStringExtra(RUBRICID);
             questionID = UUID.randomUUID().toString();
         }

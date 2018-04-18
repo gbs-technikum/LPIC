@@ -29,7 +29,7 @@ public class RubricActivity extends Activity implements Constants {
 
     private String kategorieid;
     private String kategorie;
-    private Button btnAddNewRecord;
+    private ImageButton btnAddNewRecord;
 
     private SqliteService sqliteService;
     private LinearLayout parentLayout;

@@ -23,7 +23,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class QuestionActivity extends Activity implements Constants {
     private String rubrikid;
     private String rubrik;
-    private Button btnAddNewRecord;
+    private ImageButton btnAddNewRecord;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;

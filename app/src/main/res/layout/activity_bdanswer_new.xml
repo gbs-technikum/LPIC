@@ -56,25 +56,24 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="12dip"
         android:layout_weight="1"
+        android:gravity="right"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginRight="3dip"
-            android:layout_weight="0.1"
-            android:text="@string/cancel"
-            android:textStyle="bold" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_cancel_black_24dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnDML"
-            android:text="@string/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="3dip"
-            android:layout_weight="1"
-            android:textStyle="bold" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_save_black_24dp" />
 
     </LinearLayout>
 

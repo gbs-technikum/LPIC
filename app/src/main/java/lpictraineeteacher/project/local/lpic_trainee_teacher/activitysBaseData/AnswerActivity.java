@@ -25,7 +25,7 @@ public class AnswerActivity extends Activity implements Constants {
 
     private String questionid;
 
-    private Button btnAddNewRecord;
+    private ImageButton btnAddNewRecord;
     private SqliteService sqliteService;
     private LinearLayout parentLayout;
     private TextView tvNoRecordsFound;
