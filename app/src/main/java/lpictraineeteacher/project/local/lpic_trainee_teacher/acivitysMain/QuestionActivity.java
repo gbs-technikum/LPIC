@@ -295,6 +295,8 @@ public class QuestionActivity extends Activity implements Constants {
                         final CheckBox ckAnswer = new CheckBox(llAnswers.getContext());
                         ckAnswer.setId(x);
                         ckAnswer.setText(answer.getAnswer());
+                        ckAnswer.setTextSize(18);
+                        ckAnswer.setPadding(0,0,0,4);
                         if (answer.getResponse().equals(ISTRUE)) {
                             ckAnswer.setChecked(true);
                         } else {

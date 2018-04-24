@@ -1,6 +1,13 @@
 <resources>
 
     <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:colorButtonNormal">@color/primary_light</item>
+        <item name="android:divider">@color/divider</item>
+        <item name="android:text">@color/primary_text</item>
+
     </style>
 
     <!-- Splash Theme-->

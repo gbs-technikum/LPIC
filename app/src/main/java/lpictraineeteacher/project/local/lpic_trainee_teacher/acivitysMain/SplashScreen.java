@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,7 +46,6 @@ public class SplashScreen extends Activity {
                 setLanguage("en");
             }
         });
-
         btnGerman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -17,9 +17,10 @@
             android:id="@+id/ckAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:padding="8dip"
-            android:textSize="16dp"
-            android:text="Antwort Antwort Antwort" />
+            android:text="Antwort Antwort Antwort"
+            android:textSize="18dp" />
 
     </LinearLayout>
 

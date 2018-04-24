@@ -19,6 +19,7 @@
                 android:id="@+id/tvSpacer"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:text=" "
                 android:textAlignment="center" />
         </TableRow>
 
@@ -88,6 +89,7 @@
                 android:id="@+id/tvSpacer2"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:text=" "
                 android:textAlignment="center" />
         </TableRow>
 
