@@ -37,4 +37,6 @@ public interface Constants {
     public static final String ISTRUE = "R";
     public static final String ISFALSE = "F";
 
+    public static final String COUNT_ALL = "COUNTALL";
+    public static final String COUNT_RIGHT = "COUNTRIGHT";
 }

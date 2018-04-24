@@ -44,7 +44,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="3dp"
-                android:padding="3dp"
+                android:padding="4dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_folder_open_black_24dp" />
 
@@ -55,16 +55,16 @@
                 android:layout_margin="3dp"
                 android:padding="8dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_info_outline_black_24dp" />
+                android:src="@drawable/ic_help_outline_black_24dp" />
 
             <ImageButton
                 android:id="@+id/btnGlossary"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="3dp"
-                android:padding="3dp"
+                android:padding="8dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_view_headline_black_24dp" />
+                android:src="@drawable/ic_info_outline_black_24dp" />
 
         </LinearLayout>
 

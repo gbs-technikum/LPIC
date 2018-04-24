@@ -17,13 +17,13 @@
 
         <ImageButton
             android:id="@+id/iBtnDelete"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="3dip"
             android:layout_weight="0.1"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/delete"
-            android:src="@drawable/ic_delete_black_24dp" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_delete_forever_black_24dp" />
 
         <TextView
             android:id="@+id/tvAnswer"
@@ -54,12 +54,12 @@
 
         <ImageButton
             android:id="@+id/iBtnEdit"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="3dip"
             android:layout_weight="0.1"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/edit"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_create_black_24dp" />
 
 

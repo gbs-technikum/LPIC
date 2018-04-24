@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,20 +15,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Category;
+
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Constants;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.R;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Answer;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Question;
-import lpictraineeteacher.project.local.lpic_trainee_teacher.classes.Rubric;
 import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteService;
 
 public class QuestionActivity extends Activity implements Constants {
@@ -37,13 +31,14 @@ public class QuestionActivity extends Activity implements Constants {
     private Button btnNext;
     private Button btnCheck;
     private Button btnResult;
-    private Button btnInfo;
+    private ImageButton btnInfo;
     private ImageButton btnGlossary;
     private ProgressBar progressBar;
     private SqliteService sqliteService;
     private LinearLayout llAnswers;
     private TextView tvExplaination;
     private TextView tvQuestion;
+    private TextView tvTimer;
     private TextView tvQuestionNr;
     private String rubricid;
     private String categoryid;
@@ -52,6 +47,10 @@ public class QuestionActivity extends Activity implements Constants {
     private ArrayList<Answer> answers;
     private int index;
     private String listtype;
+    private int anzahlRichtige;
+    private boolean isCheckResultAndShowCalled;
+    private CountDownTimer countDownTimer;
+    private long timeInMilliSec;
 
 
     @Override
@@ -63,6 +62,12 @@ public class QuestionActivity extends Activity implements Constants {
         checkForRequest();
         createQuestionList();
         displayQuestion(0);
+        anzahlRichtige = 0;
+        isCheckResultAndShowCalled = false;
+        if (questions.size() > 0) {
+            timeInMilliSec = questions.size() * 60 * 1000;
+            initTimer(timeInMilliSec);
+        }
     }
 
     private void checkForRequest() {
@@ -70,17 +75,43 @@ public class QuestionActivity extends Activity implements Constants {
         if (listtype.equals(LISTRUBRIC)) {
             rubricid = getIntent().getExtras().getString(RUBRICID);
             this.setTitle(getIntent().getExtras().getString(RUBRIC));
+            btnCheck.setVisibility(View.VISIBLE);
+            tvTimer.setVisibility(View.GONE);
         } else if (listtype.equals(LISTCATEGORY)) {
             categoryid = getIntent().getExtras().getString(CATEGORYID);
-            btnCheck.setVisibility(View.INVISIBLE);
+            btnCheck.setVisibility(View.GONE);
+            tvTimer.setVisibility(View.VISIBLE);
             this.setTitle(R.string.activitytestheadline);
+
         }
+    }
+
+
+    private void initTimer(long timeInMilliSec) {
+
+        countDownTimer = new CountDownTimer(timeInMilliSec + 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                Integer secs = (int) millisUntilFinished / 1000;
+                Integer minutes = secs / 60;
+                Integer seconds = secs % 60;
+                tvTimer.setText("noch " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " min");
+            }
+
+            public void onFinish() {
+                tvTimer.setText("noch 0:00 min");
+                checkResultAndShow();
+            }
+        }.start();
+
+
     }
 
     private void initComponents() {
         sqliteService = SqliteService.getInstance(this);
         tvQuestion = findViewById(R.id.tvQuestion);
         tvQuestionNr = findViewById(R.id.tvQuestionNr);
+        tvTimer = findViewById(R.id.tvTimer);
         tvExplaination = findViewById(R.id.tvExplaination);
         llAnswers = findViewById(R.id.llAnswers);
         btnPrev = findViewById(R.id.btnPrev);
@@ -95,8 +126,8 @@ public class QuestionActivity extends Activity implements Constants {
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "fehlt noch", Toast.LENGTH_SHORT);
-                toast.show();
+                checkResultAndShow();
+
             }
         });
         btnCheck.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +155,29 @@ public class QuestionActivity extends Activity implements Constants {
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void checkResultAndShow() {
+        if (questions.size() > 0) {
+            if (!isCheckResultAndShowCalled) {
+                for (int i = 0; i < questions.size(); i++) {
+                    displayQuestion(i);
+                    checkQuestion();
+                    if (question.getAnswerIsRight().equals(ISTRUE)) {
+                        anzahlRichtige++;
+                    }
+                }
+                index = 0;
+                displayQuestion(index);
+                isCheckResultAndShowCalled = true;
+            }
+            countDownTimer.cancel();
+            Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            intent.putExtra(COUNT_ALL, questions.size());
+            intent.putExtra(COUNT_RIGHT, anzahlRichtige);
+            startActivity(intent);
+        }
 
     }
 
@@ -186,17 +240,24 @@ public class QuestionActivity extends Activity implements Constants {
                     if (!etAnswer.getText().toString().equals(tvRightAnswer.getText().toString())) {
                         etAnswer.setTextColor(Color.RED);
                         tvRightAnswer.setVisibility(View.VISIBLE);
+                        question.setAnswerIsRight(ISFALSE);
                     } else {
                         etAnswer.setTextColor(Color.GREEN);
+                        question.setAnswerIsRight(ISTRUE);
                     }
                     etAnswer.setEnabled(false);
                     answers.get(0).setResponse(etAnswer.getText().toString());
                 }
                 // Checkboxfrage
             } else if (question.getArt().equals(TYPECHECK)) {
+                question.setAnswerIsRight(ISTRUE);
                 for (int i = 0; i < answers.size(); i++) {
                     CheckBox cb = findViewById(i);
-                    cb.setTextColor(checkboxColor(answers.get(i), cb.getCurrentTextColor()));
+                    int color = checkboxColor(answers.get(i), cb.getCurrentTextColor());
+                    cb.setTextColor(color);
+                    if (color == Color.RED) {
+                        question.setAnswerIsRight(ISFALSE);
+                    }
                     cb.setEnabled(false);
                 }
             }
@@ -219,7 +280,7 @@ public class QuestionActivity extends Activity implements Constants {
         tvExplaination.setVisibility(View.GONE);
         llAnswers.removeAllViews();
         btnCheck.setEnabled(true);
-        progressBar.setProgress(index+1);
+        progressBar.setProgress(index + 1);
         if (questions.size() > 0) {
             question = questions.get(index);
             tvQuestionNr.setText("Frage " + String.valueOf(index + 1) + " von " + String.valueOf(questions.size()));

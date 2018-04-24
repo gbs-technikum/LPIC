@@ -107,7 +107,7 @@
                     android:layout_height="60dp"
                     android:layout_marginRight="3dip"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_cancel_black_24dp" />
+                    android:src="@drawable/ic_highlight_off_black_24dp" />
 
                 <ImageButton
                     android:id="@+id/btnDML"

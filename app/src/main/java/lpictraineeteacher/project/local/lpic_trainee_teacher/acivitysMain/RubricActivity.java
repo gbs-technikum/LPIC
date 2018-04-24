@@ -24,7 +24,7 @@ import lpictraineeteacher.project.local.lpic_trainee_teacher.persistent.SqliteSe
 public class RubricActivity extends Activity implements Constants {
 
     private Button btnTest;
-    private Button btnInfo;
+    private ImageButton btnInfo;
     private LinearLayout llParentLayout;
     private SqliteService sqliteService;
     private String categoryid;

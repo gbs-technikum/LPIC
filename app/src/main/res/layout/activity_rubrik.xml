@@ -40,22 +40,21 @@
             <Button
                 android:id="@+id/btnTest"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="59dp"
                 android:layout_margin="3dip"
                 android:layout_weight="1"
                 android:padding="1dip"
                 android:text="@string/starttest"
                 android:textStyle="bold" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dip"
-                android:layout_weight="1"
-                android:padding="1dip"
-                android:text="@string/btnInfo"
-                android:textStyle="bold" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="3dp"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_help_outline_black_24dp" />
 
         </LinearLayout>
 

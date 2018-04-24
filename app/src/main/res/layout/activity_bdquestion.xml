@@ -75,7 +75,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_add_circle_black_24dp"
+            android:src="@drawable/ic_add_circle_outline_black_24dp"
             android:text="@string/addnew"
             android:textStyle="bold" />
     </LinearLayout>

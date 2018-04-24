@@ -30,7 +30,8 @@
         <activity android:name=".activitysBaseData.CategoryNewActivity" />
         <activity android:name=".activitysBaseData.RubricNewActivity" />
         <activity android:name=".acivitysMain.InfoActivity" />
-        <activity android:name=".acivitysMain.GlossaryActivity"></activity>
+        <activity android:name=".acivitysMain.GlossaryActivity" />
+        <activity android:name=".acivitysMain.ResultActivity"></activity>
     </application>
 
 </manifest>

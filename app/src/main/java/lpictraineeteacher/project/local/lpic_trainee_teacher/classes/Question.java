@@ -15,22 +15,29 @@ public class Question {
     private String art;
     private String hinweis;
     private ArrayList<Answer> answers;
-
-    private String Verified;
+    private String verified;
+    private String answerIsRight;
 
     public Question() {
         setVerified(ISFALSE);
+        setAnswerIsRight(ISFALSE);
     }
 
     public String getVerified() {
-        return Verified;
+        return verified;
     }
 
     public void setVerified(String verified) {
-        Verified = verified;
+        this.verified = verified;
     }
 
+    public String getAnswerIsRight() {
+        return answerIsRight;
+    }
 
+    public void setAnswerIsRight(String answerIsRight) {
+        this.answerIsRight = answerIsRight;
+    }
 
     public ArrayList<Answer> getAnswers() {
         return answers;
