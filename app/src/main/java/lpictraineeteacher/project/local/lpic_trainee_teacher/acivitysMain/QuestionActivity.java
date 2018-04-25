@@ -68,6 +68,7 @@ public class QuestionActivity extends Activity implements Constants {
             timeInMilliSec = questions.size() * 60 * 1000;
             initTimer(timeInMilliSec);
         }
+        btnPrev.setEnabled(false);
     }
 
     private void checkForRequest() {
@@ -84,27 +85,6 @@ public class QuestionActivity extends Activity implements Constants {
             this.setTitle(R.string.activitytestheadline);
 
         }
-    }
-
-
-    private void initTimer(long timeInMilliSec) {
-
-        countDownTimer = new CountDownTimer(timeInMilliSec + 1000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                Integer secs = (int) millisUntilFinished / 1000;
-                Integer minutes = secs / 60;
-                Integer seconds = secs % 60;
-                tvTimer.setText("noch " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " min");
-            }
-
-            public void onFinish() {
-                tvTimer.setText("noch 0:00 min");
-                checkResultAndShow();
-            }
-        }.start();
-
-
     }
 
     private void initComponents() {
@@ -158,6 +138,26 @@ public class QuestionActivity extends Activity implements Constants {
 
     }
 
+    private void initTimer(long timeInMilliSec) {
+
+        countDownTimer = new CountDownTimer(timeInMilliSec + 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                Integer secs = (int) millisUntilFinished / 1000;
+                Integer minutes = secs / 60;
+                Integer seconds = secs % 60;
+                tvTimer.setText("noch " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " min");
+            }
+
+            public void onFinish() {
+                tvTimer.setText("noch 0:00 min");
+                checkResultAndShow();
+            }
+        }.start();
+
+
+    }
+
     private void checkResultAndShow() {
         if (questions.size() > 0) {
             if (!isCheckResultAndShowCalled) {
@@ -176,9 +176,24 @@ public class QuestionActivity extends Activity implements Constants {
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
             intent.putExtra(COUNT_ALL, questions.size());
             intent.putExtra(COUNT_RIGHT, anzahlRichtige);
-            startActivity(intent);
+            startActivityForResult(intent,101);
+
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            Bundle intent = data.getExtras();
+            int ret =  intent.getInt("QUIT");
+            if (ret == 1) {
+                finish();
+            }
+
+        }
     }
 
     private void createQuestionList() {
@@ -218,6 +233,10 @@ public class QuestionActivity extends Activity implements Constants {
             index++;
             displayQuestion(index);
         }
+        if (questions.size() > 0 && index == questions.size() - 1) {
+            btnNext.setEnabled(false);
+        }
+        btnPrev.setEnabled(true);
     }
 
     private void prevQuestion() {
@@ -225,6 +244,10 @@ public class QuestionActivity extends Activity implements Constants {
             index--;
             displayQuestion(index);
         }
+        if (questions.size() > 0 && index == 0) {
+            btnPrev.setEnabled(false);
+        }
+        btnNext.setEnabled(true);
     }
 
     private void checkQuestion() {

@@ -67,5 +67,7 @@
     <string name="btnGerman">deutsch</string>
     <string name="btnEnglish">englisch</string>
 
+    <string name="btnBack">zu den Fragen</string>
+    <string name="btnQuit">Prüfung beenden</string>
 
 </resources>
