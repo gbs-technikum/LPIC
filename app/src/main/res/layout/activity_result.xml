@@ -33,7 +33,7 @@
                 android:id="@+id/tvAnzahlFragen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anzahl Fragen:"
+                android:text="@string/tvAnzahlFragen"
                 android:textAlignment="center" />
 
         </TableRow>
@@ -75,7 +75,7 @@
                 android:id="@+id/tvAnzahlRichtig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="davon richtig Beantwortet:"
+                android:text="@string/tvAnzahlRichtig"
                 android:textAlignment="center" />
 
         </TableRow>

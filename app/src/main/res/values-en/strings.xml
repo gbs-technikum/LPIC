@@ -69,5 +69,8 @@
     <string name="btnBack">back to questions</string>
     <string name="btnQuit">quit exam</string>
 
+    <string name="tvAnzahlFragen">number of questions:</string>
+    <string name="tvAnzahlRichtig">right answered:</string>
+
 
 </resources>

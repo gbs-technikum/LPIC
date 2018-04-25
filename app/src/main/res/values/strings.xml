@@ -70,4 +70,8 @@
     <string name="btnBack">zu den Fragen</string>
     <string name="btnQuit">Prüfung beenden</string>
 
+    <string name="tvAnzahlFragen">Anzahl Fragen:</string>
+    <string name="tvAnzahlRichtig">davon richtig Beantwortet:</string>
+
+
 </resources>
