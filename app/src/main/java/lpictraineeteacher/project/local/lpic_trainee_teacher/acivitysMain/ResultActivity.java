@@ -13,6 +13,7 @@ public class ResultActivity extends Activity implements Constants {
     private ProgressBar progressBar;
     private TextView tvAnzahlFragenIst;
     private TextView tvAnzahlRichtigIst;
+    private TextView tvProzent;
 
 
     private int anzahl;
@@ -28,6 +29,13 @@ public class ResultActivity extends Activity implements Constants {
         anzahlRichtige = getIntent().getExtras().getInt(COUNT_RIGHT);
         tvAnzahlFragenIst.setText(String.valueOf(anzahl));
         tvAnzahlRichtigIst.setText(String.valueOf(anzahlRichtige));
+
+        double erg = 0;
+        if (anzahlRichtige > 0) {
+            erg = (double) anzahlRichtige / ((double) anzahl / 100);
+        }
+        tvProzent.setText(String.format("%4.2f", erg) + " %");
+
         progressBar.setMax(anzahl);
         progressBar.setProgress(anzahlRichtige);
     }
@@ -36,8 +44,7 @@ public class ResultActivity extends Activity implements Constants {
 
         tvAnzahlFragenIst = findViewById(R.id.tvAnzahlFragenIst);
         tvAnzahlRichtigIst = findViewById(R.id.tvAnzahlRichtigIst);
+        tvProzent = findViewById(R.id.tvProzent);
         progressBar = findViewById(R.id.progressBar);
-        progressBar.setMax(20);
-
     }
 }
