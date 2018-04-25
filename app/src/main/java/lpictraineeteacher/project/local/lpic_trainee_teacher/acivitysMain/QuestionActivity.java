@@ -85,6 +85,7 @@ public class QuestionActivity extends Activity implements Constants {
             this.setTitle(R.string.activitytestheadline);
 
         }
+        
     }
 
     private void initComponents() {
