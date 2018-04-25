@@ -18,14 +18,14 @@
         <Button
             android:id="@+id/btnSelect"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingBottom="15dip"
+            android:paddingBottom="20dip"
             android:paddingLeft="5dip"
             android:paddingRight="5dip"
-            android:paddingTop="15dip"
+            android:paddingTop="20dip"
             android:text="@string/name"
-            android:textSize="15sp" />
+            android:textSize="14dp" />
 
     </LinearLayout>
 

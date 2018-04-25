@@ -66,5 +66,8 @@
     <string name="btnGerman">german</string>
     <string name="btnEnglish">english</string>
 
+    <string name="btnBack">back to questions</string>
+    <string name="btnQuit">quit exam</string>
+
 
 </resources>
