@@ -33,7 +33,7 @@
                 android:id="@+id/tvAnzahlFragen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anzahl Fragen: "
+                android:text="Anzahl Fragen:"
                 android:textAlignment="center" />
 
         </TableRow>
@@ -50,6 +50,20 @@
                 android:text="20"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvSpacer4"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text=" "
+                android:textAlignment="center" />
+
         </TableRow>
 
         <TableRow
@@ -87,12 +101,25 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/tvSpacer5"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text=" "
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
                 android:id="@+id/tvProzent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </TableRow>
 
         <TableRow
@@ -106,6 +133,7 @@
                 android:layout_height="30dp"
                 android:text=" "
                 android:textAlignment="center" />
+
         </TableRow>
 
         <TableRow
@@ -128,7 +156,7 @@
             <TextView
                 android:id="@+id/tvSpacer3"
                 android:layout_width="wrap_content"
-                android:layout_height="75dp"
+                android:layout_height="60dp"
                 android:text=" "
                 android:textAlignment="center" />
         </TableRow>
