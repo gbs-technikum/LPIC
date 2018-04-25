@@ -11,14 +11,21 @@
 
     <div class="main_container">
 
-        <h1>Informationen</h1>
-        <!-- first_topic -->
+        <table class="table_title">
+            <tr class="tr_no_style">
+                <td class="td_no_style"><img src="file:///android_res/drawable/infos.png" width="90%" height="90%">
+                </td>
+            </tr>
+        </table>
+
+        <!-- topic_menu -->
         <div class="main_topic">
             <details>
                 <summary>Menu</summary>
                 <div class="summary_text">
                     <p>Hier finden Sie Informationen über die <b class="font_topic">Menüsteuerung</b></p>
                 </div>
+                <!-- language -->
                 <div class="under_topics">
                     <details>
                         <summary>Spracheinstellungen</summary>
@@ -36,57 +43,58 @@
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
+                <!-- /language -->
 
+                <!-- buttons -->
                 <div class="under_topics">
                     <details>
                         <summary>Buttons</summary>
                         <div class="summary_text">
                             <table>
                                 <tr>
-                                    <td class="td_topic"><img src="file:///android_res/drawable/exit.png" width="60"></td>
-                                    <td>Über diesen Button wird der Trainee Teacher beendet</td>
-                                </tr>
-                                <tr>
-                                    <td class="td_topic"><img src="file:///android_res/drawable/sd.png" width="60"></td>
+                                    <td class="td_topic"><img src="file:///android_res/drawable/ic_folder_open_black_24dp.png" width="60"></td>
                                     <td>Hier gelangen Sie zu der Stammdatenverwaltung</td>
                                 </tr>
                                 <tr>
-                                    <td class="td_topic"><img src="file:///android_res/drawable/info.png" width="60"></td>
+                                    <td class="td_topic"><img src="file:///android_res/drawable/ic_help_outline_black_24dp.png" width="60"></td>
                                     <td>Hier gelangen Sie zu dieser Information</td>
                                 </tr>
                                 <tr>
-                                    <td class="td_topic"><img src="file:///android_res/drawable/glossary.png" width="60"></td>
+                                    <td class="td_topic"><img src="file:///android_res/drawable/ic_info_outline_black_24dp.png"></td>
                                     <td>Hier gelangen Sie zum Glossary und können einzelne Wörter nach deren Bedeutung nachschlagen</td>
                                 </tr>
                             </table>
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
+                <!-- /buttons -->
             </details>
         </div>
-        <!-- /div main_topic -->
+        <!-- /topic_menu -->
 
-        <!-- second_topic -->
+        <!-- topic_basedata -->
         <div class="main_topic">
             <details>
                 <summary>Stammdaten</summary>
                 <div class="summary_text">
                     <p>Hier finden Sie Informationen über die Verwaltung der <b class="font_topic">Stammdaten</b></p>
                 </div>
+
+                <!-- topic_basedata_kategory -->
                 <div class="topic">
                     <details>
                         <summary>Kategorie</summary>
                         <div class="summary_text">
                             <p>Unter dem Punkt <b class="font_topic">Kategorie</b>, sind alle Kategorien verwaltbar</p>
+
+                            <!-- topic_basedata_kategory_new -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Neu erstellen</summary>
                                     <div class="summary_text">
                                         <table>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_note_add_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_add_circle_outline_black_24dp.png" align="center"></td>
                                                 <td>Erstellt eine neue Kategorie</td>
                                             </tr>
                                             <tr>
@@ -94,13 +102,16 @@
                                                 <td>Speichert die Kategorie in die Datenbank</td>
                                             </tr>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
                                                 <td>Bricht den aktuellen Vorgang ab</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_kategory_new -->
+
+                            <!-- topic_basedata_kategory_edit -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Bearbeiten</summary>
@@ -115,20 +126,23 @@
                                                 <td>Speichert die geänderte Kategorie in die Datenbank</td>
                                             </tr>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
                                                 <td>Bricht den aktuellen Vorgang ab</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_kategory_edit -->
+
+                            <!-- topic_basedata_kategory_delete -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Löschen</summary>
                                     <div class="summary_text">
                                         <table>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_forever_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_black_24dp.png" align="center"></td>
                                                 <td>Löscht die ausgewählte Kategorie</td>
                                             </tr>
                                         </table>
@@ -136,23 +150,27 @@
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_kategory_delete -->
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
+                <!-- /topic_basedata_kategory -->
 
+                <!-- topic_basedata_rubric -->
                 <div class="topic">
                     <details>
                         <summary>Rubrik</summary>
                         <div class="summary_text">
-                            <p>Um in die <b class="font_topic">Rubrikenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_forward_black_24dp.png" align="center"> der jeweiligen zu bearbeiteten Kategorie</p>
+                            <p>Um in die <b class="font_topic">Rubrikenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_label_outline_black_48dp.png" align="center" width="30" height="30"> der jeweiligen zu bearbeiteten Kategorie</p>
+
+                            <!-- topic_basedata_rubric_new -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Neu erstellen</summary>
                                     <div class="summary_text">
                                         <table>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_note_add_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_add_circle_outline_black_24dp.png" align="center"></td>
                                                 <td>Erstellt eine neue Rubrik</td>
                                             </tr>
                                             <tr>
@@ -160,13 +178,16 @@
                                                 <td>Speichert die Rubrik in die Datenbank</td>
                                             </tr>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
                                                 <td>Bricht den aktuellen Vorgang ab</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_rubric_new -->
+
+                            <!-- topic_basedata_rubric_edit -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Bearbeiten</summary>
@@ -181,20 +202,23 @@
                                                 <td>Speichert die geänderte Rubrik in die Datenbank</td>
                                             </tr>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
                                                 <td>Bricht den aktuellen Vorgang ab</td>
                                             </tr>
                                         </table>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_rubric_edit -->
+
+                            <!-- topic_basedata_rubric_delete -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Löschen</summary>
                                     <div class="summary_text">
                                         <table>
                                             <tr>
-                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_forever_black_24dp.png" align="center"></td>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_black_24dp.png" align="center"></td>
                                                 <td>Löscht die ausgewählte Rubrik</td>
                                             </tr>
                                         </table>
@@ -202,82 +226,285 @@
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_rubric_delete -->
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
+                <!-- /topic_basedata_rubric -->
 
+                <!-- topic_basedata_question -->
                 <div class="topic">
                     <details>
                         <summary>Fragen</summary>
                         <div class="summary_text">
-                            <p>Um in die <b class="font_topic">Fragenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_forward_black_24dp.png" align="center"> der jeweiligen zu bearbeiteten Rubrik. </p>
+                            <p>Um in die <b class="font_topic">Fragenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_label_outline_black_48dp.png" align="center" width="30" height="30"> der jeweiligen zu bearbeiteten Rubrik </p>
+
+                            <!-- topic_basedata_question_new -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Neu erstellen</summary>
                                     <div class="summary_text">
-                                        <p>Um eine neue Frage erstellen zu können, verwenden Sie den Button <img src="file:///android_res/drawable/ic_note_add_black_24dp.png" align="center"> "Neu". Sie gelangen auf eine neue Seite in der Sie die Verwaltung der Frage vornehmen können. In dem Fragenfeld stellen Sie die zu beantwortende Frage ein. In dem Erklärungsfeld haben Sie die Möglichkeit dem Lernenden eine Erklärung bzw. richtige Auflösung der Frage mit zu teilen. Dies kann auch als Hintergrundinformation zu der Frage gesehen werden.<br/>Mit der Art der Frage können Sie zwischen "Multiple Choice" oder "Textbasierend" auswählen und über <img src="file:///android_res/drawable/ic_save_black_24dp.png" align="center"> speichern. Mit dem Button <img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"> brechen Sie den Vorgang ab und gelangen auf die vorherige Verwaltungsmaske.</p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_add_circle_outline_black_24dp.png" align="center"></td>
+                                                <td>Erstellt eine neue Frage</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic_left">Frage<br /><br /><u class="font_hide">Frage</u></td>
+                                                <td>Feld für das Eintragen der Frage</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic_left">Erklärung<br /><br /><u class="font_hide">Erklärung</u></td>
+                                                <td>Feld für das Eintragen einer Erklärung</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/bullet_blue.png" align="center"></td>
+                                                <td>Auswahlmöglichkeit der Art der Frage <i>(Multiple Choice / Textbasierend)</i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_save_black_24dp.png" align="center"></td>
+                                                <td>Speichert die Frage in die Datenbank</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
+                                                <td>Bricht den aktuellen Vorgang ab</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_question_new -->
+
+                            <!-- topic_basedata_question_edit -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Bearbeiten</summary>
                                     <div class="summary_text">
-                                        <p>Über den Button <img src="file:///android_res/drawable/ic_create_black_24dp.png" align="center"> haben Sie die Möglichkeit die Frage bzw. die dazugehörige Erklärung zu ändern. Die einzelnen Felder sind unter dem Punkt "Fragen - Neu erstellen" beschrieben.</p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_create_black_24dp.png" align="center"></td>
+                                                <td>Bearbeitet die ausgewählte Frage</td>
+                                            </tr>
+                                        </table>
+                                        <p>Die einzelnen Felder sind unter dem Punkt <b>"Fragen - Neu erstellen"</b> beschrieben</p>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_question_edit -->
+
+                            <!-- topic_basedata_question_delete -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Löschen</summary>
                                     <div class="summary_text">
-                                        <p>Über <img src="file:///android_res/drawable/ic_delete_forever_black_24dp.png" align="center"> und einer zusätzlichen Bestätigung, ist es Ihnen möglich diese Frage zu löschen. <br/><br/><b class="font_important">Voraussetzung:</b> Alle Daten <i>(Antworten)</i>, die dieser Frage zugewisen sind, müssen vorher gelöscht sein. </p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_black_24dp.png" align="center"></td>
+                                                <td>Löscht die ausgewählte Frage</td>
+                                            </tr>
+                                        </table>
+                                        <p><b class="font_important">Voraussetzung:</b> Alle Daten <i>(Antworten)</i>, die dieser Frage zugewisen sind, müssen vorher gelöscht sein </p>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_question_delete -->
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
+                <!-- /topic_basedata_question -->
 
+                <!-- topic_basedata_answer -->
                 <div class="topic">
                     <details>
                         <summary>Antworten</summary>
                         <div class="summary_text">
-                            <p>Um in die <b class="font_topic">Antwortenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_forward_black_24dp.png" align="center"> der jeweiligen zu bearbeiteten Frage. </p>
+                            <p>Um in die <b class="font_topic">Antwortenverwaltung</b> zu gelangen, verwenden Sie den Button <img src="file:///android_res/drawable/ic_label_outline_black_48dp.png" align="center" width="30" height="30"> der jeweiligen zu bearbeiteten Frage</p>
+
+                            <!-- topic_basedata_answer_new -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Neu erstellen</summary>
                                     <div class="summary_text">
-                                        <p>Um eine neue Antwort erstellen zu können, verwenden Sie den Button <img src="file:///android_res/drawable/ic_note_add_black_24dp.png" align="center"> "Neu". Sie gelangen auf eine neue Seite in der Sie die Verwaltung der Antworten vornehmen können. Sie können immer nur eine Antwort erstellen. Als Antwortmöglichkeit tragen Sie nun die richtige oder falsche Antwortmöglichkeit in das Textfeld ein. Ob die Antwort zu der Frage richtig oder falsch ist, legen Sie mit der jeweiligen Zuordnung fest und über den Button <img src="file:///android_res/drawable/ic_save_black_24dp.png" align="center"> wird die Antwort zu dieser Frage gespeichert. Mit dem Button <img src="file:///android_res/drawable/ic_cancel_black_24dp.png" align="center"> brechen Sie den Vorgang ab und gelangen auf die vorherige Verwaltungsmaske.</p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_add_circle_outline_black_24dp.png" align="center"></td>
+                                                <td>Erstellt eine neue Antwort</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic_left">
+                                                    <font color="#808080"><u>Antwort</u></font>
+                                                </td>
+                                                <td>Feld für das Eintragen einer Antwort</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/bullet_green.png" align="center"></td>
+                                                <td>Auswahlmöglichkeit der Richtigkeit der Antwort <i>(richtig)</i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/bullet_red.png" align="center"></td>
+                                                <td>Auswahlmöglichkeit der Richtigkeit der Antwort <i>(falsch)</i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_save_black_24dp.png" align="center"></td>
+                                                <td>Speichert die Antwort in die Datenbank</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_highlight_off_black_24dp.png" align="center"></td>
+                                                <td>Bricht den aktuellen Vorgang ab</td>
+                                            </tr>
+                                        </table>
+                                        <p><b class="font_important">Hinweis:</b> Sie können immer nur eine Antwort erstellen <i>(Richtig oder Falsch)</i></p>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_answer_new -->
+
+                            <!-- topic_basedata_answer_deit -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Bearbeiten</summary>
                                     <div class="summary_text">
-                                        <p>Über den Button <img src="file:///android_res/drawable/ic_create_black_24dp.png" align="center"> haben Sie die Möglichkeit die Antwort zu ändern. Die einzelnen Felder sind unter dem Punkt "Antworten - Neu erstellen" beschrieben.</p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_create_black_24dp.png" align="center"></td>
+                                                <td>Bearbeitet die ausgewählte Antwort</td>
+                                            </tr>
+                                        </table>
+                                        <p>Die einzelnen Felder sind unter dem Punkt <b>"Antworten - Neu erstellen"</b> beschrieben</p>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_answer_edit -->
+
+                            <!-- topic_basedata_answer_delete -->
                             <div class="under_topics">
                                 <details>
                                     <summary>Löschen</summary>
                                     <div class="summary_text">
-                                        <p>Über <img src="file:///android_res/drawable/ic_delete_forever_black_24dp.png" align="center"> und einer zusätzlichen Bestätigung, ist es Ihnen möglich diese Antwort zu löschen. <br/><br/><b class="font_important">Hinweis:</b> Um eine eine Kategorie, Rubrik oder Frage löschen zu können müssen Sie alle Antworten dieser Frage löschen.</p>
+                                        <table>
+                                            <tr>
+                                                <td class="td_topic"><img src="file:///android_res/drawable/ic_delete_black_24dp.png" align="center"></td>
+                                                <td>Löscht die ausgewählte Antwort</td>
+                                            </tr>
+                                        </table>
+                                        <p><b class="font_important">Hinweis:</b> Um eine eine Kategorie, Rubrik oder Frage löschen zu können müssen Sie alle Antworten dieser Frage löschen</p>
                                     </div>
                                 </details>
                             </div>
+                            <!-- /topic_basedata_answer_delete -->
                         </div>
                     </details>
                 </div>
-                <!-- /div under_topics -->
-
+                <!-- /topic_basedata_answer -->
             </details>
         </div>
-        <!-- /div main_topic -->
+        <!-- /topic_basedata -->
+
+        <!-- topic_menu -->
+        <div class="main_topic">
+            <details>
+                <summary>Lernmodus</summary>
+                <div class="summary_text">
+                    <p>Hier finden Sie Informationen über die zwei <b class="font_topic">Lernmodi</b></p>
+                </div>
+                <!-- trainee_modus -->
+                <div class="under_topics">
+                    <details>
+                        <summary>Trainee Modus</summary>
+                        <div class="summary_text">
+                            <p>Hier finden Sie Informationen über den <b class="font_topic">Trainee Modus</b></p>
+                            <p>Sie können im Trainee Modus selbst entscheiden welche Teilbereiche Sie lernen wollen. Dazu wählen Sie eine <b>Kategorie</b> und anschließend eine der dazugehörigen <b>Rubrik</b> aus. Es werden Ihnen dann alle vorhandenen Fragen zum Beantwortung dargestellt.</p>
+                            <p>Es gibt zwei Arten von Fragentypen:</p>
+                            <ul>
+                                <li>Multiple Choice <i>(mehrfach Auswahl möglich)</i></li>
+                                <li>Textbasierend</li>
+                            </ul>
+
+                            <table>
+                                <tr>
+                                    <td class="td_topic">ZUR&Uuml;CK</td>
+                                    <td>Auswahl der vorherigen Frage</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">PR&Uuml;FEN</td>
+                                    <td>Prüft, ob die Antwort richtig ist<br />Die Antwort wird, je nach Richtigkeit, farbig hinterlegt und eine Erklärung zu dieser Frage unterhalb der Antworten angezeigt<br />Eine weitere Überprüfung der Antwort ist danach nicht mehr möglich</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">WEITER</td>
+                                    <td>Auswahl der nächsten Frage</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        <font color="#808080">Frage 4 von 25<br /><img src="file:///android_res/drawable/bar.png"></font>
+                                    </td>
+                                    <td>Anzahl der zu beantwortenden Fragen</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        ERGEBNIS
+                                    </td>
+                                    <td>Anzeigen Ihrer Ergebnisse</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        <img src="file:///android_res/drawable/ic_help_outline_black_24dp.png">
+                                    </td>
+                                    <td>Anzeigen dieser Hilfe</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+                <!-- /trainee_modus -->
+
+                <!-- expert_modus -->
+                <div class="under_topics">
+                    <details>
+                        <summary>Expert Modus</summary>
+                        <div class="summary_text">
+                            <p>Hier finden Sie Informationen über den <b class="font_topic">Expert Modus</b></p>
+                            <p>&Uuml;ber den Button <b>TEST STARTEN</b> werden Ihnen zufällig ausgewählte Fragen zur Beantwortung dargestellt. Es startet nun ein Countdown in der Sie die Fragen beantworten müssen. Nach Ablauf der Zeit ist die Beantwortung der Fragen nicht mehr möglich und es werden Ihnen Ihre Ergebnisse angezeigt.</p>
+                            <p>Es gibt zwei Arten von Fragentypen:</p>
+                            <ul>
+                                <li>Multiple Choice <i>(mehrfach Auswahl möglich)</i></li>
+                                <li>Textbasierend</li>
+                            </ul>
+
+                            <table>
+                                <tr>
+                                    <td class="td_topic">ZUR&Uuml;CK</td>
+                                    <td>Auswahl der vorherigen Frage</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">WEITER</td>
+                                    <td>Auswahl der nächsten Frage</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        <font color="#808080">Frage 4 von 25<br /><img src="file:///android_res/drawable/bar.png"></font>
+                                    </td>
+                                    <td>Anzahl der zu beantwortenden Fragen</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        ERGEBNIS
+                                    </td>
+                                    <td>Anzeigen Ihrer Ergebnisse</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_topic">
+                                        <img src="file:///android_res/drawable/ic_help_outline_black_24dp.png">
+                                    </td>
+                                    <td>Anzeigen dieser Hilfe</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+                <!-- /expert_modus -->
+            </details>
+        </div>
+        <!-- /topic_menu -->
 
     </div>
     <!-- /div main_container -->
