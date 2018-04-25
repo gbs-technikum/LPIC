@@ -108,6 +108,8 @@ details[open] {
 details[open] summary:before {
     content: "-";
     color: red;
+    padding-right: 3px;
+    padding-left: 3px;
 }
 
 summary::-webkit-details-marker {
@@ -128,4 +130,6 @@ summary:before {
     float: left;
     text-align: center;
     width: 5px;
+    padding-right: 3px;
+    padding-left: 3px;
 }
