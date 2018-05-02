@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.File;
@@ -24,11 +25,22 @@ public class SplashScreen extends Activity {
 
     private Button btnGerman;
     private Button btnEnglish;
+    private ImageButton ibDBCopy;
+    private int clickcounter;
+    private String destinationFile;
+    private File file;
+    private Context context;
+    private String dbName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        dbName = "lpicapp.db";
+        file = new File("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/");
+        destinationFile = file + dbName;
+        context = getApplicationContext();
+        clickcounter = 0;
         copyDB();
         initComponents();
         initEvents();
@@ -37,6 +49,7 @@ public class SplashScreen extends Activity {
     private void initComponents() {
         btnEnglish = findViewById(R.id.btnEnglish);
         btnGerman = findViewById(R.id.btnGerman);
+        ibDBCopy = findViewById(R.id.ibDBCopy);
     }
 
     private void initEvents() {
@@ -50,6 +63,16 @@ public class SplashScreen extends Activity {
             @Override
             public void onClick(View v) {
                 setLanguage("de");
+            }
+        });
+        ibDBCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickcounter++;
+                if (clickcounter == 5) {
+                    overwriteDB();
+                    Toast.makeText(context, "DB überschrieben", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -71,18 +94,26 @@ public class SplashScreen extends Activity {
     }
 
     private void copyDB() {
-        Context Context = getApplicationContext();
-        String destinationFile = "/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/lpicapp.db";
-        File file = new File("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/");
         if (!file.exists()) {
             file.mkdirs();
         }
         if (!new File(destinationFile).exists()) {
             try {
-                CopyFromAssetsToStorage(Context, "lpicapp.db", destinationFile);
+                CopyFromAssetsToStorage(context, "lpicapp.db", destinationFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void overwriteDB() {
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        try {
+            CopyFromAssetsToStorage(context, dbName, destinationFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
