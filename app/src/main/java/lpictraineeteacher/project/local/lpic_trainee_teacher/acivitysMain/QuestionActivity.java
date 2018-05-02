@@ -171,6 +171,8 @@ public class QuestionActivity extends Activity implements Constants {
                 }
                 index = 0;
                 displayQuestion(index);
+                btnPrev.setEnabled(false);
+                btnNext.setEnabled(true);
                 isCheckResultAndShowCalled = true;
             }
             countDownTimer.cancel();
