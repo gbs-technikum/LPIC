@@ -31,14 +31,16 @@ public class SplashScreen extends Activity {
     private File file;
     private Context context;
     private String dbName;
+    private String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         dbName = "lpicapp.db";
-        file = new File("/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/");
-        destinationFile = file + dbName;
+        path = "/data/data/lpictraineeteacher.project.local.lpic_trainee_teacher/databases/";
+        file = new File(path);
+        destinationFile = path + dbName;
         context = getApplicationContext();
         clickcounter = 0;
         copyDB();
@@ -99,7 +101,7 @@ public class SplashScreen extends Activity {
         }
         if (!new File(destinationFile).exists()) {
             try {
-                CopyFromAssetsToStorage(context, "lpicapp.db", destinationFile);
+                CopyFromAssetsToStorage(context, dbName, destinationFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
