@@ -64,7 +64,7 @@
                 android:layout_margin="3dp"
                 android:padding="8dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_info_outline_black_24dp" />
+                android:src="@drawable/ic_glosarry_black_24dp" />
 
         </LinearLayout>
 
