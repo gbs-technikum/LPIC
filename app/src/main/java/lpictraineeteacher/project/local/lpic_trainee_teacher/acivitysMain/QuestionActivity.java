@@ -85,7 +85,7 @@ public class QuestionActivity extends Activity implements Constants {
             this.setTitle(R.string.activitytestheadline);
 
         }
-        
+
     }
 
     private void initComponents() {
@@ -147,11 +147,11 @@ public class QuestionActivity extends Activity implements Constants {
                 Integer secs = (int) millisUntilFinished / 1000;
                 Integer minutes = secs / 60;
                 Integer seconds = secs % 60;
-                tvTimer.setText("noch " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " min");
+                tvTimer.setText(getString(R.string.tvTimer) + " " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + " min");
             }
 
             public void onFinish() {
-                tvTimer.setText("noch 0:00 min");
+                tvTimer.setText(getString(R.string.tvTimer) + " 0:00 min");
                 checkResultAndShow();
             }
         }.start();
@@ -179,7 +179,7 @@ public class QuestionActivity extends Activity implements Constants {
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
             intent.putExtra(COUNT_ALL, questions.size());
             intent.putExtra(COUNT_RIGHT, anzahlRichtige);
-            startActivityForResult(intent,101);
+            startActivityForResult(intent, 101);
 
         }
 
@@ -191,7 +191,7 @@ public class QuestionActivity extends Activity implements Constants {
 
         if (resultCode == Activity.RESULT_OK) {
             Bundle intent = data.getExtras();
-            int ret =  intent.getInt("QUIT");
+            int ret = intent.getInt("QUIT");
             if (ret == 1) {
                 finish();
             }
@@ -309,7 +309,7 @@ public class QuestionActivity extends Activity implements Constants {
         progressBar.setProgress(index + 1);
         if (questions.size() > 0) {
             question = questions.get(index);
-            tvQuestionNr.setText("Frage " + String.valueOf(index + 1) + " von " + String.valueOf(questions.size()));
+            tvQuestionNr.setText(getString(R.string.tvQuestionNr1) + " " + String.valueOf(index + 1) + " " + getString(R.string.tvQuestionNr2) + " " + String.valueOf(questions.size()));
             tvQuestion.setText(question.getFrage());
             tvExplaination.setText(question.getHinweis());
             answers = question.getAnswers();
@@ -322,7 +322,7 @@ public class QuestionActivity extends Activity implements Constants {
                         ckAnswer.setId(x);
                         ckAnswer.setText(answer.getAnswer());
                         ckAnswer.setTextSize(18);
-                        ckAnswer.setPadding(0,0,0,4);
+                        ckAnswer.setPadding(0, 0, 0, 4);
                         if (answer.getResponse().equals(ISTRUE)) {
                             ckAnswer.setChecked(true);
                         } else {

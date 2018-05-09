@@ -72,5 +72,8 @@
     <string name="tvAnzahlFragen">number of questions:</string>
     <string name="tvAnzahlRichtig">right answered:</string>
 
+    <string name="tvQuestionNr1">question</string>
+    <string name="tvQuestionNr2">of</string>
+    <string name="tvTimer">remain</string>
 
 </resources>

@@ -74,4 +74,9 @@
     <string name="tvAnzahlRichtig">davon richtig Beantwortet:</string>
 
 
+    <string name="tvQuestionNr1">Frage</string>
+    <string name="tvQuestionNr2">von</string>
+    <string name="tvTimer">noch</string>
+
+
 </resources>
